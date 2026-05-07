@@ -78,12 +78,17 @@ export default defineConfig({
       'f.hubspotusercontent40.net',
       'images.unsplash.com',
       'images.pexels.com',
-      'johnh967.sg-host.com',
       'www.superiorcomforthvac.com',
       'ultimateheatingandair.com',
       'healthinnovation-kss.com',
     ],
     remotePatterns: [{ protocol: 'https' }],
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false,
+      },
+    },
   },
 
   prefetch: {
