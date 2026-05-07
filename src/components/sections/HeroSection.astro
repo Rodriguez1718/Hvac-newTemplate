@@ -1,7 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import bg2Img from "/images/bg2.jpg";
 import { getLocationText } from "@/config/site"
+
+const bg2Img = "/images/bg2.jpg";
 
 const defaultHeroImages = [
   "https://f.hubspotusercontent40.net/hubfs/9492292/AdobeStock_290366802.jpeg",
@@ -306,16 +307,13 @@ const isSlider = variant === "slider";
         height="810"
       />
     ) : (
-      <Image
+      <img
         src={bg2Img}
         alt="HVAC background"
-        widths={[480, 768, 1280, 1440]}
-        sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1280px) 1280px, 1440px"
-        format="webp"
-        quality={65}
         class="absolute inset-0 w-full h-full object-cover"
         loading="eager"
-        fetchpriority="high"
+        width="1440"
+        height="810"
       />
     )}
   </div>
@@ -367,7 +365,7 @@ const isSlider = variant === "slider";
           />
         ) : (
           <img
-            src={bg2Img.src}
+            src={bg2Img}
             alt=""
             aria-hidden="true"
             class="slope-img"
@@ -405,7 +403,7 @@ const isSlider = variant === "slider";
           />
         ) : (
           <img
-            src={bg2Img.src}
+            src={bg2Img}
             alt=""
             aria-hidden="true"
             class="slope-img"
@@ -443,7 +441,7 @@ const isSlider = variant === "slider";
           />
         ) : (
           <img
-            src={bg2Img.src}
+            src={bg2Img}
             alt=""
             aria-hidden="true"
             class="slope-img"
