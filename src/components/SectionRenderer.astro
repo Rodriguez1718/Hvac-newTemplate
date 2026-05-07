@@ -1,0 +1,82 @@
+---
+import CareersCTASection from "@/components/sections/CareersCTASection.astro"
+import ContactFormSection from "@/components/sections/ContactFormSection.astro"
+import ContentSection from "@/components/sections/ContentSection.astro"
+import ContentSectionAlt from "@/components/sections/ContentSectionAlt.astro"
+import CouponsSection from "@/components/sections/CouponsSection.astro"
+import CTAStrip from "@/components/sections/CTAStrip.astro"
+import ExpertServicesSection from "@/components/sections/ExpertServicesSection.astro"
+import FAQSection from "@/components/sections/FAQSection.astro"
+import FinancingIntroSection from "@/components/sections/FinancingIntroSection.astro"
+import FinancingPlansSection from "@/components/sections/FinancingPlansSection.astro"
+import FinancingSection from "@/components/sections/FinancingSection.astro"
+import HeroPage from "@/components/sections/HeroPage.astro"
+import HeroSection from "@/components/sections/HeroSection.astro"
+import ImageCardsSection from "@/components/sections/ImageCardsSection.astro"
+import JobOpeningsSection from "@/components/sections/JobOpeningsSection.astro"
+import MaintenancePlanSection from "@/components/sections/MaintenancePlanSection.astro"
+import PlaceholderContentSection from "@/components/sections/PlaceholderContentSection.astro"
+import PortfolioSection from "@/components/sections/PortfolioSection.astro"
+import PricingPlansSection from "@/components/sections/PricingPlansSection.astro"
+import PromoTilesSection from "@/components/sections/PromoTilesSection.astro"
+import ReviewsSection from "@/components/sections/ReviewsSection.astro"
+import ServiceAreaSection from "@/components/sections/ServiceAreaSection.astro"
+import ServiceCardsGridSection from "@/components/sections/ServiceCardsGridSection.astro"
+import ServicesSection from "@/components/sections/ServicesSection.tsx"
+import SignupBannerSection from "@/components/sections/SignupBannerSection.astro"
+import TestimonialsSection from "@/components/sections/TestimonialsSection.astro"
+import TrustBadges from "@/components/sections/TrustBadges.astro"
+
+const componentMap: Record<string, any> = {
+  CareersCTASection,
+  ContactFormSection,
+  ContentSection,
+  ContentSectionAlt,
+  CouponsSection,
+  CTAStrip,
+  ExpertServicesSection,
+  FAQSection,
+  FinancingIntroSection,
+  FinancingPlansSection,
+  FinancingSection,
+  HeroPage,
+  HeroSection,
+  ImageCardsSection,
+  JobOpeningsSection,
+  MaintenancePlanSection,
+  PlaceholderContentSection,
+  PortfolioSection,
+  PricingPlansSection,
+  PromoTilesSection,
+  ReviewsSection,
+  ServiceAreaSection,
+  ServiceCardsGridSection,
+  ServicesSection,
+  SignupBannerSection,
+  TestimonialsSection,
+  TrustBadges,
+}
+
+interface Section {
+  component: string
+  props?: Record<string, any>
+}
+
+interface Props {
+  sections: Section[]
+}
+
+const { sections = [] } = Astro.props
+---
+
+{sections.map(({ component, props = {} }) => {
+  if (component === "ServicesSection") {
+    return <ServicesSection client:visible {...(props as any)} />
+  }
+  const Comp = componentMap[component]
+  if (!Comp) {
+    console.warn(`[SectionRenderer] Unknown component: ${component}`)
+    return null
+  }
+  return <Comp {...props} />
+})}

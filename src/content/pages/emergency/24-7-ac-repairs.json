@@ -1,0 +1,72 @@
+{
+  "title": "24/7 AC Repairs",
+  "description": "Round-the-clock emergency AC repair services when you need them most. 24/7 emergency cooling solutions in {city}.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "24/7 AC Repairs",
+        "subtitle": "Emergency AC repairs around the clock — we're here when you need us most.",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://aonecoolingsolution.in/wp-content/uploads/2025/02/split-ac-service-Sfastservices.jpg",
+        "image": "/images/bg2.jpg",
+        "imageAlt": "Emergency AC repair technician"
+      }
+    },
+    { "component": "PlaceholderContentSection", "props": { "title": "TO BE DETERMINED", "subtitle": "BASED ON THE CLIENT DISCOVERY CONVERSATION" } },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "{business}\nMAINTENANCE PLAN", "priceLabel": ["STARTING AS LOW AS", "$14.33", "PER MONTH"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" },
+          { "type": "financing", "headline": ["NO INTEREST", "NO PAYMENTS", "UNTIL 2026"], "subtext": "*WITH APPROVED FINANCING", "buttonText": "LEARN MORE", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "discount": "$95", "subheadline": ["FURNACE", "TUNE-UP"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions about 24/7 AC Repairs in {city}",
+        "faqs": [
+          { "question": "Do you charge extra for after-hours AC repairs?", "answer": "We offer competitive rates for emergency services. While after-hours calls may have a service fee, we always provide upfront pricing before starting any work so there are no surprises." },
+          { "question": "How quickly can a technician arrive for an emergency AC repair?", "answer": "We prioritize emergency calls and typically have a technician at your door within 1-2 hours, depending on your location in the {city} area. Our dispatch team works around the clock to get you help fast." },
+          { "question": "What qualifies as an AC emergency?", "answer": "An AC emergency includes a complete system failure during extreme heat, strange burning smells from your unit, water leaking from the system causing property damage, or any situation where lack of cooling poses a health risk to vulnerable household members." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Related Services",
+        "variant": "services",
+        "items": [
+          { "title": "24/7 Heating and Cooling Repairs", "href": "/emergency/24-7-heating-cooling-repairs", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp" },
+          { "title": "24/7 Emergency Repairs", "href": "/emergency/24-7-emergency-repairs", "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop" },
+          { "title": "AC Repair", "href": "/air-conditioning/ac-repair", "image": "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg" },
+          { "title": "AC Tune-Up / Maintenance", "href": "/air-conditioning/ac-tune-up-maintenance", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp" }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [ { "icon": "siren", "text": "24/7 Emergency Services" }, { "icon": "award", "text": "Experienced and Certified Technicians" } ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Service Areas for Emergency HVAC Services in {city}",
+        "description": "We proudly serve homes and businesses across all {city} boroughs, providing 24/7 emergency HVAC services wherever you need us.",
+        "areas": ["Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island"],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

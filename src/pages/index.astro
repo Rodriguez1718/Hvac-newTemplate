@@ -1,0 +1,17 @@
+---
+import { getEntry } from "astro:content"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import SectionRenderer from "@/components/SectionRenderer.astro"
+
+const page = await getEntry("pages", "index")
+if (!page) throw new Error("index.json not found in src/content/pages/")
+---
+
+<BaseLayout
+  title={page.data.title}
+  description={page.data.description}
+  keywords={page.data.keywords}
+  ogImage={page.data.ogImage}
+>
+  <SectionRenderer sections={page.data.sections} />
+</BaseLayout>

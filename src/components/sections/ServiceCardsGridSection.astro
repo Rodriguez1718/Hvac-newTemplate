@@ -1,0 +1,355 @@
+---
+interface ServiceCard {
+  title: string;
+  description: string;
+  icon: string;
+  href?: string;
+}
+
+interface ServiceCategory {
+  title: string;
+  services: ServiceCard[];
+}
+
+interface Props {
+  badge?: string;
+  title: string;
+  description: string;
+  categories: ServiceCategory[];
+}
+
+const { badge = "OUR SERVICES", title, description, categories } = Astro.props;
+---
+
+<section class="svc-section">
+  <div class="svc-body">
+    <div class="container mx-auto px-6 md:px-12 lg:px-16">
+
+      <!-- Header -->
+      <div class="svc-header" data-animate="fade-up">
+        <div class="svc-eyebrow">
+          <span class="svc-eyebrow-text">{badge}</span>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          <h2 class="svc-title">{title}</h2>
+          <p class="svc-desc" set:html={description} />
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="svc-tabs" data-animate="fade-up" data-animate-delay="100">
+        {categories.map((category, index) => (
+          <button
+            class="svc-tab"
+            data-tab={index}
+            data-active={index === 0 ? "true" : "false"}
+          >
+            <span class="svc-tab-text">{category.title}</span>
+            <span class="svc-tab-bar"></span>
+          </button>
+        ))}
+      </div>
+
+      <!-- Service Cards Grid -->
+      <div class="relative" style="padding-bottom: 3rem;">
+        {categories.map((category, catIndex) => (
+          <div
+            class="service-content absolute inset-0 transition-opacity duration-500"
+            data-content={catIndex}
+            style={catIndex === 0 ? "opacity: 1; pointer-events: auto; position: relative;" : "opacity: 0; pointer-events: none;"}
+          >
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5" data-animate-stagger>
+              {category.services.map((service, serviceIndex) => {
+                const Tag = service.href ? 'a' : 'div';
+                const cardNumber = String(serviceIndex + 1).padStart(2, '0');
+                return (
+                  <Tag
+                    {...(service.href ? { href: service.href } : {})}
+                    class="svc-card group"
+                    style={`transition-delay: ${serviceIndex * 70}ms`}
+                  >
+                    {/* Highlight strip on left */}
+                    <span class="svc-card-strip"></span>
+
+                    <div class="svc-card-inner">
+                      <div class="svc-icon">
+                        <span set:html={service.icon} />
+                      </div>
+
+                      <h3 class="svc-card-title">{service.title}</h3>
+                      <p class="svc-card-desc" set:html={service.description} />
+
+                      {service.href && (
+                        <div class="svc-arrow">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Card number bottom-right */}
+                    <span class="svc-card-number">{cardNumber}</span>
+                  </Tag>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .svc-section {
+    position: relative;
+    background: var(--background);
+  }
+  .svc-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/aircon.png');
+    background-size: 65%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  @media (max-width: 1024px) {
+    .svc-section::before {
+      background-size: 75%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .svc-section::before {
+      background-size: 90%;
+    }
+  }
+
+  .svc-body {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 6rem 0 6rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── Header ─── */
+  .svc-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .svc-eyebrow {
+    margin-bottom: 1.5rem;
+  }
+  .svc-eyebrow-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--brand-highlight);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--brand-primary);
+    border-left: 3px solid var(--brand-highlight);
+  }
+
+  .svc-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--brand-primary);
+  }
+  @media (min-width: 768px) {
+    .svc-title { font-size: 2.5rem; }
+  }
+
+  .svc-desc {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--brand-secondary);
+  }
+
+  /* ─── Tabs ─── */
+  .svc-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid rgba(0,0,0,0.18);
+  }
+
+  .svc-tab {
+    position: relative;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--brand-secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .svc-tab:hover {
+    color: var(--brand-primary);
+  }
+
+  .svc-tab[data-active="true"] {
+    color: var(--brand-primary);
+  }
+
+  .svc-tab-bar {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: transparent;
+    transition: background 0.3s ease;
+  }
+  .svc-tab[data-active="true"] .svc-tab-bar {
+    background: var(--brand-highlight);
+  }
+
+  /* ─── Cards ─── */
+  .svc-card {
+    position: relative;
+    display: block;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.18);
+    overflow: hidden;
+    transition: all 0.35s ease;
+    text-decoration: none;
+  }
+  .svc-card:hover {
+    border-color: var(--brand-highlight);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  }
+
+  .svc-card-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--brand-highlight);
+    transition: height 0.35s ease;
+  }
+  .svc-card:hover .svc-card-strip {
+    height: 100%;
+  }
+
+  .svc-card-inner {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .svc-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-tertiary);
+    border: 1px solid rgba(0,0,0,0.06);
+    color: var(--brand-primary);
+    margin-bottom: 1.25rem;
+    transition: all 0.3s ease;
+  }
+  .svc-card:hover .svc-icon {
+    background: var(--brand-highlight);
+    border-color: var(--brand-highlight);
+    color: var(--brand-primary);
+  }
+
+  .svc-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--brand-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+    transition: color 0.3s ease;
+  }
+
+  .svc-card-desc {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--brand-secondary);
+    margin-bottom: 1.25rem;
+  }
+
+  .svc-arrow {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-tertiary);
+    color: var(--brand-secondary);
+    transition: all 0.3s ease;
+  }
+  .svc-card:hover .svc-arrow {
+    background: var(--brand-highlight);
+    color: var(--brand-primary);
+    transform: translateX(4px);
+  }
+
+  .svc-card-number {
+    position: absolute;
+    bottom: -0.75rem;
+    right: 1rem;
+    font-size: 6rem;
+    font-weight: 900;
+    line-height: 1;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(0, 0, 0, 0.08);
+    text-stroke: 2px rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+    user-select: none;
+    transition: -webkit-text-stroke 0.3s ease, text-stroke 0.3s ease, color 0.3s ease;
+  }
+  .svc-card:hover .svc-card-number {
+    color: rgba(0, 0, 0, 0.08);
+    -webkit-text-stroke: 0;
+    text-stroke: 0;
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLElement>('.svc-tab');
+  const contents = document.querySelectorAll<HTMLElement>('.service-content');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const tabIndex = tab.getAttribute('data-tab');
+
+      tabs.forEach((t) => t.setAttribute('data-active', 'false'));
+      tab.setAttribute('data-active', 'true');
+
+      contents.forEach((content) => {
+        const contentIndex = content.getAttribute('data-content');
+        if (contentIndex === tabIndex) {
+          content.style.opacity = '1';
+          content.style.pointerEvents = 'auto';
+        } else {
+          content.style.opacity = '0';
+          content.style.pointerEvents = 'none';
+        }
+      });
+    });
+  });
+
+
+</script>

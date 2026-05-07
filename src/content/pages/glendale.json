@@ -1,0 +1,122 @@
+{
+  "title": "Glendale HVAC Services",
+  "description": "Expert heating and cooling solutions for homes and businesses in Glendale, CA. Reliable and efficient HVAC services with 24/7 emergency support.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Glendale",
+        "subtitle": "Providing expert heating and cooling solutions to homes and businesses in Glendale, ensuring reliable and efficient HVAC services every time. Call us for expert assistance!",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://img.freepik.com/premium-photo/plumber-fixing-kitchen-sink_53876-72054.jpg",
+        "trustIndicators": [
+          "Serving Our Community for 20 Years",
+          "Quality Service",
+          "24-Hour Emergency Service Available"
+        ]
+      }
+    },
+    {
+      "component": "ContentSectionAlt",
+      "props": {
+        "badge": "SERVICE AREAS",
+        "title": "Trusted HVAC Services in",
+        "titleHighlight": "Glendale",
+        "description": "For reliable, affordable heating and cooling solutions in Glendale, turn to {business}. Our licensed and insured experts handle everything from AC repairs and furnace maintenance to <a href='/emergency'><strong>emergency repairs</strong></a> and installations. With years of experience, {business} is dedicated to delivering high-quality, cost-effective HVAC services for homes and businesses.",
+        "featuresTitle": "Key Benefits",
+        "features": [
+          { "title": "Experienced Professionals", "description": "Our team brings years of expertise to every job, ensuring quality workmanship." },
+          { "title": "24/7 Emergency Services", "description": "We're available around the clock for urgent HVAC needs." },
+          { "title": "Transparent Pricing", "description": "No hidden fees — you'll know exactly what to expect before we start." },
+          { "title": "Modern Equipment", "description": "We use the latest tools and technology for efficient, lasting repairs." },
+          { "title": "Customer Satisfaction Guaranteed", "description": "Your satisfaction is our top priority on every project." }
+        ],
+        "image": "https://images.squarespace-cdn.com/content/v1/664b5313dda2ea41fb347883/1581e0bb-a29c-4d32-ba1b-64ac27852610/AdobeStock_437652425.jpeg",
+        "imagePosition": "left"
+      }
+    },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "MAINTENANCE PLAN", "priceLabel": ["STARTS AT", "$14.33", "PER MONTH"], "buttonText": "Contact Us", "buttonHref": "/contact", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" },
+          { "type": "financing", "headline": ["NO INTEREST", "NO PAYMENT", "UNTIL 2026"], "subtext": "WITH APPROVED FINANCING", "buttonText": "Explore Financing Options", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "tag": "Emergency HVAC Services", "discount": "20% OFF", "subheadline": ["ALL EMERGENCY", "HVAC SERVICES"], "buttonText": "BOOK NOW", "buttonHref": "/contact", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "ServicesSection",
+      "props": {
+        "title": "Our Professional HVAC Services",
+        "description": "We specialize in providing top-notch heating and cooling solutions tailored to meet your needs. Whether you're dealing with an urgent repair or planning an HVAC upgrade, our team is here to deliver reliable, efficient, and affordable services. Explore what we offer:",
+        "categories": [
+          { "title": "Air Conditioning Services", "services": [{ "title": "AC Repair", "description": "Fast and reliable AC repairs" }, { "title": "AC Tune-Up / Maintenance", "description": "Keep your system running efficiently" }, { "title": "AC Installation & Replacement", "description": "New AC system installations" }, { "title": "Mini-Split Systems", "description": "Ductless cooling solutions" }, { "title": "Thermostats", "description": "Smart thermostat installation" }, { "title": "View All AC Services →", "description": "See all our AC services" }] },
+          { "title": "Heating Services", "services": [{ "title": "Furnace Repair", "description": "Fast and reliable furnace repairs" }, { "title": "Furnace Tune-Up / Maintenance", "description": "Keep your heating system efficient" }, { "title": "Furnace Installation & Replacement", "description": "New furnace installations" }, { "title": "Boiler Installation & Replacement", "description": "Professional boiler services" }, { "title": "Heat Pumps", "description": "Energy-efficient heating solutions" }, { "title": "View All Heating Services →", "description": "See all our heating services" }] },
+          { "title": "Indoor Air Quality", "services": [{ "title": "Air Filtration Systems", "description": "Advanced air purification" }, { "title": "Duct Cleaning & Sealing", "description": "Improve airflow and efficiency" }, { "title": "Duct Repair & Replacement", "description": "Fix leaks and damaged ductwork" }, { "title": "Attic Insulation & Ventilation", "description": "Optimize energy efficiency" }, { "title": "Humidity Control", "description": "Balanced indoor humidity" }, { "title": "View All IAQ Services →", "description": "See all air quality services" }] },
+          { "title": "Commercial HVAC Services", "services": [{ "title": "Commercial HVAC Installation", "description": "Complete commercial systems" }, { "title": "Commercial HVAC Repair", "description": "Fast commercial repairs" }, { "title": "Commercial HVAC Maintenance", "description": "Preventative maintenance programs" }, { "title": "Commercial HVAC Warranty", "description": "Comprehensive warranty coverage" }, { "title": "Rooftop Units", "description": "Commercial rooftop HVAC units" }, { "title": "View All Commercial Services →", "description": "See all commercial services" }] }
+        ]
+      }
+    },
+    {
+      "component": "PortfolioSection",
+      "props": {
+        "badge": "Portfolio",
+        "title": "Our Featured Works",
+        "images": [
+          "https://johnh967.sg-host.com/wp-content/uploads/slider/cache/3208844a78ae424ec0bfef8623738be2/HVAC-Repair-Banner.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/2024/12/AC-Repair-Services.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/2024/12/Professional-24_7-Heating-and-Cooling-Repairs.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466578360_545600454753059_5640968860261965384_nfull.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466555884_570355772412079_4111747127252492406_nfull.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466796006_1587175318903711_6684948885555680268_nfull.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466556611_1575760946412367_152571973762791733_nfull.webp"
+        ]
+      }
+    },
+    {
+      "component": "ReviewsSection",
+      "props": {
+        "badge": "GOOGLE REVIEWS",
+        "title": "What Our Clients Say",
+        "description": "At {business}, we believe that every home and business deserves access to reliable HVAC services, no matter the budget. That's why we offer flexible <a href='/financing'><strong>financing options</strong></a> to make your heating and cooling projects more manageable and stress-free.",
+        "reviews": [
+          { "name": "Eric Rogers", "time": "1 year ago", "content": "Over the past 15 years or so my wife and I have needed a few repairs or maintenance items in our home, and each time {business} has been there to take care of our needs.", "readMoreHref": "#" },
+          { "name": "Michael Abrocincks", "time": "1 year ago", "content": "{business} has been such a great company to work with — from our initial consult to the final repair. Highly recommended!", "readMoreHref": "#" },
+          { "name": "David Stanton", "time": "1 year ago", "content": "I couldn't be more grateful for the incredible service I received when my AC went out. The team responded quickly and professionally.", "readMoreHref": "#" },
+          { "name": "Domestic", "time": "1 year ago", "content": "Great company and great people!", "readMoreHref": "#" }
+        ],
+        "verifiedBy": "View Google Testimonials"
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW",
+        "buttonHref": "/contact",
+        "phoneLabel": "Call or Text for Great Service",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Service" },
+          { "icon": "award", "text": "Experienced and Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Expert HVAC Services in {city} and Surrounding Areas",
+        "description": "Looking for reliable HVAC services in {city}? We provide expert residential and <a href='/commercial'><strong>commercial</strong></a> heating and cooling solutions across the city, from Hollywood Hills to <a href='/santa-monica'><strong>Santa Monica</strong></a>. Whether you need AC repair, furnace installation, duct cleaning, or emergency services, our licensed team serves your area with speed, skill, and care. We offer reliable <a href='/maintenance-plan'><strong>maintenance</strong></a> and <a href='/emergency'><strong>24/7 emergency services</strong></a> to keep your HVAC system in top shape. Serving neighborhoods like Downtown LA, Beverly Hills, and Glendale, we are committed to quality, efficiency, and customer satisfaction. <a href='/contact'><strong>Call us today</strong></a> to schedule your service!",
+        "areas": [
+          "Santa Monica", "Pasadena", "Glendale", "Culver City", "Downtown {city}", "Hollywood",
+          "Beverly Hills", "Venice", "Westwood", "San Fernando Valley",
+          "San Diego", "El Monte", "Santa Monica", "Beverly Hills",
+          "Torrance", "Long Beach", "Inglewood", "El Segundo", "Brentwood",
+          "Silver Lake", "Echo Park", "Hancock Park", "Marina del Rey", "Manhattan Beach"
+        ],
+        "mapAddress": "Glendale, CA"
+      }
+    }
+  ]
+}

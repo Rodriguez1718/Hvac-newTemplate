@@ -1,0 +1,617 @@
+---
+import { siteConfig } from "@/config/site"
+
+const currentYear = new Date().getFullYear()
+
+const quickLinks = [
+  { title: "HOME", href: "/" },
+  { title: "SERVICE AREAS", href: "/service-areas" },
+  { title: "SCHEDULE NOW", href: "/contact" },
+]
+
+const airConditioningServices = [
+  { title: "AC Repair", href: "/air-conditioning/ac-repair" },
+  { title: "AC Tune-Up/ Maintenance", href: "/air-conditioning/ac-tune-up-maintenance" },
+  { title: "AC Installation and Replacement", href: "/air-conditioning/ac-installation-replacement" },
+  { title: "Mini-Split Systems", href: "/air-conditioning/mini-split-systems" },
+  { title: "HVAC Brands", href: "/air-conditioning/hvac-brands" },
+  { title: "HVAC Warranties", href: "/air-conditioning/hvac-warranties" },
+  { title: "Thermostats", href: "/air-conditioning/thermostats" },
+]
+
+const heatingServices = [
+  { title: "Furnace Repair", href: "/heating/furnace-repair" },
+  { title: "Furnace Tune Up/ Maintenance", href: "/heating/furnace-tune-up-maintenance" },
+  { title: "Furnace Installation and Replacement", href: "/heating/furnace-installation-replacement" },
+  { title: "Boilers Installation and Replacement", href: "/heating/boilers-installation-replacement" },
+]
+
+const indoorAirQualityServices = [
+  { title: "Air Filtration Systems", href: "/indoor-air-quality/air-filtration-systems" },
+  { title: "Duct Cleaning and Sealing", href: "/indoor-air-quality/duct-cleaning-sealing" },
+  { title: "Duct Repair and Replacement", href: "/indoor-air-quality/duct-repair-replacement" },
+  { title: "Attic Insulation and Ventilation", href: "/indoor-air-quality/attic-insulation-ventilation" },
+]
+
+const emergencyServices = [
+  { title: "24/7 AC Repairs", href: "/emergency/24-7-ac-repairs" },
+  { title: "24/7 Heating and Cooling Repairs", href: "/emergency/24-7-heating-cooling-repairs" },
+  { title: "24/7 Emergency Repairs", href: "/emergency/24-7-emergency-repairs" },
+]
+---
+
+<footer class="ft-footer">
+  <!-- ─── Hero CTA section ─── -->
+  <div class="ft-hero">
+    <div class="container mx-auto px-6 md:px-12 lg:px-16">
+      <div class="ft-hero-inner">
+        <div class="ft-hero-content">
+          <div class="ft-hero-badge">
+            <div class="ft-hero-badge-dot"></div>
+            <span>24/7 Emergency Service</span>
+          </div>
+          <h2 class="ft-hero-title">Ready to Fix Your HVAC?</h2>
+          <p class="ft-hero-desc">Professional service you can trust. Licensed, insured, and locally owned.</p>
+        </div>
+        <div class="ft-hero-actions">
+          <a href={`tel:${siteConfig.contact.phone}`} class="ft-phone-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {siteConfig.contact.phoneFormatted}
+          </a>
+          <a href="/contact" class="ft-schedule-btn">Schedule Service</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Main content ─── -->
+  <div class="ft-main">
+    <div class="container mx-auto px-6 md:px-12 lg:px-16">
+      <div class="ft-main-inner">
+        
+        <!-- Company info -->
+        <div class="ft-company">
+          <a href="/" class="ft-logo">
+            <div class="ft-logo-icon">
+              <img src={siteConfig.logo.src} alt={siteConfig.logo.alt} class="ft-logo-img" width="32" height="32" loading="lazy" decoding="async" />
+            </div>
+            <div class="ft-logo-text">
+              <span class="ft-logo-name">{siteConfig.business.name}</span>
+              <span class="ft-logo-tagline">Professional HVAC Services</span>
+            </div>
+          </a>
+          
+          <div class="ft-contact-cards">
+            <div class="ft-contact-card">
+              <div class="ft-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="ft-contact-info">
+                <span class="ft-contact-label">Service Area</span>
+                <span class="ft-contact-value">{siteConfig.location.city} & Surrounding Areas</span>
+              </div>
+            </div>
+            
+            <div class="ft-contact-card">
+              <div class="ft-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div class="ft-contact-info">
+                <span class="ft-contact-label">Email Us</span>
+                <span class="ft-contact-value">{siteConfig.contact.email}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Services grid -->
+        <div class="ft-services">
+          <div class="ft-service-col">
+            <h3 class="ft-service-title">Air Conditioning</h3>
+            <ul class="ft-service-list">
+              {airConditioningServices.slice(0, 4).map((service) => (
+                <li><a href={service.href} class="ft-service-link">{service.title}</a></li>
+              ))}
+            </ul>
+            <a href="/air-conditioning" class="ft-view-all">View All AC Services</a>
+          </div>
+
+          <div class="ft-service-col">
+            <h3 class="ft-service-title">Heating</h3>
+            <ul class="ft-service-list">
+              {heatingServices.map((service) => (
+                <li><a href={service.href} class="ft-service-link">{service.title}</a></li>
+              ))}
+            </ul>
+            <a href="/heating" class="ft-view-all">View All Heating Services</a>
+          </div>
+
+          <div class="ft-service-col">
+            <h3 class="ft-service-title">Indoor Air Quality</h3>
+            <ul class="ft-service-list">
+              {indoorAirQualityServices.map((service) => (
+                <li><a href={service.href} class="ft-service-link">{service.title}</a></li>
+              ))}
+            </ul>
+            <a href="/indoor-air-quality" class="ft-view-all">View All IAQ Services</a>
+          </div>
+
+          <div class="ft-service-col">
+            <h3 class="ft-service-title">Emergency</h3>
+            <ul class="ft-service-list">
+              {emergencyServices.map((service) => (
+                <li><a href={service.href} class="ft-service-link">{service.title}</a></li>
+              ))}
+            </ul>
+            <a href="/emergency" class="ft-view-all">24/7 Emergency Service</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Bottom bar ─── -->
+  <div class="ft-bottom">
+    <div class="container mx-auto px-6 md:px-12 lg:px-16">
+      <div class="ft-bottom-inner">
+        <div class="ft-bottom-left">
+          <p class="ft-copyright">&copy; {currentYear} {siteConfig.business.name}. All rights reserved.</p>
+          <div class="ft-quick-links">
+            {quickLinks.map((link, i) => (
+              <Fragment>
+                <a href={link.href} class="ft-quick-link">{link.title}</a>
+                {i < quickLinks.length - 1 && <span class="ft-divider">•</span>}
+              </Fragment>
+            ))}
+          </div>
+        </div>
+        <div class="ft-bottom-right">
+          <a href="/privacy-policy" class="ft-legal-link">Privacy</a>
+          <a href="/terms" class="ft-legal-link">Terms</a>
+          <a href="https://lordicon.com/" class="ft-legal-link" target="_blank" rel="noopener noreferrer">Icons by Lordicon.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ft-footer {
+    background: var(--brand-primary);
+    color: white;
+  }
+
+  /* ─── Hero CTA Section ─── */
+  .ft-hero {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, color-mix(in srgb, var(--brand-primary) 90%, black) 100%);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .ft-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/images/aircon.png') center/cover no-repeat;
+    opacity: 0.05;
+    z-index: 1;
+  }
+
+  .ft-hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ft-hero-content {
+    flex: 1;
+    max-width: 500px;
+  }
+
+  .ft-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 152, 0, 0.15);
+    border: 1px solid rgba(255, 152, 0, 0.3);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--brand-highlight);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .ft-hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--brand-highlight);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .ft-hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: white;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .ft-hero-desc {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .ft-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .ft-phone-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;  
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: all 0.3s ease;
+  }
+  .ft-phone-btn:hover {
+    border-color: var(--brand-highlight);
+    color: var(--brand-highlight);
+  }
+
+  .ft-schedule-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.65rem 1.5rem;
+    background: var(--brand-highlight);
+    color: var(--brand-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .ft-schedule-btn:hover {
+    filter: brightness(1.08);
+    transform: translateX(4px);
+  }
+
+  /* ─── Main Content ─── */
+  .ft-main {
+    padding: 4rem 0;
+    background: color-mix(in srgb, var(--brand-primary) 95%, black);
+  }
+
+  .ft-main-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Company section */
+  .ft-company {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .ft-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    margin-bottom: 1rem;
+  }
+
+  .ft-logo-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ft-logo-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  .ft-logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .ft-logo-name {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+  }
+
+  .ft-logo-tagline {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .ft-contact-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ft-contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+  }
+  .ft-contact-card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255, 152, 0, 0.3);
+  }
+
+  .ft-contact-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 152, 0, 0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .ft-contact-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--brand-highlight);
+  }
+
+  .ft-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .ft-contact-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  .ft-contact-value {
+    font-size: 0.875rem;
+    color: white;
+    font-weight: 500;
+  }
+
+  /* Services grid */
+  .ft-services {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .ft-service-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ft-service-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--brand-highlight);
+    display: inline-block;
+  }
+
+  .ft-service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .ft-service-link {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    padding-left: 1rem;
+  }
+  .ft-service-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+  .ft-service-link:hover {
+    color: var(--brand-highlight);
+    padding-left: 1.25rem;
+  }
+  .ft-service-link:hover::before {
+    background: var(--brand-highlight);
+    width: 6px;
+    height: 6px;
+  }
+
+  .ft-view-all {
+    font-size: 0.8125rem;
+    color: var(--brand-highlight);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+  }
+  .ft-view-all:hover {
+    color: white;
+    transform: translateX(4px);
+  }
+
+  /* ─── Bottom Bar ─── */
+  .ft-bottom {
+    background: color-mix(in srgb, var(--brand-primary) 90%, black);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 1.5rem 0;
+  }
+
+  .ft-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .ft-bottom-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .ft-copyright {
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+  }
+
+  .ft-quick-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .ft-quick-link {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+  }
+  .ft-quick-link:hover {
+    color: var(--brand-highlight);
+  }
+
+  .ft-divider {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.75rem;
+  }
+
+  .ft-bottom-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .ft-legal-link {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .ft-legal-link:hover {
+    color: var(--brand-highlight);
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 1024px) {
+    .ft-hero-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 2rem;
+    }
+    .ft-main-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .ft-services {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .ft-hero {
+      padding: 3rem 0;
+    }
+    .ft-hero-title {
+      font-size: 2rem;
+    }
+    .ft-hero-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+    .ft-phone-btn,
+    .ft-schedule-btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .ft-services {
+      grid-template-columns: 1fr;
+    }
+    .ft-bottom-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+    .ft-quick-links {
+      justify-content: center;
+    }
+  }
+</style>

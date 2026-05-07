@@ -1,0 +1,494 @@
+---
+import { getLocationText } from "@/config/site"
+
+interface Props {
+  badge?: string;
+  title: string;
+  description: string;
+  features?: string[];
+  buttonText?: string;
+  buttonHref?: string;
+  imagePosition?: "left" | "right";
+  images?: string[];
+  imageAlts?: string[];
+}
+
+const {
+  badge,
+  title: rawTitle,
+  description: rawDescription,
+  features: rawFeatures = [],
+  buttonText,
+  buttonHref,
+  imagePosition = "left",
+  images = [],
+  imageAlts = [],
+} = Astro.props;
+
+const title = getLocationText(rawTitle);
+const description = getLocationText(rawDescription);
+const features = rawFeatures.map(getLocationText);
+
+const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80";
+const DEFAULT_SECONDARY = "https://cdn.prod.website-files.com/672c783eb245d962f945af09/67ac697f07002b03059c5cf4_hvac-service.jpeg";
+const mainImage = DEFAULT_IMAGE;
+const secondaryImage = DEFAULT_SECONDARY;
+const isRight = imagePosition === "right";
+---
+
+<section class="cs-wrapper">
+
+
+  <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+    <div class:list={["cs-section", { "cs-section--flipped": isRight }]}>
+    
+    <!-- Image side -->
+    <div class="cs-image-side" data-animate={isRight ? "fade-left" : "fade-right"}>
+      <div class="cs-image-wrap">
+        <!-- Left accent strip -->
+        <div class="cs-image-accent"></div>
+        
+        <!-- Main image -->
+        <div class="cs-image-main-wrap">
+          {mainImage ? (
+            <img
+              src={mainImage}
+              alt={imageAlts[0] || title}
+              class="cs-image-main"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <div class="cs-image-main cs-image--placeholder">
+              <span>Image</span>
+            </div>
+          )}
+          
+          <!-- Corner badge -->
+          <div class="cs-corner-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" class="cs-corner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Secondary image -->
+        {secondaryImage && (
+          <div class="cs-image-secondary-wrap">
+            <img
+              src={secondaryImage}
+              alt={imageAlts[1] || `${title} - detail`}
+              class="cs-image-secondary"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- Text side -->
+    <div class="cs-text-side" data-animate={isRight ? "fade-right" : "fade-left"} data-animate-delay="200">
+      <div class="cs-text-inner">
+        
+        {badge && (
+          <div class="cs-badge">
+            <span class="cs-badge-text">{badge}</span>
+          </div>
+        )}
+
+        <h2 class="cs-title">{title}</h2>
+        <p class="cs-desc" set:html={description} />
+
+        {features.length > 0 && (
+          <div class="cs-features">
+            {features.map((feature, idx) => {
+              const icons = [
+                `<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>`,
+                `<path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>`,
+                `<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>`,
+                `<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>`
+              ];
+              return (
+                <div class="cs-feature-card">
+                  <div class="cs-feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <Fragment set:html={icons[idx % icons.length]} />
+                    </svg>
+                  </div>
+                  <span class="cs-feature-text" set:html={feature} />
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {buttonText && buttonHref && (
+          <a href={buttonHref} class="cs-btn">
+            {buttonText}
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        )}
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cs-wrapper {
+    background: var(--brand-tertiary);
+    overflow: visible;
+    position: relative;
+  }
+
+  /* ─── Decorative Air Blow ─── */
+  .cs-air-decoration {
+    position: absolute;
+    top: -15%;
+    right: 2%;
+    width: 350px;
+    height: 350px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .cs-air-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.4;
+    transform: rotate(15deg);
+  }
+
+  @media (max-width: 1024px) {
+    .cs-air-decoration {
+      width: 280px;
+      height: 280px;
+      top: -12%;
+      right: 0%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cs-air-decoration {
+      width: 220px;
+      height: 220px;
+      top: -10%;
+      right: -2%;
+    }
+  }
+
+  /* ─── Layout ─── */
+  .cs-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .cs-section--flipped {
+    direction: rtl;
+  }
+  .cs-section--flipped > * {
+    direction: ltr;
+  }
+
+  /* ─── Image Side ─── */
+  .cs-image-side {
+    position: relative;
+  }
+
+  .cs-image-wrap {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0;
+  }
+
+  /* Left accent strip */
+  .cs-image-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--brand-highlight);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+    z-index: 3;
+  }
+  .cs-image-wrap:hover .cs-image-accent {
+    transform: scaleY(1);
+  }
+
+  /* Main image */
+  .cs-image-main-wrap {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+  }
+  .cs-image-wrap:hover .cs-image-main-wrap {
+    border-color: var(--brand-highlight);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  }
+
+  .cs-image-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .cs-image-wrap:hover .cs-image-main {
+    transform: scale(1.05);
+  }
+
+  /* Corner badge */
+  .cs-corner-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 56px;
+    height: 56px;
+    background: var(--brand-highlight);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+  .cs-image-wrap:hover .cs-corner-badge {
+    transform: rotate(10deg) scale(1.1);
+  }
+
+  .cs-corner-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--brand-primary);
+  }
+
+  /* Secondary image */
+  .cs-image-secondary-wrap {
+    position: absolute;
+    bottom: -2rem;
+    right: -2rem;
+    width: 240px;
+    height: 180px;
+    border: 4px solid white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    overflow: hidden;
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+  .cs-image-wrap:hover .cs-image-secondary-wrap {
+    transform: translate(-8px, -8px);
+  }
+
+  .cs-image-secondary {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cs-section--flipped .cs-image-secondary-wrap {
+    right: auto;
+    left: -2rem;
+  }
+  .cs-section--flipped .cs-image-wrap:hover .cs-image-secondary-wrap {
+    transform: translate(8px, -8px);
+  }
+
+  .cs-image--placeholder {
+    background: var(--brand-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brand-secondary);
+    font-size: 0.875rem;
+  }
+
+  /* ─── Text Side ─── */
+  .cs-text-side {
+    display: flex;
+    align-items: center;
+  }
+
+  .cs-text-inner {
+    max-width: 560px;
+  }
+
+  /* Badge */
+  .cs-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--brand-primary);
+    border-left: 3px solid var(--brand-highlight);
+    margin-bottom: 1.5rem;
+  }
+
+  .cs-badge-text {
+    font-size: 0.65rem;  
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--brand-highlight);
+  }
+
+  /* Title */
+  .cs-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: var(--brand-primary);
+    margin-bottom: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .cs-title { font-size: 2.25rem; }
+  }
+  @media (min-width: 1280px) {
+    .cs-title { font-size: 2.5rem; }
+  }
+
+  /* Description */
+  .cs-desc {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--brand-secondary);
+    margin-bottom: 2rem;
+  }
+
+  /* ─── Features: Card Grid ─── */
+  .cs-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .cs-feature-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .cs-feature-card:hover {
+    border-left-color: var(--brand-highlight);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: translateX(4px);
+  }
+
+  .cs-feature-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-tertiary);
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+  }
+  .cs-feature-card:hover .cs-feature-icon {
+    background: var(--brand-highlight);
+    border-color: var(--brand-highlight);
+  }
+
+  .cs-feature-icon svg {
+    width: 18px;
+    height: 18px;
+    color: var(--brand-primary);
+    transition: color 0.3s ease;
+  }
+  .cs-feature-card:hover .cs-feature-icon svg {
+    color: white;
+  }
+
+  .cs-feature-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--brand-primary);
+    line-height: 1.4;
+  }
+
+  /* ─── CTA ─── */
+  .cs-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.7rem 1.75rem;
+    background: var(--brand-highlight);
+    color: #0a0a0a;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .cs-btn:hover {
+    filter: brightness(1.08);
+    transform: translateX(4px);
+  }
+  .cs-btn svg {
+    transition: transform 0.3s ease;
+  }
+  .cs-btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 1024px) {
+    .cs-section {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .cs-section--flipped {
+      direction: ltr;
+    }
+    .cs-image-main-wrap {
+      height: 400px;
+    }
+    .cs-image-secondary-wrap {
+      width: 200px;
+      height: 150px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cs-features {
+      grid-template-columns: 1fr;
+    }
+    .cs-image-main-wrap {
+      height: 320px;
+    }
+    .cs-image-secondary-wrap {
+      width: 160px;
+      height: 120px;
+      bottom: -1rem;
+      right: -1rem;
+    }
+    .cs-section--flipped .cs-image-secondary-wrap {
+      left: -1rem;
+    }
+  }
+</style>

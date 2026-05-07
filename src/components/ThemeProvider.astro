@@ -1,0 +1,7 @@
+---
+import { siteConfig } from "@/config/site"
+
+const { primary, secondary, tertiary, quaternary, accent, highlight } = siteConfig.colors
+---
+
+<Fragment set:html={`<style>:root{--brand-primary:${primary};--brand-secondary:${secondary};--brand-tertiary:${tertiary};--brand-quaternary:${quaternary};--brand-accent:${secondary};--brand-accent-secondary:${accent};--brand-highlight:${highlight};--background:${quaternary};--foreground:${primary};--card-foreground:${primary};--popover-foreground:${primary};--primary:${primary};--primary-foreground:#fefefe;--secondary:${secondary};--secondary-foreground:#fefefe;--muted:${tertiary};--accent:${secondary};--accent-foreground:#fefefe;--ring:${secondary};--border:color-mix(in srgb,${secondary} 25%,${tertiary});--input:color-mix(in srgb,${secondary} 25%,${tertiary});--chart-1:${primary};--chart-2:${secondary};--chart-4:${tertiary};--chart-5:${quaternary};--sidebar:${quaternary};--sidebar-foreground:${primary};--sidebar-primary:${primary};--sidebar-accent:${tertiary};--sidebar-accent-foreground:${primary};--sidebar-border:color-mix(in srgb,${secondary} 25%,${tertiary});--sidebar-ring:${secondary}}</style>`} />

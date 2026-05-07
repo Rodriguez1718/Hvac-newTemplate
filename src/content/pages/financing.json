@@ -1,0 +1,87 @@
+{
+  "title": "Financing",
+  "description": "Get the HVAC repairs and upgrades you need today with flexible payment plans designed to fit your budget. Quick approval and no-interest options available!",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Affordable HVAC Financing Solutions",
+        "subtitle": "Get the HVAC repairs and upgrades you need today with flexible payment plans designed to fit your budget. Quick approval and no-interest options available!",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1000&q=80"
+      }
+    },
+    {
+      "component": "FinancingIntroSection",
+      "props": {
+        "title": "Financing Options for Every Budget",
+        "description": "At {business}, we understand that keeping your home comfortable shouldn't be a financial burden. To help you select the best HVAC solutions for your needs, we offer a range of <a href='/financing'><strong>financing options</strong></a> designed to fit any budget.",
+        "subtitle": "Why Choose Financing Through {business}?",
+        "benefits": [
+          "Flexible promotions and competitive interest rates",
+          "Quick credit decisions and funding",
+          "Manageable repayment plans",
+          "Friendly, high-quality customer service"
+        ]
+      }
+    },
+    {
+      "component": "SignupBannerSection",
+      "props": {
+        "title": "Apply for Financing and Get Approved in Minutes!",
+        "description": "Don't let budget concerns delay your HVAC repairs. Our quick and easy application process gets you approved fast.",
+        "calloutText": "Start your application today and get the HVAC services you need!",
+        "buttonText": "APPLY NOW",
+        "buttonHref": "/contact"
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Related Services",
+        "variant": "services",
+        "items": [
+          { "title": "Air Conditioning Services", "href": "/air-conditioning", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp" },
+          { "title": "Heating Services", "href": "/heating", "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop" },
+          { "title": "Indoor Air Quality Services", "href": "/indoor-air-quality", "image": "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg" },
+          { "title": "Emergency HVAC Services", "href": "/emergency", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp" },
+          { "title": "Commercial Services", "href": "/commercial", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Commercial-HVAC-Installation-Service.webp" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions",
+        "faqs": [
+          { "question": "What financing options does {business} offer?", "answer": "We offer a variety of financing options including low-interest plans, no-interest options for qualified customers (0% for up to 12 months), and custom payment terms to fit your budget." },
+          { "question": "How do I apply for financing?", "answer": "Applying is quick and easy! Simply <a href='/contact'><strong>contact us</strong></a> or visit our office, and our team will guide you through the application process. Most applications receive instant decisions." },
+          { "question": "What types of HVAC services can I finance?", "answer": "You can finance virtually any HVAC service we offer, including AC installations, furnace replacements, duct repairs, indoor air quality upgrades, and more." }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW",
+        "buttonHref": "/contact",
+        "phoneLabel": "Call or Text for Great Service",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Service" },
+          { "icon": "award", "text": "Experienced & Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "variant": "compact",
+        "title": "Proudly Serving {city}",
+        "description": "We provide reliable residential HVAC services throughout {city} and nearby areas like <a href='/santa-monica'><strong>Santa Monica</strong></a>, <a href='/pasadena'><strong>Pasadena</strong></a>, and <a href='/glendale'><strong>Glendale</strong></a>. <a href='/contact'><strong>Contact us</strong></a> to see if we serve your neighborhood!",
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

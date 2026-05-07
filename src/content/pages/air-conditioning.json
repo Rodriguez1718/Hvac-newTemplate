@@ -1,0 +1,149 @@
+{
+  "title": "Air Conditioning Services",
+  "description": "Professional air conditioning services in {city} and surrounding areas. AC repair, installation, maintenance, and more.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Air Conditioning Services in {city}",
+        "subtitle": "Expert Cooling Solutions for Your Home and Business",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://f.hubspotusercontent40.net/hubfs/9492292/AdobeStock_290366802.jpeg",
+        "image": "/images/bg2.jpg",
+        "imageAlt": "AC service technician",
+        "trustIndicators": [
+          "Licensed and Insured Professionals",
+          "Same-Day Service Available",
+          "Upfront, Transparent Pricing",
+          "100% Satisfaction Guarantee"
+        ]
+      }
+    },
+    {
+      "component": "ContentSection",
+      "props": {
+        "badge": "Expert HVAC Services",
+        "title": "Professional Air Conditioning Services in {city} and Surrounding Areas",
+        "description": "Looking for reliable air conditioning services in {city}? {fullName} provides expert <a href='/air-conditioning/ac-repair'><strong>AC repair</strong></a>, <a href='/air-conditioning/ac-installation-replacement'><strong>installation</strong></a>, <a href='/air-conditioning/ac-tune-up-maintenance'><strong>maintenance</strong></a>, and replacement services for homes and businesses throughout the {city} area. Our certified technicians are equipped with the latest tools and training to handle all your cooling needs efficiently and affordably.",
+        "features": [
+          "Licensed and Insured Professionals",
+          "Same-Day Service Available",
+          "Upfront, Transparent Pricing",
+          "100% Satisfaction Guarantee"
+        ],
+        "buttonText": "Contact Us",
+        "buttonHref": "/contact",
+        "images": [
+          "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp"
+        ],
+        "imagePosition": "left"
+      }
+    },
+    {
+      "component": "ContentSectionAlt",
+      "props": {
+        "title": "Why Choose Us for Air Conditioning Services in",
+        "titleHighlight": "{city}?",
+        "description": "We deliver dependable, energy-efficient cooling solutions backed by years of experience and a commitment to customer satisfaction.",
+        "image": "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466556611_1575760946412367_152571973762791733_nfull.webp",
+        "imageAlt": "Air conditioning units",
+        "imagePosition": "left",
+        "features": [
+          { "title": "Experienced Local Professionals", "description": "Our certified HVAC technicians have years of hands-on experience serving {city} homeowners and businesses with reliable cooling solutions." },
+          { "title": "Fast Response Times", "description": "We understand that AC problems can't wait. That's why we offer same-day and <a href='/emergency/24-7-ac-repairs'><strong>emergency service</strong></a> to get your system back up and running quickly." },
+          { "title": "Transparent Pricing", "description": "No hidden fees or surprise charges. We provide upfront estimates so you know exactly what to expect before any work begins." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Our Air Conditioning Services",
+        "variant": "services",
+        "items": [
+          { "title": "AC Repair", "href": "/air-conditioning/ac-repair", "image": "https://aonecoolingsolution.in/wp-content/uploads/2025/02/split-ac-service-Sfastservices.jpg" },
+          { "title": "AC Tune-Up / Maintenance", "href": "/air-conditioning/ac-tune-up-maintenance", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/12/AC-Repair-Services.webp" },
+          { "title": "AC Installation and Replacement", "href": "/air-conditioning/ac-installation-replacement", "image": "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466556611_1575760946412367_152571973762791733_nfull.webp" },
+          { "title": "Thermostats", "href": "/air-conditioning/thermostats", "image": "https://www.askmoss.com/wp-content/uploads/2025/06/thermostat-repair-moss.jpg" }
+        ]
+      }
+    },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "{business}\nMAINTENANCE PLAN", "priceLabel": ["STARTING AS LOW AS", "$14.33", "PER MONTH"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" },
+          { "type": "financing", "headline": ["NO INTEREST", "NO PAYMENTS", "UNTIL 2026"], "subtext": "*WITH APPROVED FINANCING", "buttonText": "LEARN MORE", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "discount": "$95", "subheadline": ["FURNACE", "TUNE-UP"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions about AC Services in {city}",
+        "faqs": [
+          { "question": "What types of air conditioning systems do you service?", "answer": "We service all types of AC systems including central air conditioning, ductless <a href='/air-conditioning/mini-split-systems'><strong>mini-splits</strong></a>, window units, heat pumps, and <a href='/commercial'><strong>commercial HVAC systems</strong></a>. Our technicians are trained to work with all major <a href='/air-conditioning/hvac-brands'><strong>brands</strong></a>." },
+          { "question": "How often should I schedule AC maintenance?", "answer": "We recommend scheduling professional <a href='/air-conditioning/ac-tune-up-maintenance'><strong>AC maintenance</strong></a> at least once a year, ideally in the spring before the cooling season begins. Regular maintenance helps prevent breakdowns, improves efficiency, and extends the life of your system." },
+          { "question": "Do you offer emergency AC repair services?", "answer": "Yes, we offer <a href='/emergency/24-7-ac-repairs'><strong>24/7 emergency AC repair</strong></a> services throughout {city}. When your AC breaks down unexpectedly, our team is ready to respond quickly and restore your comfort." }
+        ]
+      }
+    },
+    {
+      "component": "ServicesSection",
+      "props": {
+        "title": "Explore Our Other HVAC Services",
+        "description": "Beyond air conditioning, we offer a full range of heating, indoor air quality, emergency, and commercial HVAC services.",
+        "categories": [
+          { "title": "Heating Services", "services": [
+            { "title": "Furnace Repair", "description": "Fast and reliable furnace repair services", "href": "/heating/furnace-repair" },
+            { "title": "Furnace Tune-Up / Maintenance", "description": "Keep your heating system running efficiently", "href": "/heating/furnace-tune-up-maintenance" },
+            { "title": "Furnace Installation and Replacement", "description": "New furnace installations and upgrades", "href": "/heating/furnace-installation-replacement" },
+            { "title": "Boilers Installation and Replacement", "description": "Expert boiler services for your home", "href": "/heating/boilers-installation-replacement" }
+          ]},
+          { "title": "Indoor Air Quality", "services": [
+            { "title": "Air Filtration Systems", "description": "Improve your home's air quality", "href": "/indoor-air-quality/air-filtration-systems" },
+            { "title": "Duct Cleaning and Sealing", "description": "Clean and seal your ductwork", "href": "/indoor-air-quality/duct-cleaning-sealing" },
+            { "title": "Duct Repair and Replacement", "description": "Fix or replace damaged ductwork", "href": "/indoor-air-quality/duct-repair-replacement" },
+            { "title": "Attic Insulation and Ventilation", "description": "Optimize your home's insulation", "href": "/indoor-air-quality/attic-insulation-ventilation" }
+          ]},
+          { "title": "Emergency HVAC Services", "services": [
+            { "title": "24/7 AC Repairs", "description": "Round-the-clock AC emergency repairs", "href": "/emergency/24-7-ac-repairs" },
+            { "title": "24/7 Heating and Cooling Repairs", "description": "Emergency heating and cooling services", "href": "/emergency/24-7-heating-cooling-repairs" },
+            { "title": "24/7 Emergency Repairs", "description": "Full emergency HVAC repair services", "href": "/emergency/24-7-emergency-repairs" },
+            { "title": "Same-Day Service", "description": "Fast response when you need it most", "href": "/emergency" }
+          ]},
+          { "title": "Commercial Services", "services": [
+            { "title": "HVAC Repair", "description": "Commercial HVAC repair services", "href": "/commercial/hvac-repair" },
+            { "title": "HVAC Maintenance", "description": "Preventive commercial HVAC maintenance", "href": "/commercial/hvac-maintenance" },
+            { "title": "HVAC Installation", "description": "New commercial HVAC installations", "href": "/commercial/hvac-installation" },
+            { "title": "HVAC Warranty", "description": "Commercial HVAC warranty services", "href": "/commercial/hvac-warranty" }
+          ]}
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Services" },
+          { "icon": "award", "text": "Experienced and Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Service Areas for HVAC Services in {city}",
+        "description": "We proudly serve homes and businesses across all {city} boroughs, providing expert <a href='/air-conditioning/ac-repair'><strong>AC repair</strong></a>, <a href='/air-conditioning/ac-installation-replacement'><strong>installation</strong></a>, and <a href='/air-conditioning/ac-tune-up-maintenance'><strong>maintenance</strong></a> services wherever you need us.",
+        "areas": ["Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island"],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

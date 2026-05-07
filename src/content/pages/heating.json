@@ -1,0 +1,150 @@
+{
+  "title": "Heating Services",
+  "description": "Professional heating services in {city} and surrounding areas. Furnace repair, installation, boiler services, and more.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Your Trusted Partner for Heating Services in {city}",
+        "subtitle": "Expert Heating Solutions to Keep Your Home Warm and Energy-Efficient",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://darrylbarberandsons.com/wp-content/uploads/2022/09/heating-services.jpeg",
+        "image": "/images/bg2.jpg",
+        "imageAlt": "Heating service technician",
+        "trustIndicators": [
+          "Licensed and Insured Professionals",
+          "Same-Day Service Available",
+          "Upfront, Transparent Pricing",
+          "100% Satisfaction Guarantee"
+        ]
+      }
+    },
+    {
+      "component": "ContentSection",
+      "props": {
+        "badge": "Heating Experts",
+        "title": "Comprehensive Heating Services in {city}",
+        "description": "When temperatures drop, you need a heating system you can count on. {fullName} provides expert <a href='/heating/furnace-repair'><strong>furnace repair</strong></a>, <a href='/heating/furnace-installation-replacement'><strong>installation</strong></a>, <a href='/heating/furnace-tune-up-maintenance'><strong>maintenance</strong></a>, and <a href='/heating/boilers-installation-replacement'><strong>boiler services</strong></a> for homes and businesses throughout the {city} area. Our certified technicians are equipped with the latest tools and training to keep your home warm and comfortable all winter long.",
+        "features": [
+          "Licensed and Insured Professionals",
+          "Same-Day Service Available",
+          "Upfront, Transparent Pricing",
+          "100% Satisfaction Guarantee"
+        ],
+        "buttonText": "Contact Us",
+        "buttonHref": "/contact",
+        "images": [
+          "https://plus.unsplash.com/premium_photo-1664298589198-b15ff5382648?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "imagePosition": "left"
+      }
+    },
+    {
+      "component": "ContentSectionAlt",
+      "props": {
+        "title": "Why Choose",
+        "titleHighlight": "Our Heating Services?",
+        "description": "We deliver dependable, energy-efficient heating solutions backed by years of experience and a commitment to keeping your home comfortable.",
+        "image": "https://mydecorative.com/wp-content/uploads/2020/12/heat-repair-service.jpg",
+        "imageAlt": "Heating system service",
+        "imagePosition": "left",
+        "features": [
+          { "title": "Expertise and Experience", "description": "Our certified heating technicians bring years of hands-on experience with all major furnace and boiler brands to every job." },
+          { "title": "24/7 Emergency Support", "description": "Lost heat in the middle of winter? We offer round-the-clock <a href='/emergency/24-7-heating-cooling-repairs'><strong>emergency heating repair</strong></a> so you're never left in the cold." },
+          { "title": "Energy Efficiency", "description": "We help you choose and maintain high-efficiency heating systems that reduce energy consumption and lower your utility bills." },
+          { "title": "Customized Solutions", "description": "Every home is different. We provide tailored heating recommendations based on your home's size, layout, and specific comfort needs." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "badge": "Services",
+        "title": "Our Heating Services",
+        "variant": "services",
+        "items": [
+          { "title": "Furnace Repair", "href": "/heating/furnace-repair", "image": "https://plus.unsplash.com/premium_photo-1664298589198-b15ff5382648?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+          { "title": "Furnace Tune-Up / Maintenance", "href": "/heating/furnace-tune-up-maintenance", "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+          { "title": "Furnace Installation and Replacement", "href": "/heating/furnace-installation-replacement", "image": "https://plus.unsplash.com/premium_photo-1661963078581-a4f091315692?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+          { "title": "Boilers Installation and Replacement", "href": "/heating/boilers-installation-replacement", "image": "https://plus.unsplash.com/premium_photo-1764691250742-d98ba6c66725?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }
+        ]
+      }
+    },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "{business}\nMAINTENANCE PLAN", "priceLabel": ["STARTING AS LOW AS", "$14.33", "PER MONTH"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" },
+          { "type": "financing", "headline": ["NO INTEREST", "NO PAYMENTS", "UNTIL 2026"], "subtext": "*WITH APPROVED FINANCING", "buttonText": "LEARN MORE", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "discount": "$95", "subheadline": ["FURNACE", "TUNE-UP"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions about Heating Services in {city}",
+        "faqs": [
+          { "question": "How often should I service my heating system?", "answer": "We recommend scheduling professional <a href='/heating/furnace-tune-up-maintenance'><strong>heating maintenance</strong></a> at least once a year, ideally in the fall before the heating season begins. Regular tune-ups help prevent breakdowns, improve efficiency, and extend the life of your system." },
+          { "question": "What are the signs my furnace needs repair?", "answer": "Common signs include uneven heating, strange noises, frequent cycling on and off, a yellow or flickering pilot light, rising energy bills, and cold air blowing from vents. If you notice any of these, <a href='/contact'><strong>contact us</strong></a> for a diagnostic." },
+          { "question": "How long does a furnace installation take?", "answer": "A standard <a href='/heating/furnace-installation-replacement'><strong>furnace installation</strong></a> typically takes one day. More complex installations involving ductwork modifications or system upgrades may take longer. We'll provide a clear timeline before any work begins." }
+        ]
+      }
+    },
+    {
+      "component": "ServicesSection",
+      "props": {
+        "title": "Explore Our Other HVAC Services",
+        "description": "Beyond heating, we offer a full range of air conditioning, indoor air quality, emergency, and commercial HVAC services.",
+        "categories": [
+          { "title": "AC Services", "services": [
+            { "title": "AC Repair", "description": "Fast and reliable air conditioning repairs", "href": "/air-conditioning/ac-repair" },
+            { "title": "AC Tune-Up / Maintenance", "description": "Keep your cooling system running efficiently", "href": "/air-conditioning/ac-tune-up-maintenance" },
+            { "title": "AC Installation and Replacement", "description": "New AC system installations", "href": "/air-conditioning/ac-installation-replacement" },
+            { "title": "Thermostats", "description": "Smart thermostat installation and setup", "href": "/air-conditioning/thermostats" }
+          ]},
+          { "title": "Indoor Air Quality", "services": [
+            { "title": "Air Filtration Systems", "description": "Improve your home's air quality", "href": "/indoor-air-quality/air-filtration-systems" },
+            { "title": "Duct Cleaning and Sealing", "description": "Clean and seal your ductwork", "href": "/indoor-air-quality/duct-cleaning-sealing" },
+            { "title": "Duct Repair and Replacement", "description": "Fix or replace damaged ductwork", "href": "/indoor-air-quality/duct-repair-replacement" },
+            { "title": "Attic Insulation and Ventilation", "description": "Optimize your home's insulation", "href": "/indoor-air-quality/attic-insulation-ventilation" }
+          ]},
+          { "title": "Emergency HVAC Services", "services": [
+            { "title": "24/7 AC Repairs", "description": "Round-the-clock AC emergency repairs", "href": "/emergency/24-7-ac-repairs" },
+            { "title": "24/7 Heating and Cooling Repairs", "description": "Emergency heating and cooling services", "href": "/emergency/24-7-heating-cooling-repairs" },
+            { "title": "24/7 Emergency Repairs", "description": "Full emergency HVAC repair services", "href": "/emergency/24-7-emergency-repairs" }
+          ]},
+          { "title": "Commercial Services", "services": [
+            { "title": "HVAC Repair", "description": "Commercial HVAC repair services", "href": "/commercial/hvac-repair" },
+            { "title": "HVAC Maintenance", "description": "Preventive commercial HVAC maintenance", "href": "/commercial/hvac-maintenance" },
+            { "title": "HVAC Installation", "description": "New commercial HVAC installations", "href": "/commercial/hvac-installation" },
+            { "title": "HVAC Warranty", "description": "Commercial HVAC warranty services", "href": "/commercial/hvac-warranty" }
+          ]}
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Services" },
+          { "icon": "award", "text": "Experienced and Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Service Areas for HVAC Services in {city}",
+        "description": "We proudly serve homes and businesses across all {city} boroughs, providing expert <a href='/heating/furnace-repair'><strong>furnace repair</strong></a>, <a href='/heating/furnace-installation-replacement'><strong>installation</strong></a>, and <a href='/heating/boilers-installation-replacement'><strong>boiler services</strong></a> wherever you need us.",
+        "areas": ["Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island"],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

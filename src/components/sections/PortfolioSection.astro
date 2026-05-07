@@ -1,0 +1,298 @@
+---
+interface Props {
+  badge?: string;
+  title: string;
+  images?: string[];
+  columns?: number;
+}
+
+const defaultImages = [
+  "https://airetechac.com/wp-content/uploads/2025/02/What-Is-HVAC-Service.jpg",
+  "https://www.delcohvac.com/wp-content/uploads/2024/05/Untitled-design-2024-05-09T020707.906.png",
+  "https://www.brewersac.com/wp-content/uploads/2024/08/residential-hvac-service-in-phoenix-brewers-ac.png",
+  "https://apolloheatingandair.com/wp-content/uploads/2022/09/What-are-the-Top-Rasons-for-HVAC-Repair.png",
+  "https://mgcs.net.in/wp-content/uploads/2023/03/hvac_services.jpg",
+  "https://reganandsonheatingandair.com/wp-content/uploads/2022/08/light-commercial.jpg",
+  "https://www.hunker.com/hunker/mlt2a54758688164b88ba2786c6385bdac7",
+  "https://cdn.prod.website-files.com/643dd13153ce80ea0a9ceae9/68deabb139c6575485a52a06_678ab8e8b11d403818be5aa8_heating-repair.jpeg",
+];
+
+const { badge = "Portfolio", title, columns = 4 } = Astro.props;
+
+// Always use defaultImages, ignore JSON prop
+const images = defaultImages;
+
+const topRow = images.slice(0, 4);
+const bottomRow = images.slice(4);
+---
+
+<section class="pf-section">
+  <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+    <!-- Header -->
+    <div class="pf-header" data-animate="fade-scale">
+      <div class="pf-eyebrow">
+        <span class="pf-eyebrow-text">{badge}</span>
+      </div>
+      <h2 class="pf-title">{title}</h2>
+      <div class="pf-divider"></div>
+    </div>
+
+    <div class="pf-gallery">
+      <!-- Top row -->
+      <div class="pf-row pf-row--top" data-animate-stagger>
+        {topRow.map((img, i) => (
+          <div class="pf-item group">
+            <img src={img} alt={`${title} - project ${i + 1}`} class="pf-img" loading="lazy" decoding="async" />
+            <div class="pf-hover">
+              <div class="pf-hover-content">
+                <span class="pf-hover-accent"></span>
+                <span class="pf-hover-label">Project {i + 1}</span>
+              </div>
+            </div>
+            {/* Top highlight strip */}
+            <span class="pf-item-strip"></span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Bottom row -->
+      {bottomRow.length > 0 && (
+        <div class="pf-row pf-row--bottom" style={`--pf-bottom-count: ${bottomRow.length}`} data-animate-stagger>
+          {bottomRow.map((img, i) => (
+            <div class="pf-item group">
+              <img src={img} alt={`${title} - project ${topRow.length + i + 1}`} class="pf-img" loading="lazy" decoding="async" />
+              <div class="pf-hover">
+                <div class="pf-hover-content">
+                  <span class="pf-hover-accent"></span>
+                  <span class="pf-hover-label">Project {topRow.length + i + 1}</span>
+                </div>
+              </div>
+              <span class="pf-item-strip"></span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pf-section {
+    background: var(--brand-primary);
+    position: relative;
+  }
+  .pf-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/aircon2.png');
+    background-size: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+  }  
+  .pf-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.15) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── Header ─── */
+  .pf-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pf-eyebrow {
+    margin-bottom: 1.25rem;
+  }
+  .pf-eyebrow-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--brand-highlight);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(255,255,255,0.08);
+    border-left: 3px solid var(--brand-highlight);
+  }
+
+  .pf-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 768px) {
+    .pf-title { font-size: 2.25rem; }
+  }
+
+  .pf-divider {
+    width: 3rem;
+    height: 3px;
+    background: var(--brand-highlight);
+    margin: 0 auto;
+  }
+
+  /* ─── Gallery ─── */
+  .pf-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pf-row {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .pf-row--top {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .pf-row--bottom {
+    grid-template-columns: repeat(var(--pf-bottom-count, 4), 1fr);
+  }
+
+  /* ─── Items ─── */
+  .pf-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.35s ease;
+  }
+  .pf-item:hover {
+    border-color: var(--brand-highlight);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+    transform: translateY(-4px);
+  }
+
+  .pf-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, filter 0.5s ease;
+  }
+  .pf-item:hover .pf-img {
+    transform: scale(1.06);
+    filter: blur(3px);
+  }
+
+  /* Left highlight strip */
+  .pf-item-strip {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3px;
+    background: var(--brand-highlight);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+    z-index: 3;
+  }
+  .pf-item:hover .pf-item-strip {
+    transform: scaleY(1);
+  }
+
+  /* Geometric hover overlay */
+  .pf-hover {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 2;
+  }
+  .pf-item:hover .pf-hover {
+    opacity: 1;
+  }
+
+  .pf-hover::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+    z-index: 1;
+  }
+
+
+  .pf-hover-content {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    transform: translateY(8px);
+    transition: transform 0.35s ease;
+  }
+  .pf-item:hover .pf-hover-content {
+    transform: translateY(0);
+  }
+
+  .pf-hover-accent {
+    width: 3px;
+    height: 18px;
+    background: var(--brand-highlight);
+  }
+
+  .pf-hover-label {
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Placeholder */
+  .pf-item--placeholder {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.875rem;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 1024px) {
+    .pf-row--top {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .pf-row--bottom {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pf-row--top,
+    .pf-row--bottom {
+      grid-template-columns: 1fr;
+    }
+    .pf-item {
+      aspect-ratio: 16 / 10;
+    }
+  }
+</style>

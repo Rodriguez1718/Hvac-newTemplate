@@ -1,0 +1,53 @@
+{
+  "title": "Get a Quote - Contact Us",
+  "description": "Get in touch with {business} for fast, reliable HVAC solutions. Request a quote, schedule service, or ask questions.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Contact Us",
+        "subtitle": "Get in touch for fast, reliable HVAC solutions in Your City/Service Area. We're here to help with all your heating and cooling needs, big or small.",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "#contact-form",
+        "backgroundImage": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=80"
+      }
+    },
+    {
+      "component": "ContactFormSection",
+      "props": {
+        "title": "Get in Touch with {business}",
+        "description": "Fill out the form, and a member of our team will get back to you promptly. Whether you're looking for a quick repair, a detailed quote, or general advice, we've got you covered.",
+        "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80",
+        "serviceOptions": ["Air Conditioning", "Heating", "Indoor Air Quality", "Emergency Service", "Commercial HVAC", "Maintenance", "Other"],
+        "planOptions": ["Yes", "No", "Not Sure"]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW",
+        "buttonHref": "/contact",
+        "phoneLabel": "Call or Text for Great Service",
+        "borderColor": "var(--brand-highlight)",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Service" },
+          { "icon": "award", "text": "Experienced and Certified Technician" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Expert HVAC Services in {city} and Surrounding Areas",
+        "description": "Looking for reliable HVAC services in {city}? We provide expert residential and <a href='/commercial'><strong>commercial</strong></a> heating and cooling solutions across the city, from Hollywood Hills to Santa Monica. Whether you need AC repair, furnace installation, duct cleaning, or emergency services, our licensed team serves your area with speed, skill, and care.",
+        "areas": [
+          "Santa Monica", "Pasadena", "Glendale", "Downtown {city}", "Hollywood",
+          "Beverly Hills", "Venice", "Westwood", "Culver City", "San Fernando Valley",
+          "Sherman Oaks", "Encino", "Burbank", "Torrance", "Long Beach", "Inglewood",
+          "El Segundo", "Brentwood", "Silver Lake", "Echo Park", "Hancock Park",
+          "Marina del Rey", "Manhattan Beach"
+        ]
+      }
+    }
+  ]
+}

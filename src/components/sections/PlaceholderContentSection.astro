@@ -1,0 +1,160 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  bgImage?: string;
+}
+
+const { 
+  title = "TO BE DETERMINED", 
+  subtitle = "BASED ON THE CLIENT DISCOVERY CONVERSATION",
+  bgImage
+} = Astro.props;
+---
+
+<section class="pcs-section">
+  {bgImage && (
+    <div class="pcs-bg">
+      <img src={bgImage} alt="" class="pcs-bg-img" />
+      <div class="pcs-overlay"></div>
+    </div>
+  )}  
+
+  <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+    <div class="pcs-content" data-animate="fade-up">
+      <!-- Accent line -->
+      <div class="pcs-accent-line"></div>
+      
+      <!-- Title -->
+      <h2 class="pcs-title">{title}</h2>
+      
+      {subtitle && (
+        <p class="pcs-subtitle">{subtitle}</p>
+      )}
+
+      <!-- Decorative elements -->
+      <div class="pcs-decorative">
+        <span class="pcs-dot"></span>
+        <span class="pcs-dot"></span>
+        <span class="pcs-dot"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pcs-section {
+    position: relative;
+    background: var(--brand-tertiary);
+    overflow: hidden;
+  }
+
+  /* ─── Background ─── */
+  .pcs-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .pcs-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.5);
+  }
+  .pcs-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.92) 100%
+    );
+  }
+
+  /* ─── Content ─── */
+  .pcs-content {
+    position: relative;
+    z-index: 1;
+    max-width: 56rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Accent line */
+  .pcs-accent-line {
+    width: 4rem;
+    height: 3px;
+    background: var(--brand-highlight);
+    margin: 0 auto 2rem;
+  }
+
+  /* Title */
+  .pcs-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    color: var(--brand-primary);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+    padding: 0 1rem;
+  }
+  @media (min-width: 768px) {
+    .pcs-title { font-size: 3.5rem; }
+  }
+
+  /* Subtitle */
+  .pcs-subtitle {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--brand-secondary);
+    margin-bottom: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .pcs-subtitle { font-size: 1rem; }
+  }
+
+  /* Decorative dots */
+  .pcs-decorative {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .pcs-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--brand-highlight);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .pcs-dot:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .pcs-dot:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.3);
+    }
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .pcs-title {
+      font-size: 2rem;
+      padding: 0 0.5rem;
+    }
+  }
+</style>

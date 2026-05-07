@@ -1,0 +1,78 @@
+{
+  "title": "Reviews",
+  "description": "Read what our customers have to say about our HVAC services. Real reviews from real customers in {city} and surrounding areas.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Reviews",
+        "subtitle": "Your Feedback Matters! Share Your Experience with Our HVAC Services",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "/images/bg2.jpg",
+        "image": "https://images.pexels.com/photos/34069/pexels-photo.jpg",
+        "imageAlt": "HVAC service background"
+      }
+    },
+    {
+      "component": "TestimonialsSection",
+      "props": {
+        "badge": "GOOGLE REVIEWS",
+        "title": "What Our Client Says",
+        "testimonials": [
+          { "name": "Paul Nieves", "initials": "PN", "date": "1 year ago", "rating": 5, "content": "I've been a professional in the digital marketing industry, partnering with All Comfort TV has been a game changer for my business. Their proven..." },
+          { "name": "Mark Porter", "initials": "MP", "date": "1 year ago", "rating": 5, "content": "The easiest platform for the All Comfort TV team to use and most informative resource I could use to choose a new heating and cooling..." },
+          { "name": "Eric Borges", "initials": "EB", "date": "1 year ago", "rating": 5, "content": "Over the past 5 years or so my side project has like a roller coaster ride. I began looking for ways to start a solid online venture and so on and so forth..." },
+          { "name": "Nicholas Abraczinskas", "initials": "NA", "date": "1 year ago", "rating": 5, "content": "AC Company's site has been such a great strategic partner for our company. Patrick and our first contacts from the start, but what was great for meeting..." },
+          { "name": "David Einstein", "initials": "DE", "date": "1 year ago", "rating": 5, "content": "I couldn't be more grateful for the incredible experience. From the moment I called, the support provided was exceptional and professional." },
+          { "name": "Rachel Kim", "initials": "RK", "date": "8 months ago", "rating": 5, "content": "Had an <a href='/emergency'><strong>emergency</strong></a> at 2 AM and they were at my door within 45 minutes. Saved us from serious damage. True emergency pros!" },
+          { "name": "Tom Alvarez", "initials": "TA", "date": "6 months ago", "rating": 5, "content": "They handled our entire HVAC system in just three days. Clean work, fair price, and the crew was respectful of our space the whole time." },
+          { "name": "Linda Nguyen", "initials": "LN", "date": "5 months ago", "rating": 5, "content": "Installed a new system for us. The technician walked us through all the options and helped us pick the right unit for our family size." },
+          { "name": "James O'Brien", "initials": "JO", "date": "3 months ago", "rating": 5, "content": "We've used {business} for our restaurant for years. Their <a href='/commercial/hvac-maintenance'><strong>maintenance</strong></a> keeps us running without any hassle. Highly recommended." },
+          { "name": "Patricia Gomez", "initials": "PG", "date": "2 months ago", "rating": 5, "content": "Our remodel HVAC work was done perfectly. They coordinated with our contractor seamlessly and everything passed inspection first try." },
+          { "name": "Steve Hartley", "initials": "SH", "date": "1 month ago", "rating": 5, "content": "Honest and upfront about pricing. No surprise charges. Their diagnostic work saved us thousands compared to what another company quoted." },
+          { "name": "Angela Wu", "initials": "AW", "date": "3 weeks ago", "rating": 5, "content": "Their <a href='/maintenance-plan'><strong>maintenance plan</strong></a> is worth every penny. Regular inspections have caught small issues before they became expensive problems." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Related Services",
+        "variant": "services",
+        "items": [
+          { "title": "Air Conditioning Services", "href": "/air-conditioning", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp" },
+          { "title": "Heating Services", "href": "/heating", "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop" },
+          { "title": "Indoor Air Quality Services", "href": "/indoor-air-quality", "image": "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg" },
+          { "title": "Emergency HVAC Services", "href": "/emergency", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp" }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Services" },
+          { "icon": "award", "text": "Experienced and Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Heating & Cooling Solutions in Your Area",
+        "description": "We cover a wide range of locations throughout {city}, ensuring high-quality HVAC services are always nearby when you need them. Our main <a href='/service-areas'><strong>service areas</strong></a> include but are not limited to:",
+        "areas": [
+          "Manhattan", "Brooklyn", "Queens", "The Bronx", "Staten Island",
+          "Long Island City", "Harlem", "Williamsburg", "Astoria", "Flushing",
+          "Upper East Side", "Greenwich Village", "Soho", "Chelsea", "Park Slope"
+        ],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

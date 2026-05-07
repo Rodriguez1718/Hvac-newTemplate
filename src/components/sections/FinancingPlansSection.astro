@@ -1,0 +1,782 @@
+---
+interface Item {
+  title: string;
+  text?: string;
+  href?: string;
+  icon?: string;
+  image?: string;
+}
+
+interface Props {
+  badge?: string;
+  title: string;
+  subtitle?: string;
+  items: Item[];
+  variant?: "plans" | "services" | "features";
+}
+
+const { badge, title, subtitle, items, variant = "plans" } = Astro.props;
+
+// Hardcoded images for Services variant only
+const serviceImages = [
+  "https://trusteyman.com/wp-content/uploads/2020/06/AdobeStock_162711692-1024x683.jpeg",
+  "https://mrhomeservicesnj.com/wp-content/uploads/2016/12/Heating-Services.jpg",
+  "https://saguaroairsolutions.com/wp-content/uploads/2026/01/about-us-image.jpg-2.png",
+  "https://all-spec.net/wp-content/uploads/2024/05/emergency-hvac.jpg",
+];
+
+const iconSvgs: Record<string, string> = {
+  percent: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>`,
+  zero: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>`,
+  calendar: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>`,
+  check: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
+  home: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+  building: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>`,
+  wrench: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+  settings: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  map: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  clock: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+};
+
+const defaultIconKey = variant === "services" ? "wrench" : "check";
+function getIcon(key?: string): string {
+  return iconSvgs[key || ""] || iconSvgs[defaultIconKey];
+}
+---
+
+<!-- ============ FEATURES VARIANT ============ -->
+{variant === "features" && (
+  <section class="fps-feat">
+    <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+
+      {/* Header */}
+      <div class="fps-feat-header" data-animate="fade-up">
+        {badge && (
+          <div class="fps-feat-eyebrow">
+            <span class="fps-feat-eyebrow-text">{badge}</span>
+          </div>
+        )}
+        <h2 class="fps-feat-title">{title}</h2>
+        <div class="fps-feat-divider"></div>
+        {subtitle && <p class="fps-feat-subtitle">{subtitle}</p>}
+      </div>
+
+      {/* Steps row */}
+      <div class="fps-feat-grid" data-animate-stagger>
+        {items.map((item, i) => (
+          <div class="fps-feat-card group">
+            {/* Step number top */}
+            <div class="fps-feat-step-wrap">
+              <div class="fps-feat-step">
+                {String(i + 1).padStart(2, '0')}
+              </div>
+              {i < items.length - 1 && <div class="fps-feat-line" aria-hidden="true"></div>}
+            </div>
+
+            {/* Card body */}
+            <div class="fps-feat-body">
+              <span class="fps-feat-accent"></span>
+              <div class="fps-feat-inner">
+                <div class="fps-feat-icon">
+                  <Fragment set:html={getIcon(item.icon)} />
+                </div>
+                <h3 class="fps-feat-card-title">{item.title}</h3>
+                {item.text && <p class="fps-feat-card-text">{item.text}</p>}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- ============ SERVICES VARIANT ============ -->
+{variant === "services" && (
+  <section class="fps-svc">
+    <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+
+      {/* Header */}
+      <div class="fps-svc-header" data-animate="fade-up">
+        {badge && (
+          <div class="fps-svc-eyebrow">
+            <span class="fps-svc-eyebrow-text">{badge}</span>
+          </div>
+        )}
+        <h2 class="fps-svc-title">{title}</h2>
+        <div class="fps-svc-divider"></div>
+        {subtitle && <p class="fps-svc-subtitle">{subtitle}</p>}
+      </div>
+
+      {/* Cards grid */}
+      <div class:list={[
+        "fps-svc-grid",
+        items.length <= 3 ? "fps-svc-grid--narrow" : ""
+      ]} data-animate-stagger>
+        {items.map((item, index) => {
+          const isLink = !!item.href;
+          const Tag = isLink ? "a" : "div";
+          const cardImage = serviceImages[index % serviceImages.length];
+          return (
+            <Tag
+              href={isLink ? item.href : undefined}
+              class="fps-svc-card group"
+            >
+              {/* Image strip - always use hardcoded images */}
+              <div class="fps-svc-img">
+                <img src={cardImage} alt={item.title} class="fps-svc-img-el" width="740" height="494" loading="lazy" decoding="async" />
+                <div class="fps-svc-img-overlay"></div>
+              </div>
+
+              {/* Accent strip */}
+              <span class="fps-svc-strip"></span>
+
+              {/* Body */}
+              <div class="fps-svc-body">
+                <h3 class="fps-svc-card-title">{item.title}</h3>
+                {item.text && <p class="fps-svc-card-text">{item.text}</p>}
+                {isLink && (
+                  <div class="fps-svc-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            </Tag>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- ============ PLANS VARIANT (default) ============ -->
+{variant === "plans" && (
+  <section class="fps-plan">
+    <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+
+      {/* Header */}
+      <div class="fps-plan-header" data-animate="fade-up">
+        {badge && (
+          <div class="fps-plan-eyebrow">
+            <span class="fps-plan-eyebrow-text">{badge}</span>
+          </div>
+        )}
+        <h2 class="fps-plan-title">{title}</h2>
+        <div class="fps-plan-divider"></div>
+        {subtitle && <p class="fps-plan-subtitle">{subtitle}</p>}
+      </div>
+
+      {/* Cards */}
+      <div class:list={[
+        "fps-plan-grid",
+        items.length <= 3 ? "fps-plan-grid--narrow" : ""
+      ]} data-animate-stagger>
+        {items.map((item, i) => (
+          <div class="fps-plan-card group">
+            <span class="fps-plan-accent"></span>
+
+            {/* Background number */}
+            <div class="fps-plan-bg-num" aria-hidden="true">
+              {String(i + 1).padStart(2, '0')}
+            </div>
+
+            <div class="fps-plan-inner">
+              <div class="fps-plan-icon">
+                <Fragment set:html={getIcon(item.icon)} />
+              </div>
+              <h3 class="fps-plan-card-title">{item.title}</h3>
+              {item.text && <p class="fps-plan-card-text">{item.text}</p>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  /* ═══════════════════════════════════════════
+     FEATURES VARIANT
+     ═══════════════════════════════════════════ */
+  .fps-feat {
+    position: relative;
+    background: var(--background);
+  }
+
+  .fps-feat > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .fps-feat-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .fps-feat-eyebrow {
+    margin-bottom: 1.25rem;
+  }
+  .fps-feat-eyebrow-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--brand-highlight);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--brand-primary);
+  }
+  .fps-feat-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--brand-primary);
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 768px) {
+    .fps-feat-title { font-size: 2.25rem; }
+  }
+  .fps-feat-divider {
+    width: 3rem;
+    height: 3px;
+    background: var(--brand-highlight);
+    margin: 0 auto 1.25rem;
+  }
+  .fps-feat-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--brand-secondary);
+  }
+
+  /* Grid */
+  .fps-feat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+
+  .fps-feat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Step number */
+  .fps-feat-step-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    position: relative;
+    width: 100%;
+  }
+  .fps-feat-step {
+    width: 3.25rem;
+    height: 3.25rem;
+    background: var(--brand-primary);
+    color: var(--brand-highlight);
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    border: 2px solid var(--brand-highlight);
+    flex-shrink: 0;
+  }
+  .fps-feat-line {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 2rem);
+    width: calc(100% - 2rem);
+    height: 2px;
+    background: var(--brand-highlight);
+    opacity: 0.25;
+    z-index: 1;
+  }
+
+  /* Card body */
+  .fps-feat-body {
+    position: relative;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    width: 100%;
+    transition: all 0.35s ease;
+    flex-grow: 1;
+  }
+  .fps-feat-body:hover {
+    border-color: var(--brand-highlight);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  }
+
+  .fps-feat-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 3px;
+    background: var(--brand-highlight);
+    transition: height  0.35s ease;
+  }
+  .fps-feat-card:hover .fps-feat-accent {
+    height: 100%;
+  }
+
+  .fps-feat-inner {
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .fps-feat-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-tertiary);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: var(--brand-primary);
+    margin: 0 auto 1.25rem;
+    transition: all 0.3s ease;
+  }
+  .fps-feat-card:hover .fps-feat-icon {
+    background: var(--brand-highlight);
+    border-color: var(--brand-highlight);
+    color: var(--brand-primary);
+  }
+
+  .fps-feat-card-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--brand-primary);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  .fps-feat-card-text {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--brand-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .fps-feat-grid {
+      grid-template-columns: 1fr;
+      max-width: 24rem;
+    }
+    .fps-feat-line {
+      display: none;
+    }
+  }
+
+  /* ═══════════════════════════════════════════
+     SERVICES VARIANT
+     ═══════════════════════════════════════════ */
+  .fps-svc {
+    position: relative;
+    background: var(--background);
+  }
+  .fps-svc::before {  
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/aircon3.png');
+    background-size: 45%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 0;
+    transform: scaleX(-1);
+  }
+  .fps-svc::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .fps-svc::before {
+      background-size: 55%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .fps-svc::before {
+      background-size: 70%;
+    }
+  }
+
+  .fps-svc > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .fps-svc-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .fps-svc-eyebrow {
+    margin-bottom: 1.25rem;
+  }
+  .fps-svc-eyebrow-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--brand-highlight);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--brand-primary);
+  }
+  .fps-svc-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--brand-primary);
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 768px) {
+    .fps-svc-title { font-size: 2.25rem; }
+  }
+  .fps-svc-divider {
+    width: 3rem;
+    height: 3px;
+    background: var(--brand-highlight);
+    margin: 0 auto 1.25rem;
+  }
+  .fps-svc-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--brand-secondary);
+  }
+
+  /* Grid */
+  .fps-svc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 76rem;
+    margin: 0 auto;
+  }
+  @media (min-width: 1024px) {
+    .fps-svc-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .fps-svc-grid--narrow {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 64rem;
+    }
+  }
+
+  /* Card */
+  .fps-svc-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: all 0.35s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+  .fps-svc-card:hover {
+    border-color: var(--brand-highlight);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Image strip */
+  .fps-svc-img {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+  }
+  .fps-svc-img--placeholder {
+    background: var(--brand-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+  }
+  .fps-svc-img-el {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .fps-svc-card:hover .fps-svc-img-el {
+    transform: scale(1.06);
+  }
+  .fps-svc-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.15) 0%, transparent 50%);
+  }
+  .fps-svc-img-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: var(--brand-primary);
+    transition: all 0.3s ease;
+  }
+  .fps-svc-card:hover .fps-svc-img-icon {
+    background: var(--brand-highlight);
+    border-color: var(--brand-highlight);
+  }
+
+  /* Accent strip on left */
+  .fps-svc-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--brand-highlight);
+    transition: height 0.35s ease;
+    z-index: 2;
+  }
+  .fps-svc-card:hover .fps-svc-strip {
+    height: 100%;
+  }
+
+  /* Body */
+  .fps-svc-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .fps-svc-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--brand-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+    transition: color 0.3s ease;
+  }
+  .fps-svc-card-text {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--brand-secondary);
+    margin-bottom: auto;
+    padding-bottom: 1.25rem;
+  }
+
+  /* Arrow */
+  .fps-svc-arrow {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-tertiary);
+    color: var(--brand-secondary);
+    transition: all 0.3s ease;
+  }
+  .fps-svc-card:hover .fps-svc-arrow {
+    background: var(--brand-highlight);
+    color: var(--brand-primary);
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 640px) {
+    .fps-svc-grid {
+      grid-template-columns: 1fr;
+    }
+    .fps-svc-img {
+      height: 160px;
+    }
+  }
+
+  /* ═══════════════════════════════════════════
+     PLANS VARIANT
+     ═══════════════════════════════════════════ */
+  .fps-plan {
+    position: relative;
+    background: var(--background);
+  }
+
+  .fps-plan > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .fps-plan-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .fps-plan-eyebrow {
+    margin-bottom: 1.25rem;
+  }
+  .fps-plan-eyebrow-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--brand-highlight);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--brand-primary);
+  }
+  .fps-plan-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--brand-primary);
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 768px) {
+    .fps-plan-title { font-size: 2.25rem; }
+  }
+  .fps-plan-divider {
+    width: 3rem;
+    height: 3px;
+    background: var(--brand-highlight);
+    margin: 0 auto 1.25rem;
+  }
+  .fps-plan-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--brand-secondary);
+  }
+
+  /* Grid */
+  .fps-plan-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 76rem;
+    margin: 0 auto;
+  }
+  @media (min-width: 1024px) {
+    .fps-plan-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .fps-plan-grid--narrow {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 64rem;
+    }
+  }
+
+  /* Card */
+  .fps-plan-card {
+    position: relative;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: all 0.35s ease;
+  }
+  .fps-plan-card:hover {
+    border-color: var(--brand-highlight);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Top accent */
+  .fps-plan-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--brand-highlight);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  .fps-plan-card:hover .fps-plan-accent {
+    transform: scaleX(1);
+  }
+
+  /* Background number */
+  .fps-plan-bg-num {
+    position: absolute;
+    bottom: -0.25rem;
+    right: 0.5rem;
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--brand-primary);
+    opacity: 0.03;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .fps-plan-inner {
+    position: relative;
+    padding: 2rem 1.5rem;
+  }
+
+  .fps-plan-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-tertiary);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: var(--brand-primary);
+    margin-bottom: 1.25rem;
+    transition: all 0.3s ease;
+  }
+  .fps-plan-card:hover .fps-plan-icon {
+    background: var(--brand-highlight);
+    border-color: var(--brand-highlight);
+    color: var(--brand-primary);
+  }
+
+  .fps-plan-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--brand-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+  }
+  .fps-plan-card-text {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--brand-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .fps-plan-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

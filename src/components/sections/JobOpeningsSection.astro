@@ -1,0 +1,345 @@
+---
+import { getLocationText } from "@/config/site"
+
+interface JobOpening {
+  title: string;
+  type?: string;
+  responsibilities: string;
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+interface Props {
+  badge?: string;
+  title: string;
+  description?: string;
+  jobs: JobOpening[];
+  introTitle?: string;
+  introDescription?: string;
+}
+
+const { badge, title, description, jobs, introTitle: rawIntroTitle, introDescription: rawIntroDescription } = Astro.props;
+
+const introTitle = rawIntroTitle ? getLocationText(rawIntroTitle) : undefined;
+const introDescription = rawIntroDescription ? getLocationText(rawIntroDescription) : undefined;
+---
+
+<section class="jo-section" id="openings">
+  <div class="jo-body">
+    <div class="container mx-auto px-6 md:px-12 lg:px-16">
+
+      {/* Intro header */}
+      {introTitle && (
+        <div class="jo-intro" data-animate="fade-up">
+          <div class="jo-eyebrow">
+            <span class="jo-eyebrow-text">Careers</span>
+          </div>
+          <h2 class="jo-intro-title">{introTitle}</h2>
+          <div class="jo-divider"></div>
+          {introDescription && <p class="jo-intro-desc">{introDescription}</p>}
+        </div>
+      )}
+
+      {/* Openings subheader */}
+      <div class="jo-subheader" data-animate="fade-up">
+        <div class="jo-subheader-inner">
+          <div class="jo-subheader-line"></div>
+          <h3 class="jo-subheader-title">{title}</h3>
+        </div>
+        {description && <p class="jo-subheader-desc" set:html={description} />}
+      </div>
+
+      {/* Job cards */}
+      <div class="jo-grid" data-animate-stagger>
+        {jobs.map((job, i) => (
+          <div class="jo-card group">
+            <span class="jo-card-strip"></span>
+
+            {/* Background number */}
+            <div class="jo-card-bg-num" aria-hidden="true">
+              {String(i + 1).padStart(2, '0')}
+            </div>
+
+            <div class="jo-card-inner">
+              <h3 class="jo-card-title">{job.title}</h3>
+              <span class="jo-card-type">{job.type || "Full-time position"}</span>
+
+              <div class="jo-card-sep"></div>
+
+              <p class="jo-card-resp">
+                <span class="jo-card-resp-label">Responsibilities:</span> {job.responsibilities}
+              </p>
+
+              <a
+                href={job.buttonHref || "/contact"}
+                class="jo-btn"
+              >
+                {job.buttonText || "APPLY NOW"}
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .jo-section {
+    position: relative;
+    background: var(--background);
+  }
+  .jo-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/aircon3.png');
+    background-size: 65%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  @media (max-width: 1024px) {
+    .jo-section::before {
+      background-size: 75%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .jo-section::before {
+      background-size: 90%;
+    }
+  }
+
+  .jo-body {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 4rem 0 6rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── Intro Header ─── */
+  .jo-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .jo-eyebrow {
+    margin-bottom: 1.25rem;
+  }
+  .jo-eyebrow-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--brand-highlight);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--brand-primary);
+    border-left: 3px solid var(--brand-highlight);
+  }
+  .jo-intro-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--brand-primary);
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 768px) {
+    .jo-intro-title { font-size: 2.5rem; }
+  }
+  .jo-divider {
+    width: 3rem;
+    height: 3px;
+    background: var(--brand-highlight);
+    margin: 0 auto 1.25rem;
+  }
+  .jo-intro-desc {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--brand-secondary);
+  }
+
+  /* ─── Subheader ─── */
+  .jo-subheader {
+    margin-bottom: 2.5rem;
+    max-width: 64rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .jo-subheader-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .jo-subheader-line {
+    width: 3px;
+    height: 24px;
+    background: var(--brand-highlight);
+    flex-shrink: 0;
+  }
+  .jo-subheader-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--brand-primary);
+  }
+  .jo-subheader-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--brand-secondary);
+    padding-left: calc(3px + 0.75rem);
+  }
+
+  /* ─── Grid ─── */
+  .jo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+
+  /* ─── Card ─── */
+  .jo-card {
+    position: relative;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.18);
+    overflow: hidden;
+    transition: all 0.35s ease;
+  }
+  .jo-card:hover {
+    border-color: var(--brand-highlight);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  }
+
+  .jo-card-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--brand-highlight);
+    transition: height 0.35s ease;
+  }
+  .jo-card:hover .jo-card-strip {
+    height: 100%;
+  }
+
+  .jo-card-bg-num {
+    position: absolute;
+    bottom: -0.75rem;
+    right: 1rem;
+    font-size: 6rem;
+    font-weight: 900;
+    line-height: 1;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(0, 0, 0, 0.08);
+    text-stroke: 2px rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+    user-select: none;
+    transition: -webkit-text-stroke 0.3s ease, text-stroke 0.3s ease, color 0.3s ease;
+  }
+  .jo-card:hover .jo-card-bg-num {
+    color: rgba(0, 0, 0, 0.08);
+    -webkit-text-stroke: 0;
+    text-stroke: 0;
+  }
+
+  .jo-card-inner {
+    position: relative;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+  }
+
+  .jo-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--brand-primary);
+    margin-bottom: 0.35rem;
+    line-height: 1.25;
+  }
+
+  .jo-card-type {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--brand-secondary);
+  }
+
+  .jo-card-sep {
+    width: 2rem;
+    height: 2px;
+    background: var(--brand-highlight);
+    margin: 1.25rem 0;
+  }
+
+  .jo-card-resp {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--brand-secondary);
+    margin-bottom: auto;
+    padding-bottom: 1.5rem;
+  }
+  .jo-card-resp-label {
+    font-weight: 700;
+    color: var(--brand-primary);
+  }
+
+  .jo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--brand-highlight);
+    color: var(--brand-primary);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+  }
+  .jo-btn:hover {
+    filter: brightness(1.08);
+    transform: translateX(4px);
+  }
+  .jo-btn svg {
+    transition: transform 0.3s ease;
+  }
+  .jo-btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 1024px) {
+    .jo-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 640px) {
+    .jo-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

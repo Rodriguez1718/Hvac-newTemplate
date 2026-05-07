@@ -1,0 +1,81 @@
+{
+  "title": "AC Tune-Up / Maintenance",
+  "description": "Keep your AC running at peak performance with professional tune-up and maintenance services in {city}.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "AC Tune-Up / Maintenance",
+        "subtitle": "Professional AC tune-ups and maintenance.",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://aonecoolingsolution.in/wp-content/uploads/2025/02/split-ac-service-Sfastservices.jpg",
+        "image": "/images/bg2.jpg",
+        "imageAlt": "AC maintenance technician"
+      }
+    },
+    {
+      "component": "PlaceholderContentSection",
+      "props": {
+        "title": "TO BE DETERMINED",
+        "subtitle": "BASED ON THE CLIENT DISCOVERY CONVERSATION"
+      }
+    },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "{business}\nMAINTENANCE PLAN", "priceLabel": ["STARTING AS LOW AS", "$14.33", "PER MONTH"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" },
+          { "type": "financing", "headline": ["NO INTEREST", "NO PAYMENTS", "UNTIL 2026"], "subtext": "*WITH APPROVED FINANCING", "buttonText": "LEARN MORE", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "discount": "$95", "subheadline": ["FURNACE", "TUNE-UP"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions about AC Tune-Up & Maintenance in {city}",
+        "faqs": [
+          { "question": "How often should I schedule an AC tune-up?", "answer": "We recommend scheduling an AC tune-up at least once a year, ideally in the spring before the cooling season begins. Regular maintenance helps prevent breakdowns and keeps your system running efficiently." },
+          { "question": "What does an AC tune-up include?", "answer": "Our comprehensive tune-up includes inspecting and cleaning coils, checking refrigerant levels, testing electrical connections, lubricating moving parts, and ensuring your <a href='/air-conditioning/thermostats'><strong>thermostat</strong></a> is calibrated correctly." },
+          { "question": "Can regular maintenance extend the life of my AC unit?", "answer": "Yes, regular maintenance can extend your AC unit's lifespan by several years. Well-maintained systems experience fewer breakdowns, run more efficiently, and maintain better performance over time." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Related Services",
+        "variant": "services",
+        "items": [
+          { "title": "AC Repair", "href": "/air-conditioning/ac-repair", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp" },
+          { "title": "AC Installation and Replacement", "href": "/air-conditioning/ac-installation-replacement", "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop" },
+          { "title": "Thermostats", "href": "/air-conditioning/thermostats", "image": "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg" },
+          { "title": "Emergency HVAC Services", "href": "/emergency", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp" }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Services" },
+          { "icon": "award", "text": "Experienced and Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Service Areas for HVAC Services in {city}",
+        "description": "We proudly serve homes and businesses across all {city} boroughs, providing expert HVAC services wherever you need us.",
+        "areas": ["Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island"],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

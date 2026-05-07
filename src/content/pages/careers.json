@@ -1,0 +1,79 @@
+{
+  "title": "Careers",
+  "description": "Build your career with {business}. Join our team of skilled professionals and grow with us. View current job openings and apply today!",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Build Your Career with {business}",
+        "subtitle": "Join a team that values your skills, supports your growth, and offers competitive benefits. At {business}, we're more than just a company—we're a family dedicated to excellence in HVAC services.",
+        "buttonText": "VIEW OPENINGS",
+        "buttonHref": "#openings",
+        "backgroundImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1000&q=80"
+      }
+    },
+    {
+      "component": "JobOpeningsSection",
+      "props": {
+        "introTitle": "Careers at {business}",
+        "introDescription": "At {business}, we're not just a team—we're a family. We're dedicated to providing top-notch HVAC solutions while fostering a supportive and growth-oriented work environment. If you're passionate about delivering exceptional service and want to grow your career in the HVAC industry, we'd love to hear from you!",
+        "title": "Current Openings",
+        "jobs": [
+          { "title": "Licensed HVAC Technician", "type": "Full-time position", "responsibilities": "Perform installations, repairs, and maintenance for residential and commercial HVAC systems.", "buttonText": "APPLY NOW", "buttonHref": "/contact" },
+          { "title": "HVAC Apprentice", "type": "Full-time position", "responsibilities": "Assist licensed HVAC technicians with installations and repairs while gaining hands-on experience.", "buttonText": "APPLY NOW", "buttonHref": "/contact" },
+          { "title": "Customer Service Representative", "type": "Full-time position", "responsibilities": "Handle customer inquiries, schedule appointments, and provide excellent support.", "buttonText": "APPLY NOW", "buttonHref": "/contact" }
+        ]
+      }
+    },
+    {
+      "component": "CareersCTASection",
+      "props": {
+        "title": "Join the {business} Family Today!",
+        "description": "If you're passionate about HVAC and want to be part of a team that values quality, integrity, and customer satisfaction, we want to hear from you. Submit your application today and take the first step toward a rewarding career.",
+        "buttonText": "APPLY TODAY",
+        "buttonHref": "/contact",
+        "image": "https://ucarecdn.com/315825d3-5856-474f-8ac1-f793441976f7/-/preview/1000x666/"
+      }
+    },
+    {
+      "component": "TestimonialsSection",
+      "props": {
+        "badge": "EMPLOYEE REVIEWS",
+        "title": "What Our Team Says",
+        "description": "At {business}, we believe that every home and business deserves access to reliable HVAC services, no matter the budget. That's why we offer flexible financing options to make your heating and cooling projects manageable and stress-free.",
+        "testimonials": [
+          { "name": "Coleman Mockbee", "initials": "CM", "date": "1 year ago", "rating": 5, "content": "I've been working with {business} for over 5 years now. The team is incredibly supportive and the management truly cares about employee growth." },
+          { "name": "Angel Nicolai", "initials": "AN", "date": "1 year ago", "rating": 5, "content": "Best decision I ever made was joining {business}. The training program helped me get my license and now I'm a lead technician." },
+          { "name": "Armando Pena", "initials": "AP", "date": "1 year ago", "rating": 5, "content": "Great company culture and excellent benefits. They really invest in their employees and it shows in the quality of work we deliver." },
+          { "name": "Paul Moss", "initials": "PM", "date": "1 year ago", "rating": 5, "content": "Started as an apprentice and worked my way up. {business} gave me the opportunity to build a real career in HVAC." }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW",
+        "buttonHref": "/contact",
+        "phoneLabel": "Call or Text for Great Service",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Service" },
+          { "icon": "award", "text": "Experienced & Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Expert HVAC Services in {city} and Surrounding Areas",
+        "description": "Looking for reliable HVAC services in {city}? We provide expert residential and <a href='/commercial'><strong>commercial</strong></a> heating and cooling solutions across the city, from Hollywood Hills to Santa Monica. Whether you need AC repair, furnace installation, duct cleaning, or indoor air quality services, our team is here to help. We also offer routine <a href='/maintenance-plan'><strong>maintenance</strong></a> and <a href='/emergency'><strong>24/7 emergency services</strong></a> to keep your HVAC system in top shape. Serving neighborhoods like Downtown LA, Beverly Hills, and Pasadena, we're committed to quality, efficiency, and customer satisfaction. <a href='/contact'><strong>Call us today</strong></a> to schedule your service!",
+        "areas": [
+          "Santa Monica", "Pasadena", "Glendale", "Downtown {city}", "Hollywood",
+          "Beverly Hills", "Venice", "Westwood", "Culver City", "San Fernando Valley",
+          "Studio City", "North Hollywood", "Sherman Oaks", "Encino", "Burbank",
+          "Torrance", "Long Beach", "Inglewood", "El Segundo", "Brentwood",
+          "Silver Lake", "Echo Park", "Hancock Park", "Marina del Rey", "Manhattan Beach"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+---
+import { getLocationText } from "@/config/site"
+
+interface Props {
+  title: string;
+  description: string;
+  subtitle?: string;
+  benefits?: string[];
+}
+
+const { title: rawTitle, description: rawDescription, subtitle: rawSubtitle, benefits: rawBenefits = [] } = Astro.props;
+
+const title = getLocationText(rawTitle);
+const description = getLocationText(rawDescription);
+const subtitle = rawSubtitle ? getLocationText(rawSubtitle) : undefined;
+const benefits = rawBenefits.map(getLocationText);
+---
+
+<section class="fi-section">
+  <!-- Airflow pattern background -->
+  <svg class="fi-airflow-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <pattern id="fi-airflow-grid" width="200" height="200" patternUnits="userSpaceOnUse">
+        <path d="M 0 100 Q 50 80, 100 100 T 200 100" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <path d="M 0 150 Q 50 130, 100 150 T 200 150" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.3"/>
+        <path d="M 100 0 Q 80 50, 100 100 T 100 200" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.35"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#fi-airflow-grid)"/>
+    <path d="M 0 200 Q 300 150, 600 200 T 1200 200" stroke="currentColor" stroke-width="2" fill="none" opacity="0.25"/>
+    <path d="M 0 400 Q 300 350, 600 400 T 1200 400" stroke="currentColor" stroke-width="2" fill="none" opacity="0.2"/>
+    <path d="M 0 600 Q 300 550, 600 600 T 1200 600" stroke="currentColor" stroke-width="2" fill="none" opacity="0.15"/>
+  </svg>
+
+  <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+
+    <!-- Header -->
+    <div class="fi-header" data-animate="fade-up">
+      <div class="fi-eyebrow">
+        <span class="fi-eyebrow-text">Financing</span>
+      </div>
+      <h2 class="fi-title">{title}</h2>
+      <div class="fi-divider"></div>
+      <p class="fi-desc" set:html={description} />
+    </div>
+
+    <!-- Benefits card -->
+    {subtitle && benefits.length > 0 && (
+      <div class="fi-card" data-animate="fade-up" data-animate-delay="200">
+        <span class="fi-card-accent"></span>
+
+        <div class="fi-card-inner">
+          <div class="fi-card-header">
+            <div class="fi-card-header-line"></div>
+            <h3 class="fi-card-heading">{subtitle}</h3>
+          </div>
+
+          <div class="fi-benefits">
+            {benefits.map((benefit) => (
+              <div class="fi-benefit">
+                <span class="fi-benefit-dot"></span>
+                <span class="fi-benefit-text">{benefit}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    )}
+  </div>   
+</section>
+
+<style>
+  .fi-section {
+    background: var(--brand-tertiary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── Airflow Background ─── */
+  .fi-airflow-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--brand-primary);
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .fi-section > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── Header ─── */
+  .fi-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .fi-eyebrow {
+    margin-bottom: 1.25rem;
+  }
+  .fi-eyebrow-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--brand-highlight);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--brand-primary);
+    border-left: 3px solid var(--brand-highlight);
+  }
+  .fi-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--brand-primary);
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 768px) {
+    .fi-title { font-size: 2.25rem; }
+  }
+  .fi-divider {
+    width: 3rem;
+    height: 3px;
+    background: var(--brand-highlight);
+    margin: 0 auto 1.25rem;
+  }
+  .fi-desc {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--brand-secondary);
+  }
+
+  /* ─── Benefits Card ─── */
+  .fi-card {
+    position: relative;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    max-width: 48rem;
+    margin: 0 auto;
+    transition: all 0.35s ease;
+  }
+  .fi-card:hover {
+    border-color: var(--brand-highlight);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  }
+
+  .fi-card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--brand-highlight);
+  }
+
+  .fi-card-inner {
+    padding: 2rem 1.75rem;
+  }
+  @media (min-width: 768px) {
+    .fi-card-inner {
+      padding: 2.25rem 2.5rem;
+    }
+  }
+
+  /* Card header */
+  .fi-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .fi-card-header-line {
+    width: 3px;
+    height: 24px;
+    background: var(--brand-highlight);
+    flex-shrink: 0;
+  }
+  .fi-card-heading {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--brand-primary);
+  }
+
+  /* Benefits grid */
+  .fi-benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .fi-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .fi-benefit-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--brand-highlight);
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+  .fi-benefit-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--brand-secondary);
+    font-weight: 500;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 640px) {
+    .fi-benefits {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

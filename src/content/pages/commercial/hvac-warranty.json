@@ -1,0 +1,72 @@
+{
+  "title": "Commercial HVAC Warranty",
+  "description": "Comprehensive commercial HVAC warranty options to protect your business investment. Expert warranty services in {city}.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Commercial HVAC Warranty",
+        "subtitle": "Protect your commercial HVAC investment with comprehensive warranty coverage.",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://aonecoolingsolution.in/wp-content/uploads/2025/02/split-ac-service-Sfastservices.jpg",
+        "image": "/images/bg2.jpg",
+        "imageAlt": "Commercial HVAC warranty service"
+      }
+    },
+    { "component": "PlaceholderContentSection", "props": { "title": "TO BE DETERMINED", "subtitle": "BASED ON THE CLIENT DISCOVERY CONVERSATION" } },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "{business}\nMAINTENANCE PLAN", "priceLabel": ["STARTING AS LOW AS", "$14.33", "PER MONTH"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" },
+          { "type": "financing", "headline": ["NO INTEREST", "NO PAYMENTS", "UNTIL 2026"], "subtext": "*WITH APPROVED FINANCING", "buttonText": "LEARN MORE", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "discount": "$95", "subheadline": ["FURNACE", "TUNE-UP"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions about Commercial HVAC Warranties in {city}",
+        "faqs": [
+          { "question": "What does a commercial HVAC warranty cover?", "answer": "Commercial warranties typically cover major components like compressors, heat exchangers, and control boards. Extended warranties can include labor, refrigerant, and additional parts coverage. We'll help you understand exactly what's covered under your plan." },
+          { "question": "How do I keep my commercial HVAC warranty valid?", "answer": "Most manufacturers require documented professional <a href='/commercial/hvac-maintenance'><strong>maintenance</strong></a> at regular intervals to keep warranties valid. Our maintenance contracts include all required service records and documentation to ensure your warranty stays in good standing." },
+          { "question": "Is an extended warranty worth it for commercial systems?", "answer": "For commercial systems, extended warranties are often a smart investment. <a href='/commercial/hvac-repair'><strong>Commercial repairs</strong></a> can be significantly more expensive than residential ones, and unexpected downtime can impact your business revenue. Extended coverage provides predictable costs and peace of mind." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Related Services",
+        "variant": "services",
+        "items": [
+          { "title": "Commercial HVAC Repair", "href": "/commercial/hvac-repair", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp" },
+          { "title": "Commercial HVAC Maintenance", "href": "/commercial/hvac-maintenance", "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop" },
+          { "title": "Commercial HVAC Installation", "href": "/commercial/hvac-installation", "image": "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg" },
+          { "title": "HVAC Warranties", "href": "/air-conditioning/hvac-warranties", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp" }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [ { "icon": "siren", "text": "24/7 Emergency Services" }, { "icon": "award", "text": "Experienced and Certified Technicians" } ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Service Areas for Commercial HVAC Services in {city}",
+        "description": "We proudly serve businesses across all {city} boroughs, providing expert commercial HVAC services wherever you need us.",
+        "areas": ["Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island"],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

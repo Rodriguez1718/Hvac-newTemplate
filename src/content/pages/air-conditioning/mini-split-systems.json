@@ -1,0 +1,81 @@
+{
+  "title": "Mini-Split Systems",
+  "description": "Ductless mini-split installation, repair, and maintenance services in {city}. Efficient zone cooling for any space.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Mini-Split Systems",
+        "subtitle": "Ductless cooling and heating for any room.",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://aonecoolingsolution.in/wp-content/uploads/2025/02/split-ac-service-Sfastservices.jpg",
+        "image": "/images/bg2.jpg",
+        "imageAlt": "Mini-split system installation"
+      }
+    },
+    {
+      "component": "PlaceholderContentSection",
+      "props": {
+        "title": "TO BE DETERMINED",
+        "subtitle": "BASED ON THE CLIENT DISCOVERY CONVERSATION"
+      }
+    },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "{business}\nMAINTENANCE PLAN", "priceLabel": ["STARTING AS LOW AS", "$14.33", "PER MONTH"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" },
+          { "type": "financing", "headline": ["NO INTEREST", "NO PAYMENTS", "UNTIL 2026"], "subtext": "*WITH APPROVED FINANCING", "buttonText": "LEARN MORE", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "discount": "$95", "subheadline": ["FURNACE", "TUNE-UP"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions about Mini-Split Systems in {city}",
+        "faqs": [
+          { "question": "What is a mini-split system and how does it work?", "answer": "A mini-split system is a ductless heating and cooling solution with an outdoor compressor and one or more indoor air-handling units. They provide zone-based climate control without the need for ductwork, making them ideal for additions, older homes, or specific rooms." },
+          { "question": "Are mini-split systems energy efficient?", "answer": "Yes, mini-splits are highly energy efficient. They avoid the energy losses associated with <a href='/indoor-air-quality/duct-repair-replacement'><strong>ductwork</strong></a> and allow you to heat or cool only the rooms you're using, which can significantly reduce your energy bills." },
+          { "question": "How many rooms can a mini-split system serve?", "answer": "A single outdoor unit can typically support up to 4-5 indoor units, each independently controlled. This allows you to create custom comfort zones throughout your home with a single system." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Related Services",
+        "variant": "services",
+        "items": [
+          { "title": "AC Installation and Replacement", "href": "/air-conditioning/ac-installation-replacement", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp" },
+          { "title": "Thermostats", "href": "/air-conditioning/thermostats", "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop" },
+          { "title": "AC Repair", "href": "/air-conditioning/ac-repair", "image": "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg" },
+          { "title": "HVAC Brands", "href": "/air-conditioning/hvac-brands", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp" }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Services" },
+          { "icon": "award", "text": "Experienced and Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Service Areas for HVAC Services in {city}",
+        "description": "We proudly serve homes and businesses across all {city} boroughs, providing expert HVAC services wherever you need us.",
+        "areas": ["Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island"],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

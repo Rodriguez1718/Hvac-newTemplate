@@ -1,0 +1,951 @@
+---
+import { siteConfig } from "@/config/site"
+import { utilityNavItems, mainNavItems, quickActions } from "@/config/navigation"
+---
+
+<!-- Hidden checkbox — CSS-only mobile drawer toggle, zero JS -->
+<input type="checkbox" id="nb-mobile-toggle" class="nb-mobile-toggle-input" aria-hidden="true" />
+
+<header class="nb-header">
+  <!-- ── Row 1: Dark top bar (desktop only) ── -->
+  <div class="nb-top">
+    <div class="container mx-auto px-6 md:px-12 lg:px-16">
+      <div class="nb-top-inner">
+        <a href="/" class="nb-logo" aria-label={`${siteConfig.business.name} - Home`}>
+          <div class="nb-logo-icon">
+            <img src={siteConfig.logo.src} alt={siteConfig.logo.alt} class="nb-logo-img" width="32" height="32" decoding="async" loading="eager" />
+          </div>
+          <div class="nb-logo-text">
+            <span class="nb-logo-name">{siteConfig.business.name}</span>
+            <span class="nb-logo-tagline">Professional HVAC Services</span>
+          </div>
+        </a>
+        
+        <div class="nb-top-right">
+          <nav class="nb-utility" aria-label="Utility navigation">
+            {utilityNavItems.map((item) => (
+              item.children ? (
+                <div class="nb-util-dropdown">
+                  <a href={item.href} class="nb-util-link">
+                    {item.title}
+                    <svg class="nb-util-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                  </a>
+                  <div class="nb-util-panel">
+                    {item.children.map((child) => (
+                      <a href={child.href} class="nb-util-child">{child.title}</a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <a href={item.href} class="nb-util-link">{item.title}</a>
+              )
+            ))}
+          </nav>
+          <div class="nb-top-divider"></div>
+          <a href={`tel:${siteConfig.contact.phone}`} class="nb-top-phone">
+            <svg class="nb-phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            <div class="nb-phone-text">
+              <span class="nb-phone-label">Call Now</span>
+              <span class="nb-phone-number">{siteConfig.contact.phoneFormatted}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Row 2: Service bar ── -->
+  <div class="nb-bar">
+    <div class="container mx-auto px-6 md:px-12 lg:px-16">
+      <div class="nb-bar-inner">
+
+        <!-- Desktop service nav with dropdowns -->
+        <nav class="nb-service-nav" aria-label="Service navigation">
+          {mainNavItems.map((item) => (
+            <div class="nb-nav-item">
+              <a href={item.href} class="nb-nav-link">
+                {item.title}
+                <svg class="nb-nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </a>
+              <div class="nb-dropdown">
+                <div class="nb-dropdown-inner">
+                  {item.categories.flatMap((cat) => cat.items).map((service) => (
+                    <a href={service.href} class="nb-dropdown-link">
+                      <div class="nb-dropdown-dot"></div>
+                      {service.title}
+                    </a>
+                  ))}
+                </div>
+                <div class="nb-dropdown-footer">
+                  <a href={item.href} class="nb-dropdown-all">
+                    View all {item.title.toLowerCase()}
+                    <svg class="nb-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </nav>
+
+        <!-- Desktop quick actions -->
+        <div class="nb-actions">
+          {quickActions.map((action) => (
+            <a href={action.href} class="nb-action-btn" title={action.title}>
+              {action.icon === "settings" ? (
+                <svg class="nb-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                </svg>
+              ) : (
+                <svg class="nb-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="1" x2="12" y2="23"/>
+                  <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+                </svg>
+              )}
+              <span class="nb-action-text">{action.title}</span>
+            </a>
+          ))}
+        </div>
+
+        <!-- Mobile: logo + hamburger -->
+        <a href="/" class="nb-mobile-logo" aria-label={`${siteConfig.business.name} - Home`}>
+          <img src={siteConfig.logo.src} alt={siteConfig.logo.alt} class="nb-mobile-logo-img" width="36" height="36" decoding="async" loading="eager" />
+          <span class="nb-mobile-name">{siteConfig.business.name}</span>
+        </a>
+        
+        <label for="nb-mobile-toggle" class="nb-hamburger" aria-label="Open menu" role="button" tabindex="0">
+          <div class="nb-hamburger-box">
+            <div class="nb-hamburger-inner"></div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer — pure CSS, no JS, no React -->
+<div class="nb-mobile-drawer" id="mobile-nav" role="dialog" aria-label="Mobile navigation">
+  <!-- Backdrop -->
+  <label for="nb-mobile-toggle" class="nb-backdrop" aria-hidden="true"></label>
+
+  <!-- Drawer panel -->
+  <div class="nb-drawer-panel">
+    <!-- Phone CTA -->
+    <a href={`tel:${siteConfig.contact.phone}`} class="nb-drawer-phone">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      {siteConfig.contact.phoneFormatted}
+    </a>
+
+    <!-- Utility links -->
+    <div class="nb-drawer-section nb-drawer-section--muted">
+      {utilityNavItems.map((item) => (
+        item.children ? (
+          <details class="nb-drawer-details">
+            <summary class="nb-drawer-summary">
+              {item.title}
+              <svg class="nb-drawer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="nb-drawer-children">
+              {item.children.map((child) => (
+                <a href={child.href} class="nb-drawer-child">{child.title}</a>
+              ))}
+            </div>
+          </details>
+        ) : (
+          <a href={item.href} class="nb-drawer-link">{item.title}</a>
+        )
+      ))}
+    </div>
+
+    <!-- Services -->
+    <div class="nb-drawer-section nb-drawer-section--white">
+      <p class="nb-drawer-section-label">Services</p>
+      {mainNavItems.map((service) => (
+        <details class="nb-drawer-details">
+          <summary class="nb-drawer-summary">
+            {service.title}
+            <svg class="nb-drawer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="nb-drawer-children">
+            {service.categories.flatMap((cat) => cat.items).map((link) => (
+              <a href={link.href} class="nb-drawer-child">{link.title}</a>
+            ))}
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- Quick actions -->
+    <div class="nb-drawer-actions">
+      {quickActions.map((action, i) => (
+        <a href={action.href} class={`nb-drawer-action ${i > 0 ? "nb-drawer-action--border" : ""}`}>
+          {action.icon === "settings" ? (
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          ) : (
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          )}
+          {action.title}
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ── Modern Clean Navbar ── */
+  
+  /* ── Toggle input (hidden, drives CSS state) ── */
+  .nb-mobile-toggle-input {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    width: 0; height: 0;
+  }
+
+  /* ── Header ── */
+  .nb-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 8px rgba(10, 37, 64, 0.08);
+  }
+
+  /* ── Top bar (desktop only) ── */
+  .nb-top {
+    display: none;
+    background: var(--brand-primary);
+    border-bottom: 2px solid var(--brand-highlight);
+    white-space: nowrap;
+  }
+  @media (min-width: 1024px) { .nb-top { display: block; } }
+
+  .nb-top-inner {
+    display: flex;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Logo with icon + text */
+  .nb-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+  .nb-logo:hover {
+    transform: translateY(-1px);
+  }
+
+  .nb-logo-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .nb-logo:hover .nb-logo-icon {
+    transform: rotate(5deg) scale(1.05);
+  }
+
+  .nb-logo-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  .nb-logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    padding-right: 20px;
+  }
+
+  .nb-logo-name {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .nb-logo-tagline {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Top right section */
+  .nb-top-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nb-utility {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nb-util-dropdown {
+    position: relative;
+  }
+
+  .nb-util-link {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .nb-util-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--brand-highlight);
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+  .nb-util-link:hover {
+    color: white;
+  }
+  .nb-util-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .nb-util-chevron {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+  }
+  .nb-util-dropdown:hover .nb-util-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Utility dropdown */
+  .nb-util-panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 200px;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(10, 37, 64, 0.15);
+    padding: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+    z-index: 50;
+  }
+  .nb-util-dropdown:hover .nb-util-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nb-util-child {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: var(--brand-primary);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .nb-util-child:hover {
+    color: var(--brand-secondary);
+    background: var(--brand-tertiary);
+  }
+
+  .nb-top-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* Top phone CTA */
+  .nb-top-phone {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .nb-top-phone:hover {
+    transform: translateX(4px);
+  }
+
+  .nb-phone-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--brand-highlight);
+    flex-shrink: 0;
+  }
+
+  .nb-phone-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .nb-phone-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  .nb-phone-number {
+    font-size: 1rem;
+    color: white;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── Service bar ── */
+  .nb-bar {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .nb-bar-inner {
+    display: flex;
+    height: 64px;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  /* Desktop service nav - with dropdowns */
+  .nb-service-nav {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+  }
+  @media (min-width: 1280px) { .nb-service-nav { display: flex; } }
+
+  .nb-nav-item {
+    position: relative;
+  }
+
+  .nb-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--brand-primary);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .nb-nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s ease;
+  }
+  .nb-nav-link:hover::before {
+    left: 100%;
+  }
+  .nb-nav-link:hover {
+    background: var(--brand-tertiary);
+    color: var(--brand-secondary);
+    transform: translateY(-1px);
+  }
+
+  .nb-nav-chevron {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+  }
+  .nb-nav-item:hover .nb-nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Clean dropdown */
+  .nb-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 280px;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(10, 37, 64, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+    z-index: 50;
+    overflow: hidden;
+  }
+  .nb-nav-item:hover .nb-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nb-dropdown-inner {
+    padding: 0.75rem;
+  }
+
+  .nb-dropdown-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: var(--brand-primary);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  .nb-dropdown-link:hover {
+    background: var(--brand-tertiary);
+    color: var(--brand-secondary);
+    transform: translateX(4px);
+  }
+
+  .nb-dropdown-dot {
+    width: 6px;
+    height: 6px;
+    background: rgba(10, 37, 64, 0.3);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+  .nb-dropdown-link:hover .nb-dropdown-dot {
+    background: var(--brand-secondary);
+    transform: scale(1.3);
+  }
+
+  .nb-dropdown-footer {
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding: 0.75rem;
+  }
+
+  .nb-dropdown-all {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--brand-secondary);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  .nb-dropdown-all:hover {
+    background: var(--brand-tertiary);
+    color: var(--brand-primary);
+  }
+
+  .nb-dropdown-arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+  }
+  .nb-dropdown-all:hover .nb-dropdown-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Desktop actions */
+  .nb-actions {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    white-space: nowrap;
+  }
+  @media (min-width: 1280px) { .nb-actions { display: flex; } }
+
+  .nb-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    background: white;
+    border: 1.5px solid rgba(0,0,0,0.1);
+    color: var(--brand-primary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  } 
+  .nb-action-btn:hover {
+    border-color: var(--brand-secondary);
+    background: var(--brand-tertiary);
+    color: var(--brand-secondary);
+    transform: translateY(-1px);
+  }
+
+  .nb-action-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--brand-secondary);
+  }
+
+  @media (max-width: 1400px) {
+    .nb-action-text { display: none; }
+    .nb-action-btn { padding: 0.625rem; }
+  }
+
+  /* CTA button */
+  .nb-cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--brand-highlight);
+    color: var(--brand-primary);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+  }
+  .nb-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+    filter: brightness(1.1);
+  }
+
+  .nb-cta-arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+  }
+  .nb-cta-btn:hover .nb-cta-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ── Mobile logo + hamburger ── */
+  .nb-mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+  .nb-mobile-logo:hover {
+    transform: translateY(-1px);
+  }
+  @media (min-width: 1280px) { .nb-mobile-logo { display: none; } }
+
+  .nb-mobile-logo-img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  .nb-mobile-name {
+    display: none;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--brand-primary);
+    letter-spacing: -0.01em;
+  }
+  @media (min-width: 768px) { .nb-mobile-name { display: block; } }
+
+  /* Modern hamburger */
+  .nb-hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    padding: 0.75rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  @media (min-width: 1280px) { .nb-hamburger { display: none; } }
+  .nb-hamburger:hover {
+    background: var(--brand-tertiary);
+  }
+
+  .nb-hamburger-box {
+    width: 24px;
+    height: 18px;
+    position: relative;
+  }
+
+  .nb-hamburger-inner {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: var(--brand-primary);
+    border-radius: 2px;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+  }
+  .nb-hamburger-inner::before,
+  .nb-hamburger-inner::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: var(--brand-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .nb-hamburger-inner::before {
+    top: -8px;
+  }
+  .nb-hamburger-inner::after {
+    top: 8px;
+  }
+
+  /* Hamburger animation when open */
+  .nb-mobile-toggle-input:checked ~ header .nb-hamburger-inner {
+    background: transparent;
+  }
+  .nb-mobile-toggle-input:checked ~ header .nb-hamburger-inner::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+  .nb-mobile-toggle-input:checked ~ header .nb-hamburger-inner::after {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+
+  /* ── Mobile drawer ── */
+  .nb-mobile-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    visibility: hidden;
+  }
+  .nb-mobile-toggle-input:checked ~ .nb-mobile-drawer {
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .nb-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 37, 64, 0.8);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .nb-mobile-toggle-input:checked ~ .nb-mobile-drawer .nb-backdrop { opacity: 1; }
+
+  .nb-drawer-panel {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: min(400px, 100vw);
+    background: white;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 40px rgba(10, 37, 64, 0.2);
+  }
+  .nb-mobile-toggle-input:checked ~ .nb-mobile-drawer .nb-drawer-panel {
+    transform: translateX(0);
+  }
+
+  .nb-drawer-phone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: var(--brand-secondary);
+    color: white;
+    padding: 1.25rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .nb-drawer-phone:hover {
+    background: var(--brand-primary);
+  }
+
+  .nb-drawer-section { padding: 1.25rem; }
+  .nb-drawer-section--muted { background: var(--brand-tertiary); }
+  .nb-drawer-section--white { 
+    background: white; 
+    border-top: 1px solid rgba(0,0,0,0.08); 
+  }
+
+  .nb-drawer-section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--brand-highlight);
+    border-bottom: 2px solid var(--brand-highlight);
+    padding-bottom: 0.375rem;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+
+  .nb-drawer-link {
+    display: block;
+    padding: 0.875rem 0;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--brand-primary);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+  }
+  .nb-drawer-link:last-child { border-bottom: none; }
+  .nb-drawer-link:hover {
+    color: var(--brand-secondary);
+    padding-left: 0.5rem;
+  }
+
+  .nb-drawer-details {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .nb-drawer-details:last-child { border-bottom: none; }
+
+  .nb-drawer-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 0;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--brand-primary);
+    cursor: pointer;
+    list-style: none;
+    transition: all 0.2s ease;
+  }
+  .nb-drawer-summary::-webkit-details-marker { display: none; }
+  .nb-drawer-summary:hover {
+    color: var(--brand-secondary);
+    padding-left: 0.5rem;
+  }
+
+  .nb-drawer-chevron {
+    width: 18px;
+    height: 18px;
+    color: rgba(10, 37, 64, 0.5);
+    transition: transform 0.3s ease;
+  }
+  .nb-drawer-details[open] .nb-drawer-chevron {
+    transform: rotate(180deg);
+    color: var(--brand-secondary);
+  }
+
+  .nb-drawer-children {
+    padding: 0.5rem 0 1rem 1.25rem;
+  }
+
+  .nb-drawer-child {
+    display: block;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+    color: rgba(10, 37, 64, 0.7);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    padding-left: 1rem;
+  }
+  .nb-drawer-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(10, 37, 64, 0.3);
+    transition: all 0.2s ease;
+  }
+  .nb-drawer-child:hover {
+    color: var(--brand-secondary);
+    padding-left: 1.25rem;
+  }
+  .nb-drawer-child:hover::before {
+    background: var(--brand-secondary);
+    width: 6px;
+    height: 6px;
+  }
+
+  .nb-drawer-actions {
+    display: flex;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    margin-top: auto;
+  }
+
+  .nb-drawer-action {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 1.25rem;
+    background: var(--brand-tertiary);
+    color: var(--brand-primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .nb-drawer-action:hover {
+    background: var(--brand-secondary);
+    color: white;
+  }
+  .nb-drawer-action--border {
+    border-left: 1px solid rgba(0,0,0,0.08);
+  }
+
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

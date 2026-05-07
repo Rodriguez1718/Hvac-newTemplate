@@ -1,0 +1,52 @@
+{
+  "title": "Specials and Offers",
+  "description": "Check out our latest specials and offers on HVAC services. Save money on repairs, installations, and maintenance with {business}.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Specials and Offers",
+        "subtitle": "Discover Exciting Specials and Unbeatable Offers!",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1000&q=80"
+      }
+    },
+    {
+      "component": "CouponsSection",
+      "props": {
+        "variant": "minimal",
+        "coupons": [
+          { "label": "Until March", "discount": "SAVE $75", "description": "on ANY HVAC Repair. *Minimum $250 Invoice. Limit one per household. Cannot be combined with other offers or discounts.", "expires": "March 2026" },
+          { "label": "March Offer", "discount": "20% OFF", "description": "ALL Emergency HVAC Services", "expires": "March 2026" },
+          { "label": "March Offer", "discount": "ONLY $99", "description": "Water Leak Verification. *Does not include cost of repairs.", "expires": "March 2026" },
+          { "label": "February Offer", "discount": "FREE ESTIMATE", "description": "Tankless Water Heaters", "expires": "February 2026" },
+          { "label": "February Offer", "discount": "$200 OFF", "description": "Whole-Home Water Filtration", "expires": "February 2026" },
+          { "label": "March Offer", "discount": "SAVE $100", "description": "On ANY New Toilet", "expires": "March 2026" }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW",
+        "buttonHref": "/contact",
+        "phoneLabel": "Call or Text for Great Service",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Service" },
+          { "icon": "award", "text": "Experienced & Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "variant": "compact",
+        "title": "Proudly Serving {city}",
+        "description": "We provide reliable residential HVAC services throughout {city} and nearby areas like <a href='/santa-monica'><strong>Santa Monica</strong></a>, <a href='/pasadena'><strong>Pasadena</strong></a>, and <a href='/glendale'><strong>Glendale</strong></a>. <a href='/contact'><strong>Contact us</strong></a> to see if we serve your neighborhood!",
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

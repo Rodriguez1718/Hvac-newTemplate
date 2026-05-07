@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+
+interface ImageCard {
+  image: string;
+  title?: string;
+  description?: string;
+}
+
+interface Props {
+  cards: ImageCard[];
+}
+
+const { cards } = Astro.props;
+---
+
+<section class="py-12 md:py-16">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-3 gap-6" data-animate-stagger>
+      {cards.map((card) => (
+        <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-card border-2 border-transparent hover:border-brand-highlight">
+          <div class="aspect-[4/3] overflow-hidden">
+            <Image   
+              src={card.image} 
+              alt={card.title || "Service image"} 
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              width={740}
+              height={555}
+              format="webp"
+              quality={70}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          {(card.title || card.description) && (
+            <div class="p-4">
+              {card.title && <h3 class="font-semibold text-lg mb-2">{card.title}</h3>}
+              {card.description && <p class="text-muted-foreground text-lg" set:html={card.description} />}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

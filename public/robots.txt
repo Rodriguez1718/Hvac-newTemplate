@@ -1,0 +1,15 @@
+# Robots.txt for Acme Inc.
+# https://acmeinc.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://acmeinc.com/sitemap-index.xml
+
+# Disallow admin/private areas
+Disallow: /api/
+Disallow: /_astro/
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

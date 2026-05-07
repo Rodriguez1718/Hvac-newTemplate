@@ -1,0 +1,424 @@
+---
+import { siteConfig, getLocationText } from "@/config/site"
+
+interface Props {
+  title: string;
+  description: string;
+  calloutText: string;
+  phone?: string;
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  title: rawTitle,
+  description: rawDescription,
+  calloutText: rawCalloutText,
+  phone = siteConfig.contact.phoneFormatted,
+  buttonText = "Sign Up Online",
+  buttonHref = "/contact"
+} = Astro.props;
+
+const title = getLocationText(rawTitle);
+const description = getLocationText(rawDescription);
+const calloutText = getLocationText(rawCalloutText);
+---
+
+<section class="sb-section">
+  <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+    <div class="sb-wrapper" data-animate="fade-up">
+      
+      <!-- Left Panel: Dark with Icon -->
+      <div class="sb-left-panel">
+        <div class="sb-icon-container">
+          <div class="sb-icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <line x1="23" y1="11" x2="17" y2="11"/>
+              <line x1="23" y1="4" x2="17" y2="4"/>
+              <line x1="23" y1="18" x2="17" y2="18"/>
+            </svg>  
+          </div>
+          <div class="sb-label">
+            <span class="sb-label-text">New Member</span>
+            <span class="sb-label-sub">Registration</span>
+          </div>
+        </div>
+        
+        <!-- Decorative lines -->
+        <div class="sb-deco-lines">
+          <div class="sb-deco-line"></div>
+          <div class="sb-deco-line"></div>
+          <div class="sb-deco-line"></div>
+        </div>
+      </div>
+
+      <!-- Right Panel: White with Content -->
+      <div class="sb-right-panel">
+        <div class="sb-content">
+
+          <h2 class="sb-title">{title}</h2>
+          <p class="sb-desc" set:html={description} />
+          
+          <!-- Highlight callout -->
+          <div class="sb-highlight">
+            <svg xmlns="http://www.w3.org/2000/svg" class="sb-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span class="sb-highlight-text">{calloutText}</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="sb-actions">
+            <a href={buttonHref} class="sb-btn sb-btn--primary">
+              {buttonText}
+              <svg xmlns="http://www.w3.org/2000/svg" class="sb-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a href={`tel:${phone.replace(/[^0-9]/g, '')}`} class="sb-btn sb-btn--outline">
+              <svg xmlns="http://www.w3.org/2000/svg" class="sb-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+              {phone}
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .sb-section {
+    background: var(--brand-tertiary);
+  }
+
+  /* ─── Wrapper ─── */
+  .sb-wrapper {
+    max-width: 72rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    min-height: 400px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    transition: all 0.4s ease;
+  }
+  .sb-wrapper:hover {
+    box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+    transform: translateY(-4px);
+  }
+
+  /* ─── Left Panel (Dark) ─── */
+  .sb-left-panel {
+    background: var(--brand-primary);
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Icon container */
+  .sb-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sb-icon-circle {
+    width: 100px;
+    height: 100px;
+    background: var(--brand-highlight);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.4s ease;
+  }
+  .sb-icon-circle::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.4s ease;
+  }
+  .sb-wrapper:hover .sb-icon-circle {
+    transform: scale(1.05);
+  }
+  .sb-wrapper:hover .sb-icon-circle::before {
+    border-color: var(--brand-highlight);
+  }
+
+  .sb-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--brand-primary);
+  }
+
+  .sb-label {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .sb-label-text {
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #fff;
+  }
+  .sb-label-sub {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--brand-highlight);
+  }
+
+  /* Decorative lines */
+  .sb-deco-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    opacity: 0.2;
+  }
+  .sb-deco-line {
+    height: 2px;
+    background: #fff;
+    transition: all 0.4s ease;
+  }
+  .sb-deco-line:nth-child(1) { width: 100%; }
+  .sb-deco-line:nth-child(2) { width: 75%; }
+  .sb-deco-line:nth-child(3) { width: 50%; }
+  .sb-wrapper:hover .sb-deco-line {
+    background: var(--brand-highlight);
+    opacity: 0.6;
+  }
+  .sb-wrapper:hover .sb-deco-line:nth-child(1) { width: 50%; }
+  .sb-wrapper:hover .sb-deco-line:nth-child(2) { width: 75%; }
+  .sb-wrapper:hover .sb-deco-line:nth-child(3) { width: 100%; }
+
+  /* ─── Right Panel (White) ─── */
+  .sb-right-panel {
+    background: white;
+    padding: 3rem 3rem 3rem 3.5rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .sb-right-panel::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--brand-highlight);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+  .sb-wrapper:hover .sb-right-panel::before {
+    transform: scaleY(1);
+  }
+
+  .sb-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  /* Badge */
+  .sb-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--brand-tertiary);
+    border-left: 3px solid var(--brand-highlight);
+    width: fit-content;
+  }
+  .sb-badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--brand-highlight);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .sb-badge-text {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--brand-primary);
+  }
+
+  /* Title */
+  .sb-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--brand-primary);
+  }
+  @media (min-width: 768px) {
+    .sb-title { font-size: 2.5rem; }
+  }
+
+  /* Description */
+  .sb-desc {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--brand-secondary);
+  }
+
+  /* Highlight callout */
+  .sb-highlight {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, var(--brand-highlight) 0%, #ff8c42 100%);
+    position: relative;
+  }
+  .sb-highlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 100%);
+  }
+
+  .sb-highlight-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--brand-primary);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sb-highlight-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--brand-primary);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Actions */
+  .sb-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .sb-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.7rem 1.75rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .sb-btn-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .sb-btn--primary {
+    background: var(--brand-highlight);
+    color: #0a0a0a;
+  }
+  .sb-btn--primary:hover {
+    filter: brightness(1.08);
+    transform: translateX(4px);
+  }
+  .sb-btn--primary:hover .sb-btn-icon {
+    transform: translateX(4px);
+  }
+
+  .sb-btn--outline {
+    background: transparent;
+    color: var(--brand-primary);
+    border: 2px solid var(--brand-primary);
+  }
+  .sb-btn--outline:hover {
+    background: var(--brand-primary);
+    color: #fff;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 968px) {
+    .sb-wrapper {
+      grid-template-columns: 1fr;
+    }
+    .sb-left-panel {
+      padding: 2.5rem 2rem;
+      min-height: 280px;
+    }
+    .sb-icon-circle {
+      width: 80px;
+      height: 80px;
+    }
+    .sb-icon {
+      width: 40px;
+      height: 40px;
+    }
+    .sb-right-panel {
+      padding: 2.5rem 2rem;
+    }
+    .sb-right-panel::before {
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: auto;
+      width: auto;
+      height: 4px;
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    .sb-wrapper:hover .sb-right-panel::before {
+      transform: scaleX(1);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .sb-actions {
+      flex-direction: column;
+    }
+    .sb-btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .sb-title {
+      font-size: 1.75rem;
+    }
+  }
+</style>

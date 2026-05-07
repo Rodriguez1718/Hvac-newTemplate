@@ -1,0 +1,72 @@
+{
+  "title": "Attic Insulation and Ventilation",
+  "description": "Professional attic insulation and ventilation services to improve energy efficiency and comfort. Expert solutions in {city}.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Attic Insulation & Ventilation",
+        "subtitle": "Boost energy efficiency and comfort with proper attic insulation and ventilation.",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://aonecoolingsolution.in/wp-content/uploads/2025/02/split-ac-service-Sfastservices.jpg",
+        "image": "/images/bg2.jpg",
+        "imageAlt": "Attic insulation and ventilation service"
+      }
+    },
+    { "component": "PlaceholderContentSection", "props": { "title": "TO BE DETERMINED", "subtitle": "BASED ON THE CLIENT DISCOVERY CONVERSATION" } },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "{business}\nMAINTENANCE PLAN", "priceLabel": ["STARTING AS LOW AS", "$14.33", "PER MONTH"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" },
+          { "type": "financing", "headline": ["NO INTEREST", "NO PAYMENTS", "UNTIL 2026"], "subtext": "*WITH APPROVED FINANCING", "buttonText": "LEARN MORE", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "discount": "$95", "subheadline": ["FURNACE", "TUNE-UP"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions about Attic Insulation and Ventilation in {city}",
+        "faqs": [
+          { "question": "How do I know if my attic needs more insulation?", "answer": "Signs include high energy bills, uneven temperatures between rooms, ice dams forming on your roof in winter, and your HVAC system running constantly. If your attic insulation is less than 10-14 inches deep, it likely needs to be upgraded." },
+          { "question": "What type of attic insulation is best?", "answer": "The best type depends on your attic's structure. Blown-in fiberglass or cellulose is ideal for most attics, while spray foam provides the highest R-value per inch and also acts as an air barrier. Our team will recommend the right solution for your home." },
+          { "question": "Why is attic ventilation important?", "answer": "Proper attic ventilation prevents moisture buildup that can cause mold and wood rot, reduces summer heat buildup that strains your <a href='/air-conditioning'><strong>AC</strong></a>, and prevents ice dams in winter. It works together with insulation to keep your home comfortable and energy efficient." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Related Services",
+        "variant": "services",
+        "items": [
+          { "title": "Air Filtration Systems", "href": "/indoor-air-quality/air-filtration-systems", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp" },
+          { "title": "Duct Cleaning and Sealing", "href": "/indoor-air-quality/duct-cleaning-sealing", "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop" },
+          { "title": "Duct Repair and Replacement", "href": "/indoor-air-quality/duct-repair-replacement", "image": "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg" },
+          { "title": "Furnace Repair", "href": "/heating/furnace-repair", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Service Areas for Indoor Air Quality Services in {city}",
+        "description": "We proudly serve homes and businesses across all {city} boroughs, providing expert indoor air quality services wherever you need us.",
+        "areas": ["Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island"],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [ { "icon": "siren", "text": "24/7 Emergency Services" }, { "icon": "award", "text": "Experienced and Certified Technicians" } ]
+      }
+    }
+  ]
+}

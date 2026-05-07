@@ -1,0 +1,219 @@
+{
+  "title": "Home",
+  "description": "{business} - Expert heating and cooling services in {city} and surrounding areas",
+  "sections": [
+    {
+      "component": "HeroSection",
+      "props": {
+        "title": "Need HVAC Repair or New Installation? We've Got You Covered!",
+        "buttonText": "GET STARTED",
+        "buttonHref": "/contact",
+        "videoHref": "#video",
+        "statNumber": "53",
+        "statLabel": "Years in Business",
+        "statDescription": "Lorem ipsum sit dolor sit amet, consectetur adipiscing elit.",
+        "rightImageAlt": "HVAC technician at work",
+        "images": [
+          "https://www.superiorcomforthvac.com/wp-content/uploads/2024/05/ac-repair-brownstown-mi.jpg",
+          "https://healthinnovation-kss.com/wp-content/uploads/2025/09/WorkWell-images-1200-x-627-px.webp",
+          "https://ultimateheatingandair.com/wp-content/uploads/2024/06/10-Most-Common-HVAC-Problems.jpg"
+        ]
+      }
+    },
+    { "component": "TrustBadges" },
+    {
+      "component": "CouponsSection",
+      "props": {
+        "title": "Specials and Offers",
+        "backgroundImage": "/images/bg2.jpg",
+        "coupons": [
+          { "label": "First-Time Customers", "discount": "$100 OFF", "description": "Air Duct Cleaning for first-time customers only", "buttonText": "GET OFFER" },
+          { "label": "Repair Special", "discount": "$150 OFF", "description": "Save $150 on Any Repair. Valid for repairs over $500", "buttonText": "BOOK NOW" },
+          { "label": "Maintenance", "discount": "$25 OFF", "description": "Your Furnace Tune-Up. Limited time offer", "buttonText": "BOOK NOW" }
+        ]
+      }
+    },
+    {
+      "component": "ContentSection",
+      "props": {
+        "title": "Dedicated to Your Comfort and Quality HVAC Service",
+        "description": "We are committed to delivering reliable, energy-efficient, and high-quality heating and cooling solutions for your home or business. Our certified technicians are equipped with modern tools and years of experience to ensure your HVAC system performs at its best. From <a href='/air-conditioning/ac-repair'><strong>AC repair</strong></a> and <a href='/heating/furnace-repair'><strong>furnace repair</strong></a> to <a href='/indoor-air-quality'><strong>indoor air quality</strong></a> solutions, we handle it all.",
+        "features": [
+          "Fast and Reliable Service",
+          "Certified Technicians",
+          "Affordable Pricing",
+          "24/7 Emergency Support"
+        ],
+        "buttonText": "Learn More About Our HVAC Services",
+        "buttonHref": "/about",
+        "images": ["https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp"],
+        "imagePosition": "left"
+      }
+    },
+    {
+      "component": "ServiceCardsGridSection",
+      "props": {
+        "badge": "OUR SERVICES",
+        "title": "Complete HVAC Services for Comfort, Quality, and 24/7 Support",
+        "description": "ABC Company has been delivering top-notch HVAC services in [Location] for over [X years]. Our team of certified professionals is committed to providing reliable, efficient heating, cooling, and indoor air quality solutions that make your home a sanctuary of comfort. With an emphasis on customer satisfaction and integrity, we deliver services that go beyond expectations.",
+        "categories": [
+          {
+            "title": "Air Conditioning Services",
+            "services": [
+              { "title": "AC Repair", "description": "Fast and reliable air conditioning repairs", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z\"/></svg>", "href": "/air-conditioning/ac-repair" },
+              { "title": "AC Tune-Up/ Maintenance", "description": "Keep your system running efficiently", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>", "href": "/air-conditioning/ac-tune-up-maintenance" },
+              { "title": "AC Installation and Replacement", "description": "New AC system installations", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2v10M12 22v-10M17 7l-5 5M7 17l5-5M7 7l5 5M17 17l-5-5\"/></svg>", "href": "/air-conditioning/ac-installation-replacement" },
+              { "title": "Thermostats", "description": "Smart thermostat installation and setup", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 16 14\"/></svg>", "href": "/air-conditioning/thermostats" }
+            ]
+          },
+          {
+            "title": "Heating Services",
+            "services": [
+              { "title": "Furnace Repair", "description": "Fast and reliable furnace repair services", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z\"/></svg>", "href": "/heating/furnace-repair" },
+              { "title": "Furnace Tune-Up / Maintenance", "description": "Keep your heating system running efficiently", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>", "href": "/heating/furnace-tune-up-maintenance" },
+              { "title": "Furnace Installation and Replacement", "description": "New furnace installations and upgrades", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z\"/></svg>", "href": "/heating/furnace-installation-replacement" },
+              { "title": "Boilers Installation/Replacement", "description": "Professional boiler installation services", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z\"/></svg>", "href": "/heating/boilers-installation-replacement" }
+            ]
+          },
+          {
+            "title": "Indoor Air Quality",
+            "services": [
+              { "title": "Air Filtration Systems", "description": "Advanced air purification solutions", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 3H2l8 9.46V19l4 2v-8.54L22 3z\"/></svg>", "href": "/indoor-air-quality/air-filtration-systems" },
+              { "title": "Duct Cleaning & Sealing", "description": "Improve airflow and efficiency", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z\"/></svg>", "href": "/indoor-air-quality/duct-cleaning-sealing" },
+              { "title": "Duct Repair & Replacement", "description": "Fix leaks and damaged ductwork", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"22 12 18 12 15 21 9 3 6 12 2 12\"/></svg>", "href": "/indoor-air-quality/duct-repair-replacement" },
+              { "title": "Attic Insulation & Ventilation", "description": "Optimize your home's energy efficiency", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 21h18\"/><path d=\"M5 21V7l8-4v18\"/><path d=\"M19 21V11l-6-4\"/></svg>", "href": "/indoor-air-quality/attic-insulation-ventilation" }
+            ]
+          },
+          {
+            "title": "Emergency HVAC Services",
+            "services": [
+              { "title": "24/7 Emergency Repairs", "description": "Round-the-clock emergency service", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 16 14\"/></svg>", "href": "/emergency/24-7-emergency-repairs" },
+              { "title": "24/7 AC Repairs", "description": "Emergency air conditioning repairs", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2v10M12 22v-10M17 7l-5 5M7 17l5-5M7 7l5 5M17 17l-5-5\"/></svg>", "href": "/emergency/24-7-ac-repairs" },
+              { "title": "24/7 Heating & Cooling Repairs", "description": "Complete HVAC emergency services", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z\"/></svg>", "href": "/emergency/24-7-heating-cooling-repairs" },
+              { "title": "Same-Day Service", "description": "Fast response when you need it most", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13 2L3 14h9l-1 8 10-12h-9l1-8z\"/></svg>", "href": "/emergency" }
+            ]
+          },
+          {
+            "title": "Commercial Services",
+            "services": [
+              { "title": "HVAC Installation", "description": "Commercial system installations", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 21h18\"/><path d=\"M5 21V7l8-4v18\"/><path d=\"M19 21V11l-6-4\"/><path d=\"M9 9v.01\"/><path d=\"M9 12v.01\"/><path d=\"M9 15v.01\"/></svg>", "href": "/commercial/hvac-installation" },
+              { "title": "HVAC Repair", "description": "Fast commercial HVAC repairs", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z\"/></svg>", "href": "/commercial/hvac-repair" },
+              { "title": "HVAC Maintenance", "description": "Preventative maintenance programs", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>", "href": "/commercial/hvac-maintenance" },
+              { "title": "HVAC Warranty", "description": "Comprehensive warranty coverage", "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/><path d=\"m9 12 2 2 4-4\"/></svg>", "href": "/commercial/hvac-warranty" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "component": "MaintenancePlanSection",
+      "props": {
+        "eyebrow": "Maintenance Plan",
+        "title": "Affordable HVAC Maintenance Plans to Keep Your System Running Efficiently Year-Round",
+        "description": "Regular <a href='/maintenance-plan'><strong>maintenance</strong></a> helps prevent costly breakdowns and extends the life of your HVAC system.",
+        "includedItems": [
+          { "title": "Extend system lifespan", "description": "Regular maintenance keeps your system running longer" },
+          { "title": "Reduce energy bills", "description": "Efficient systems use less energy and save you money" },
+          { "title": "Improve air quality", "description": "Clean filters and components mean cleaner air" },
+          { "title": "Priority service scheduling", "description": "Get fast-track service when you need it most" }
+        ],
+        "benefits": [
+          "Prevent unexpected breakdowns",
+          "Improve efficiency and lower utility bills",
+          "Extend the lifespan of your HVAC system",
+          "Gain peace of mind knowing your system is in expert hands"
+        ],
+        "buttonText": "VIEW MAINTENANCE PLANS",
+        "buttonHref": "/maintenance-plan"
+      }
+    },
+    {
+      "component": "FinancingSection",
+      "props": {
+        "title": "Get a New HVAC System Without Breaking the Bank",
+        "description": "We offer flexible <a href='/financing'><strong>financing solutions</strong></a> to make HVAC upgrades more affordable.",
+        "paymentPlans": [
+          "Affordable Monthly Payments",
+          "Low Interest Rates",
+          "Quick Approval",
+          "Flexible Payment Options"
+        ],
+        "financingOptions": [
+          "New AC installations",
+          "Furnace replacements",
+          "Complete HVAC system upgrades",
+          "Emergency repairs and more"
+        ],
+        "steps": [
+          { "title": "Contact Us", "description": "Contact us to discuss your HVAC needs" },
+          { "title": "Choose a Plan", "description": "Choose a plan and payment option that works for you" },
+          { "title": "Enjoy Quality Service", "description": "Enjoy high-quality HVAC service with affordable terms" }
+        ],
+        "buttonText": "Apply Now",
+        "buttonHref": "/financing"
+      }
+    },
+    {
+      "component": "PortfolioSection",
+      "props": {
+        "badge": "Portfolio",
+        "title": "Our Featured Works",
+        "images": [
+          "https://johnh967.sg-host.com/wp-content/uploads/slider/cache/3208844a78ae424ec0bfef8623738be2/HVAC-Repair-Banner.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/2024/12/AC-Repair-Services.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/2024/12/Professional-24_7-Heating-and-Cooling-Repairs.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466578360_545600454753059_5640968860261965384_nfull.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466555884_570355772412079_4111747127252492406_nfull.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466796006_1587175318903711_6684948885555680268_nfull.webp",
+          "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466556611_1575760946412367_152571973762791733_nfull.webp"
+        ]
+      }
+    },
+    {
+      "component": "TestimonialsSection",
+      "props": {
+        "badge": "Testimonials",
+        "title": "What Our Clients Say",
+        "description": "At {business}, we believe that every home and business deserves access to reliable HVAC services, no matter the budget. That's why we offer flexible financing options to make your heating and cooling projects manageable and stress-free.",
+        "testimonials": [
+          { "name": "Mark Porter", "initials": "MP", "date": "1 year ago", "rating": 5, "content": "The team was professional and efficient. They fixed our AC issue quickly and at a fair price. Highly recommend their services!" },
+          { "name": "Eric Borges", "initials": "EB", "date": "1 year ago", "rating": 5, "content": "Outstanding service from start to finish. The technician was knowledgeable and took the time to explain everything. Will definitely use again!" },
+          { "name": "Nicholas Abraczinskas", "initials": "NA", "date": "1 year ago", "rating": 5, "content": "{business} has been such a great partner for our business. Their <a href='/commercial'><strong>commercial</strong></a> HVAC expertise is unmatched in the LA area." },
+          { "name": "David Einstein", "initials": "DE", "date": "1 year ago", "rating": 5, "content": "I couldn't be more grateful for the incredible experience. From the moment I called, the support provided was exceptional." },
+          { "name": "Rachel Kim", "initials": "RK", "date": "8 months ago", "rating": 5, "content": "Had a furnace emergency at 2 AM and they were at my door within 45 minutes. Saved us from a freezing house. True <a href='/emergency'><strong>emergency</strong></a> pros!" },
+          { "name": "Tom Alvarez", "initials": "TA", "date": "6 months ago", "rating": 5, "content": "They replaced our entire HVAC system in just three days. Clean work, fair price, and the crew was respectful of our space the whole time." },
+          { "name": "Linda Nguyen", "initials": "LN", "date": "5 months ago", "rating": 5, "content": "Installed a tankless water heater for us. The technician walked us through all the options and helped us pick the right unit for our family." },
+          { "name": "James O'Brien", "initials": "JO", "date": "3 months ago", "rating": 5, "content": "We've used {business} for our restaurant for years. Their HVAC maintenance keeps our systems running efficiently without any hassle." },
+          { "name": "Patricia Gomez", "initials": "PG", "date": "2 months ago", "rating": 5, "content": "Kitchen remodel HVAC was done perfectly. They coordinated with our contractor seamlessly and everything passed inspection first try." },
+          { "name": "Steve Hartley", "initials": "SH", "date": "1 month ago", "rating": 5, "content": "Honest and upfront about pricing. No surprise charges. The diagnostic assessment saved us thousands compared to what another company quoted." },
+          { "name": "Angela Wu", "initials": "AW", "date": "3 weeks ago", "rating": 5, "content": "Their <a href='/maintenance-plan'><strong>maintenance plan</strong></a> is worth every penny. Regular inspections have caught small issues before they became expensive problems." },
+          { "name": "Carlos Rivera", "initials": "CR", "date": "1 week ago", "rating": 5, "content": "Whole-house air filtration install was seamless. The air quality difference is night and day. Great team, great results." }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW",
+        "buttonHref": "/contact",
+        "phoneLabel": "Call or Text for Great Service",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Service" },
+          { "icon": "award", "text": "Experienced & Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Heating & Cooling Solutions in Your Area",
+        "description": "Looking for reliable HVAC services in your area? We provide expert residential and <a href='/commercial'><strong>commercial</strong></a> heating and cooling solutions across multiple cities. Whether you need <a href='/air-conditioning/ac-repair'><strong>AC repair</strong></a>, <a href='/heating/furnace-installation-replacement'><strong>furnace installation</strong></a>, <a href='/maintenance-plan'><strong>maintenance</strong></a>, or <a href='/emergency'><strong>emergency services</strong></a>, our certified technicians are here to help. We're committed to quality, efficiency, and customer satisfaction. <a href='/contact'><strong>Call us today</strong></a> to schedule your service!",
+        "areas": [
+          "Austin", "San Antonio", "Dallas", "Houston", "Round Rock",
+          "Pflugerville", "Cedar Park", "Georgetown", "Leander", "Kyle", "Buda"
+        ]
+      }
+    }
+  ]
+}

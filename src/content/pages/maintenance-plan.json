@@ -1,0 +1,71 @@
+{
+  "title": "Maintenance Plan",
+  "description": "Enjoy peace of mind and save money with our tailored HVAC maintenance plans, designed to keep your heating and cooling system running smoothly year-round.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "HVAC Maintenance Plans",
+        "subtitle": "Enjoy peace of mind and save money with our tailored maintenance plans, designed to keep your HVAC system running smoothly year-round. Choose the plan that fits your needs today!",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://ucarecdn.com/2b601f20-60cd-4006-b1db-f80cf1763faa/-/preview/968x644/"
+      }
+    },
+    {
+      "component": "PricingPlansSection",
+      "props": {
+        "title": "Protect Your HVAC System with {business} Maintenance Plans",
+        "description": "At {business}, we understand that regular maintenance is essential to keep your HVAC system efficient and prevent costly repairs. That is why we have designed flexible maintenance plans to meet your needs and budget. Our expert team will ensure your home or business heating and cooling operates at peak performance year-round.",
+        "plans": [
+          { "ribbon": "GREAT", "ribbonColor": "great", "title": "BASIC PLAN", "price": "$9.99", "period": "/month", "features": ["Annual HVAC system inspection", "Priority scheduling for emergency repairs", "5% discount on all repairs and services"] },
+          { "ribbon": "BEST DEAL", "ribbonColor": "best", "title": "PREMIUM PLAN", "price": "$29.99", "period": "/month", "features": ["Everything in the Standard Plan", "Sewer line inspection with a camera", "Emergency service fee waived", "15% discount on all repairs and services"] },
+          { "ribbon": "BETTER", "ribbonColor": "better", "title": "STANDARD PLAN", "price": "$19.99", "period": "/month", "features": ["Everything in the Basic Plan", "Annual water heater inspection and flush", "Leak detection service for pipes and fixtures", "10% discount on all repairs and services"] }
+        ]
+      }
+    },
+    {
+      "component": "SignupBannerSection",
+      "props": {
+        "title": "Sign Up for a Maintenance Plan Today!",
+        "description": "Protect your home and save money with {business} Maintenance Plans. Choose the option that is right for you and enjoy peace of mind all year long.",
+        "calloutText": "Call us or Sign Up Online today to get started!",
+        "buttonText": "Sign Up Online",
+        "buttonHref": "/contact"
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions",
+        "faqs": [
+          { "question": "What is included in an HVAC maintenance plan?", "answer": "Our maintenance plans include annual system inspections, priority scheduling, discounts on repairs, and additional services depending on the plan level." },
+          { "question": "Can I upgrade my plan later?", "answer": "Yes! You can upgrade your maintenance plan at any time. Simply <a href='/contact'><strong>contact us</strong></a> and we will help you transition to a higher tier plan that better suits your needs." },
+          { "question": "Is there a cancellation fee?", "answer": "We offer flexible cancellation options. Please contact our team to discuss the terms and conditions of your specific plan." }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW",
+        "buttonHref": "/contact",
+        "phoneLabel": "Call or Text for Great Service",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Service" },
+          { "icon": "award", "text": "Experienced and Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "variant": "compact",
+        "title": "Proudly Serving {city}",
+        "description": "We provide reliable residential HVAC services throughout {city} and nearby areas like <a href='/santa-monica'><strong>Santa Monica</strong></a>, <a href='/pasadena'><strong>Pasadena</strong></a>, and <a href='/glendale'><strong>Glendale</strong></a>. <a href='/contact'><strong>Contact us</strong></a> to see if we serve your neighborhood!",
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

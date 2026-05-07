@@ -1,0 +1,81 @@
+{
+  "title": "AC Installation and Replacement",
+  "description": "Expert AC installation and replacement services for homes in {city}. Upgrade to a new, energy-efficient system today.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "AC Installation and Replacement",
+        "subtitle": "Expert AC installation and replacement services.",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://aonecoolingsolution.in/wp-content/uploads/2025/02/split-ac-service-Sfastservices.jpg",
+        "image": "/images/bg2.jpg",
+        "imageAlt": "AC installation technician"
+      }
+    },
+    {
+      "component": "PlaceholderContentSection",
+      "props": {
+        "title": "TO BE DETERMINED",
+        "subtitle": "BASED ON THE CLIENT DISCOVERY CONVERSATION"
+      }
+    },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "{business}\nMAINTENANCE PLAN", "priceLabel": ["STARTING AS LOW AS", "$14.33", "PER MONTH"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" },
+          { "type": "financing", "headline": ["NO INTEREST", "NO PAYMENTS", "UNTIL 2026"], "subtext": "*WITH APPROVED FINANCING", "buttonText": "LEARN MORE", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "discount": "$95", "subheadline": ["FURNACE", "TUNE-UP"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions about AC Installation & Replacement in {city}",
+        "faqs": [
+          { "question": "How do I know when it's time to replace my AC unit?", "answer": "Consider replacement if your system is over 10-15 years old, requires frequent <a href='/air-conditioning/ac-repair'><strong>repairs</strong></a>, has rising energy bills, or uses outdated R-22 refrigerant. Our technicians can assess your system and recommend the best option." },
+          { "question": "How long does a new AC installation take?", "answer": "A standard <a href='/air-conditioning/ac-installation-replacement'><strong>AC installation</strong></a> typically takes one day. More complex installations involving ductwork modifications or multi-zone systems may take 2-3 days. We'll provide a clear timeline before starting." },
+          { "question": "What size AC unit do I need for my home?", "answer": "The right size depends on your home's square footage, insulation, number of windows, and other factors. Our team performs a detailed load calculation to recommend the perfect system size for optimal comfort and efficiency." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Related Services",
+        "variant": "services",
+        "items": [
+          { "title": "AC Repair", "href": "/air-conditioning/ac-repair", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp" },
+          { "title": "AC Tune-Up / Maintenance", "href": "/air-conditioning/ac-tune-up-maintenance", "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop" },
+          { "title": "HVAC Warranties", "href": "/air-conditioning/hvac-warranties", "image": "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg" },
+          { "title": "HVAC Brands", "href": "/air-conditioning/hvac-brands", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp" }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Services" },
+          { "icon": "award", "text": "Experienced and Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Service Areas for HVAC Services in {city}",
+        "description": "We proudly serve homes and businesses across all {city} boroughs, providing expert HVAC services wherever you need us.",
+        "areas": ["Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island"],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

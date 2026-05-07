@@ -1,0 +1,143 @@
+{
+  "title": "Indoor Air Quality",
+  "description": "Professional indoor air quality services in {city}. Air filtration, duct cleaning, duct repair, and attic insulation solutions.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Healthier Home Air with Quality Solutions",
+        "subtitle": "Your indoor air matters. We provide comprehensive air quality solutions for cleaner, healthier air.",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://media.istockphoto.com/id/1832640903/photo/fixing-ventilation-system-repairman-in-uniform-is-in-the-unfinished-building.jpg?s=612x612&w=0&k=20&c=s58EEd-izTwy8uw0_uw_b990SjpJvnAcEQLyIlll5Mk=",
+        "image": "/images/bg2.jpg",
+        "imageAlt": "Indoor air quality service"
+      }
+    },
+    {
+      "component": "ContentSection",
+      "props": {
+        "badge": "Indoor Air Quality",
+        "title": "Enhance Your Home with Indoor Air Quality Services in {city}",
+        "description": "Your indoor air can be up to five times more polluted than outdoor air. {fullName} offers professional indoor air quality solutions designed to remove allergens, pollutants, and contaminants from your home. From advanced <a href='/indoor-air-quality/air-filtration-systems'><strong>air filtration systems</strong></a> to complete <a href='/indoor-air-quality/duct-cleaning-sealing'><strong>duct cleaning and sealing</strong></a>, our certified technicians help you breathe easier and live healthier.",
+        "features": [
+          "Advanced Air Filtration",
+          "Professional Duct Services",
+          "Energy-Efficient Solutions",
+          "Healthier Living Environment"
+        ],
+        "buttonText": "Contact Us",
+        "buttonHref": "/contact",
+        "images": [
+          "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg "
+        ],
+        "imagePosition": "right"
+      }
+    },
+    {
+      "component": "ContentSectionAlt",
+      "props": {
+        "title": "Benefits of Choosing Our Indoor Air Quality",
+        "titleHighlight": "Services",
+        "description": "We deliver comprehensive air quality solutions that make a real difference in your home's comfort and health.",
+        "image": "https://www.thermodirectinc.com/wp-content/uploads/replace-air-filter-scaled-e1718214964595.jpeg",
+        "imageAlt": "Indoor air quality technician",
+        "imagePosition": "right",
+        "features": [
+          { "title": "Healthier Living Environment", "description": "Our air quality solutions remove dust, allergens, mold spores, and other pollutants, creating a cleaner and healthier home for your family." },
+          { "title": "Improved Comfort", "description": "Balanced humidity, cleaner air, and better ventilation all contribute to a more comfortable living space year-round." },
+          { "title": "Energy Efficiency", "description": "Clean ducts and proper <a href='/indoor-air-quality/attic-insulation-ventilation'><strong>insulation</strong></a> help your HVAC system run more efficiently, reducing energy consumption and lowering utility bills." },
+          { "title": "Enhanced HVAC Performance", "description": "Removing buildup from your ductwork and improving airflow helps your <a href='/air-conditioning'><strong>heating and cooling</strong></a> system perform at its best and last longer." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Our Comprehensive Indoor Air Quality Services",
+        "variant": "services",
+        "items": [
+          { "title": "Air Filtration Systems", "href": "/indoor-air-quality/air-filtration-systems", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Air-Filtration-Systems.webp" },
+          { "title": "Duct Cleaning and Sealing", "href": "/indoor-air-quality/duct-cleaning-sealing", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Duct-Repair-and-Replacement.webp" },
+          { "title": "Duct Repair and Replacement", "href": "/indoor-air-quality/duct-repair-replacement", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Duct-Cleaning-and-Sealing-Services.webp" },
+          { "title": "Attic Insulation and Ventilation", "href": "/indoor-air-quality/attic-insulation-ventilation", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Indoor-Air-Quality-Services.webp" }
+        ]
+      }
+    },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "{business}\nMAINTENANCE PLAN", "priceLabel": ["STARTING AS LOW AS", "$14.33", "PER MONTH"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" },
+          { "type": "financing", "headline": ["NO INTEREST", "NO PAYMENTS", "UNTIL 2026"], "subtext": "*WITH APPROVED FINANCING", "buttonText": "LEARN MORE", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "discount": "$95", "subheadline": ["FURNACE", "TUNE-UP"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions about Indoor Air Quality Services in {city}",
+        "faqs": [
+          { "question": "How often should I clean my air ducts?", "answer": "We recommend professional <a href='/indoor-air-quality/duct-cleaning-sealing'><strong>duct cleaning</strong></a> every 3 to 5 years, or more frequently if you have pets, allergies, or have recently completed home renovations. Regular cleaning helps maintain good air quality and HVAC efficiency." },
+          { "question": "What types of indoor air quality issues can you help with?", "answer": "We address a wide range of issues including dust and allergen buildup, mold and mildew, poor ventilation, humidity imbalances, and contaminated ductwork. Our technicians will assess your home and recommend the right solutions." },
+          { "question": "How long does a duct cleaning or installation take?", "answer": "A standard <a href='/indoor-air-quality/duct-cleaning-sealing'><strong>duct cleaning</strong></a> typically takes 3 to 5 hours depending on the size of your home. <a href='/indoor-air-quality/air-filtration-systems'><strong>Air filtration system</strong></a> installations usually take a few hours. We'll provide a clear timeline before starting any work." }
+        ]
+      }
+    },
+    {
+      "component": "ServicesSection",
+      "props": {
+        "title": "Related Services",
+        "description": "Explore our full range of HVAC services to keep your home comfortable and efficient all year round.",
+        "categories": [
+          { "title": "AC Services", "services": [
+            { "title": "AC Repair", "description": "Fast and reliable air conditioning repairs", "href": "/air-conditioning/ac-repair" },
+            { "title": "AC Tune-Up / Maintenance", "description": "Keep your cooling system running efficiently", "href": "/air-conditioning/ac-tune-up-maintenance" },
+            { "title": "AC Installation and Replacement", "description": "New AC system installations", "href": "/air-conditioning/ac-installation-replacement" },
+            { "title": "Thermostats", "description": "Smart thermostat installation and setup", "href": "/air-conditioning/thermostats" }
+          ]},
+          { "title": "Heating Services", "services": [
+            { "title": "Furnace Repair", "description": "Fast and reliable furnace repair services", "href": "/heating/furnace-repair" },
+            { "title": "Furnace Tune-Up / Maintenance", "description": "Keep your heating system running efficiently", "href": "/heating/furnace-tune-up-maintenance" },
+            { "title": "Furnace Installation and Replacement", "description": "New furnace installations and upgrades", "href": "/heating/furnace-installation-replacement" },
+            { "title": "Boilers Installation and Replacement", "description": "Expert boiler services for your home", "href": "/heating/boilers-installation-replacement" }
+          ]},
+          { "title": "Emergency HVAC Services", "services": [
+            { "title": "24/7 AC Repairs", "description": "Round-the-clock AC emergency repairs", "href": "/emergency/24-7-ac-repairs" },
+            { "title": "24/7 Heating and Cooling Repairs", "description": "Emergency heating and cooling services", "href": "/emergency/24-7-heating-cooling-repairs" },
+            { "title": "24/7 Emergency Repairs", "description": "Full emergency HVAC repair services", "href": "/emergency/24-7-emergency-repairs" }
+          ]},
+          { "title": "Commercial Services", "services": [
+            { "title": "HVAC Repair", "description": "Commercial HVAC repair services", "href": "/commercial/hvac-repair" },
+            { "title": "HVAC Maintenance", "description": "Preventive commercial HVAC maintenance", "href": "/commercial/hvac-maintenance" },
+            { "title": "HVAC Installation", "description": "New commercial HVAC installations", "href": "/commercial/hvac-installation" },
+            { "title": "HVAC Warranty", "description": "Commercial HVAC warranty services", "href": "/commercial/hvac-warranty" }
+          ]}
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Services" },
+          { "icon": "award", "text": "Experienced and Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Service Areas for HVAC Services in {city}",
+        "description": "We proudly serve homes and businesses across all {city} boroughs, providing expert <a href='/indoor-air-quality/air-filtration-systems'><strong>air filtration</strong></a>, <a href='/indoor-air-quality/duct-cleaning-sealing'><strong>duct cleaning</strong></a>, and <a href='/indoor-air-quality/attic-insulation-ventilation'><strong>insulation</strong></a> services wherever you need us.",
+        "areas": ["Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island"],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

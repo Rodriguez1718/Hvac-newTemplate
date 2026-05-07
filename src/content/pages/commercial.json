@@ -1,0 +1,134 @@
+{
+  "title": "Commercial HVAC Services",
+  "description": "Professional commercial HVAC services in {city}. Expert repair, maintenance, installation, and warranty services for businesses.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Commercial HVAC Services",
+        "subtitle": "Reliable, efficient HVAC solutions for businesses of all sizes across {city}.",
+        "buttonText": "REQUEST A QUOTE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Commercial-Banner.webp",
+        "image": "/images/bg2.jpg",
+        "imageAlt": "Commercial HVAC system"
+      }
+    },
+    {
+      "component": "ContentSection",
+      "props": {
+        "badge": "Commercial HVAC",
+        "title": "Expert Commercial HVAC Services for Your Business Needs",
+        "description": "Managing a comfortable work environment is critical for your business. {fullName} provides comprehensive commercial HVAC services including <a href='/commercial/hvac-installation'><strong>installation</strong></a>, <a href='/commercial/hvac-repair'><strong>repair</strong></a>, <a href='/commercial/hvac-maintenance'><strong>maintenance</strong></a>, and <a href='/commercial/hvac-warranty'><strong>warranty support</strong></a>. Our experienced technicians understand the unique demands of commercial systems and deliver solutions that minimize downtime and maximize efficiency.",
+        "features": [
+          "Installation and Upgrades",
+          "Maintenance and Repairs",
+          "Energy Efficiency Optimization",
+          "Code-Compliant Solutions"
+        ],
+        "buttonText": "Contact Us",
+        "buttonHref": "/contact",
+        "images": [
+          "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Commercial-HVAC-Installation-Service.webp"
+        ],
+        "imagePosition": "left"
+      }
+    },
+    {
+      "component": "ContentSectionAlt",
+      "props": {
+        "title": "Why Choose Our Commercial HVAC",
+        "titleHighlight": "Services?",
+        "description": "We deliver dependable, energy-efficient commercial HVAC solutions backed by years of experience and a commitment to keeping your business comfortable.",
+        "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Commercial-HVAC-Maintenance-Service.webp",
+        "imageAlt": "Commercial HVAC technician",
+        "imagePosition": "left",
+        "features": [
+          { "title": "Expertise", "description": "Our certified technicians specialize in commercial HVAC systems of all sizes and brands, delivering reliable results every time." },
+          { "title": "24/7 Emergency Service", "description": "HVAC emergencies don't wait for business hours. Our <a href='/emergency'><strong>emergency HVAC</strong></a> team is available around the clock to keep your operations running smoothly." },
+          { "title": "Cutting-Edge Technology", "description": "We use the latest diagnostic tools and energy-efficient equipment to optimize your commercial HVAC system's performance." },
+          { "title": "Energy Savings", "description": "Our solutions are designed to reduce energy consumption and lower operating costs for your business." },
+          { "title": "Certified Professionals", "description": "All our technicians are fully licensed, insured, and trained to handle complex commercial HVAC systems." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Our Commercial HVAC Services",
+        "variant": "services",
+        "items": [
+          { "title": "HVAC Repair", "href": "/commercial/hvac-repair", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Commercial-HVAC-Repair-Services.webp" },
+          { "title": "HVAC Maintenance", "href": "/commercial/hvac-maintenance", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Commercial-HVAC-Warranty-Service.webp" },
+          { "title": "HVAC Installation", "href": "/commercial/hvac-installation", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Expert-Commercial-HVAC-Maintenance.webp" },
+          { "title": "HVAC Warranty", "href": "/commercial/hvac-warranty", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Commercial-Banner.webp" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions about Commercial HVAC Services in {city}",
+        "faqs": [
+          { "question": "How often should my commercial HVAC system be serviced?", "answer": "We recommend scheduling professional <a href='/commercial/hvac-maintenance'><strong>maintenance</strong></a> at least twice a year — once before the cooling season and once before the heating season. Regular maintenance helps prevent costly breakdowns and keeps your system running efficiently." },
+          { "question": "What are the benefits of upgrading to an energy-efficient commercial HVAC system?", "answer": "Energy-efficient systems can significantly reduce your utility bills, improve indoor comfort, qualify for tax incentives, and reduce your business's carbon footprint. Our team can help you evaluate the best options for your building." },
+          { "question": "How do I know if my commercial HVAC system needs repair or replacement?", "answer": "Signs that your system may need attention include inconsistent temperatures, unusual noises, rising energy bills, frequent breakdowns, and the system being over 15 years old. Our technicians can assess your system and provide honest recommendations." }
+        ]
+      }
+    },
+    {
+      "component": "ServicesSection",
+      "props": {
+        "title": "Related Services",
+        "description": "Explore our full range of HVAC services for residential and commercial properties.",
+        "categories": [
+          { "title": "AC Services", "services": [
+            { "title": "AC Repair", "description": "Fast and reliable air conditioning repairs", "href": "/air-conditioning/ac-repair" },
+            { "title": "AC Tune-Up / Maintenance", "description": "Keep your cooling system running efficiently", "href": "/air-conditioning/ac-tune-up-maintenance" },
+            { "title": "AC Installation and Replacement", "description": "New AC system installations", "href": "/air-conditioning/ac-installation-replacement" },
+            { "title": "Thermostats", "description": "Smart thermostat installation and setup", "href": "/air-conditioning/thermostats" }
+          ]},
+          { "title": "Heating Services", "services": [
+            { "title": "Furnace Repair", "description": "Fast and reliable furnace repair services", "href": "/heating/furnace-repair" },
+            { "title": "Furnace Tune-Up / Maintenance", "description": "Keep your heating system running efficiently", "href": "/heating/furnace-tune-up-maintenance" },
+            { "title": "Furnace Installation and Replacement", "description": "New furnace installations and upgrades", "href": "/heating/furnace-installation-replacement" },
+            { "title": "Boilers Installation and Replacement", "description": "Expert boiler services for your home", "href": "/heating/boilers-installation-replacement" }
+          ]},
+          { "title": "Indoor Air Quality", "services": [
+            { "title": "Air Filtration Systems", "description": "Improve your indoor air quality", "href": "/indoor-air-quality/air-filtration-systems" },
+            { "title": "Duct Cleaning and Sealing", "description": "Clean and seal your ductwork", "href": "/indoor-air-quality/duct-cleaning-sealing" },
+            { "title": "Duct Repair and Replacement", "description": "Fix or replace damaged ductwork", "href": "/indoor-air-quality/duct-repair-replacement" },
+            { "title": "Attic Insulation and Ventilation", "description": "Optimize your insulation", "href": "/indoor-air-quality/attic-insulation-ventilation" }
+          ]},
+          { "title": "Emergency HVAC Services", "services": [
+            { "title": "24/7 AC Repairs", "description": "Round-the-clock AC emergency repairs", "href": "/emergency/24-7-ac-repairs" },
+            { "title": "24/7 Heating and Cooling Repairs", "description": "Emergency heating and cooling services", "href": "/emergency/24-7-heating-cooling-repairs" },
+            { "title": "24/7 Emergency Repairs", "description": "Full emergency HVAC repair services", "href": "/emergency/24-7-emergency-repairs" }
+          ]}
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Services" },
+          { "icon": "award", "text": "Experienced and Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Service Areas for HVAC Services in {city}",
+        "description": "We proudly serve businesses across all {city} boroughs, providing expert <a href='/commercial/hvac-repair'><strong>commercial HVAC repair</strong></a>, <a href='/commercial/hvac-installation'><strong>installation</strong></a>, and <a href='/commercial/hvac-maintenance'><strong>maintenance</strong></a> services wherever you need us.",
+        "areas": ["Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island"],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

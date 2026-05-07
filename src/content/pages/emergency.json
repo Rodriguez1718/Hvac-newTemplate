@@ -1,0 +1,149 @@
+{
+  "title": "Emergency HVAC Services",
+  "description": "24/7 emergency HVAC services in {city}. Fast, reliable emergency AC repairs, heating repairs, and full HVAC emergency services.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Emergency HVAC Services in {city}",
+        "subtitle": "Fast, reliable emergency HVAC repairs and services available 24/7.",
+        "buttonText": "CALL NOW",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Emergency-HVAC-Service-Banner.webp",
+        "image": "/images/bg2.jpg",
+        "imageAlt": "Emergency HVAC service",
+        "trustIndicators": [
+          "24/7 Emergency Service",
+          "We can repair all types of heating & cooling systems",
+          "Highly trained and certified technicians"
+        ]
+      }
+    },
+    {
+      "component": "ContentSection",
+      "props": {
+        "badge": "Emergency HVAC",
+        "title": "Fast and Reliable Emergency HVAC Repairs",
+        "description": "When your heating or cooling system breaks down unexpectedly, you need fast, reliable assistance you can count on. Our <a href='/emergency/24-7-emergency-repairs'><strong>emergency HVAC</strong></a> team is available around the clock to restore your comfort quickly. With fully stocked service vehicles and experienced technicians, we're ready to handle any HVAC emergency day or night.",
+        "features": [
+          "Available 24/7, 365 Days a Year",
+          "Rapid Response Times",
+          "Upfront Emergency Pricing",
+          "All Major Brands Serviced"
+        ],
+        "buttonText": "Contact Us",
+        "buttonHref": "/contact",
+        "images": [
+          "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp"
+        ],
+        "imagePosition": "left"
+      }
+    },
+    {
+      "component": "ContentSectionAlt",
+      "props": {
+        "badge": "Expert Promise",
+        "title": "Why Choose Our Emergency HVAC",
+        "titleHighlight": "Services?",
+        "description": "When facing an HVAC emergency, you need a team you can trust 24/7. Our certified technicians are dispatched quickly to diagnose and resolve your heating or cooling emergency, so you can get back to comfort fast.",
+        "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/24_7-Emergency-Repair-Services.webp",
+        "imageAlt": "Emergency HVAC technician",
+        "imagePosition": "left",
+        "features": [
+          { "title": "24/7 Availability", "description": "We're available around the clock, every day of the year. Day or night, our team is just a phone call away to handle any HVAC emergency." },
+          { "title": "Experienced Technicians", "description": "Our certified HVAC technicians have the skills and tools to diagnose and resolve your emergency quickly and correctly the first time." },
+          { "title": "Transparent Pricing", "description": "No surprise fees. We provide upfront pricing before any emergency work begins so you know exactly what to expect." },
+          { "title": "Fast Response Times", "description": "We understand emergencies can't wait. Our dispatchers prioritize emergency calls to get a technician to your door as quickly as possible." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Comprehensive Emergency HVAC Services",
+        "variant": "services",
+        "items": [
+          { "title": "24/7 AC Repairs", "href": "/emergency/24-7-ac-repairs", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Heating-and-Cooling-Emergency-Repair-Services.webp" },
+          { "title": "24/7 Heating and Cooling Repairs", "href": "/emergency/24-7-heating-cooling-repairs", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp" },
+          { "title": "24/7 Emergency Repairs", "href": "/emergency/24-7-emergency-repairs", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/24_7-Emergency-Repair-Services.webp" }
+        ]
+      }
+    },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "{business}\nMAINTENANCE PLAN", "priceLabel": ["STARTING AS LOW AS", "$14.33", "PER MONTH"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" },
+          { "type": "financing", "headline": ["NO INTEREST", "NO PAYMENTS", "UNTIL 2026"], "subtext": "*WITH APPROVED FINANCING", "buttonText": "LEARN MORE", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "discount": "$95", "subheadline": ["FURNACE", "TUNE-UP"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions about Emergency HVAC Services",
+        "faqs": [
+          { "question": "What qualifies as an HVAC emergency?", "answer": "An HVAC emergency includes complete system failure during extreme temperatures, gas leaks, carbon monoxide alerts, no heat during freezing weather, or any situation that poses a safety risk. If you're unsure, <a href='/contact'><strong>call us</strong></a> and we'll help you determine the urgency." },
+          { "question": "How quickly can you respond to an emergency?", "answer": "We prioritize emergency calls and typically have a technician dispatched within the hour. Response times may vary based on location and demand, but we always aim to reach you as quickly as possible." },
+          { "question": "Is emergency service available on weekends and holidays?", "answer": "Yes, our emergency HVAC services are available 24 hours a day, 7 days a week, including all weekends and holidays. We never close when you need us most." }
+        ]
+      }
+    },
+    {
+      "component": "ServicesSection",
+      "props": {
+        "title": "Related Services",
+        "description": "Explore our full range of HVAC services for year-round comfort and efficiency.",
+        "categories": [
+          { "title": "AC Services", "services": [
+            { "title": "AC Repair", "description": "Fast and reliable air conditioning repairs", "href": "/air-conditioning/ac-repair" },
+            { "title": "AC Tune-Up / Maintenance", "description": "Keep your cooling system running efficiently", "href": "/air-conditioning/ac-tune-up-maintenance" },
+            { "title": "AC Installation and Replacement", "description": "New AC system installations", "href": "/air-conditioning/ac-installation-replacement" },
+            { "title": "Thermostats", "description": "Smart thermostat installation and setup", "href": "/air-conditioning/thermostats" }
+          ]},
+          { "title": "Heating Services", "services": [
+            { "title": "Furnace Repair", "description": "Fast and reliable furnace repair services", "href": "/heating/furnace-repair" },
+            { "title": "Furnace Tune-Up / Maintenance", "description": "Keep your heating system running efficiently", "href": "/heating/furnace-tune-up-maintenance" },
+            { "title": "Furnace Installation and Replacement", "description": "New furnace installations and upgrades", "href": "/heating/furnace-installation-replacement" },
+            { "title": "Boilers Installation and Replacement", "description": "Expert boiler services for your home", "href": "/heating/boilers-installation-replacement" }
+          ]},
+          { "title": "Indoor Air Quality", "services": [
+            { "title": "Air Filtration Systems", "description": "Improve your home's air quality", "href": "/indoor-air-quality/air-filtration-systems" },
+            { "title": "Duct Cleaning and Sealing", "description": "Clean and seal your ductwork", "href": "/indoor-air-quality/duct-cleaning-sealing" },
+            { "title": "Duct Repair and Replacement", "description": "Fix or replace damaged ductwork", "href": "/indoor-air-quality/duct-repair-replacement" },
+            { "title": "Attic Insulation and Ventilation", "description": "Optimize your home's insulation", "href": "/indoor-air-quality/attic-insulation-ventilation" }
+          ]},
+          { "title": "Commercial Services", "services": [
+            { "title": "HVAC Repair", "description": "Commercial HVAC repair services", "href": "/commercial/hvac-repair" },
+            { "title": "HVAC Maintenance", "description": "Preventive commercial HVAC maintenance", "href": "/commercial/hvac-maintenance" },
+            { "title": "HVAC Installation", "description": "New commercial HVAC installations", "href": "/commercial/hvac-installation" },
+            { "title": "HVAC Warranty", "description": "Commercial HVAC warranty services", "href": "/commercial/hvac-warranty" }
+          ]}
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Services" },
+          { "icon": "award", "text": "Experienced and Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Service Areas for HVAC Services in {city}",
+        "description": "We proudly serve homes and businesses across all {city} boroughs, providing expert <a href='/emergency/24-7-ac-repairs'><strong>emergency AC repair</strong></a>, <a href='/emergency/24-7-heating-cooling-repairs'><strong>heating and cooling repair</strong></a>, and <a href='/emergency/24-7-emergency-repairs'><strong>24/7 emergency services</strong></a> wherever you need us.",
+        "areas": ["Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island"],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    }
+  ]
+}

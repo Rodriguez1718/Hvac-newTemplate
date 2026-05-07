@@ -1,0 +1,72 @@
+{
+  "title": "Duct Cleaning and Sealing",
+  "description": "Professional duct cleaning and sealing services to improve airflow and indoor air quality. Expert duct services in {city}.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "Duct Cleaning & Sealing",
+        "subtitle": "Cleaner ducts, better airflow, and healthier indoor air for your home.",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://aonecoolingsolution.in/wp-content/uploads/2025/02/split-ac-service-Sfastservices.jpg",
+        "image": "/images/bg2.jpg",
+        "imageAlt": "Duct cleaning and sealing service"
+      }
+    },
+    { "component": "PlaceholderContentSection", "props": { "title": "TO BE DETERMINED", "subtitle": "BASED ON THE CLIENT DISCOVERY CONVERSATION" } },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "{business}\nMAINTENANCE PLAN", "priceLabel": ["STARTING AS LOW AS", "$14.33", "PER MONTH"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" },
+          { "type": "financing", "headline": ["NO INTEREST", "NO PAYMENTS", "UNTIL 2026"], "subtext": "*WITH APPROVED FINANCING", "buttonText": "LEARN MORE", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "discount": "$95", "subheadline": ["FURNACE", "TUNE-UP"], "buttonText": "BOOK NOW", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions about Duct Cleaning and Sealing in {city}",
+        "faqs": [
+          { "question": "How often should air ducts be cleaned?", "answer": "We recommend professional duct cleaning every 3-5 years, or sooner if you notice excessive dust, musty odors, visible mold, or if you've recently completed home renovations. Homes with pets or allergy sufferers may benefit from more frequent cleaning." },
+          { "question": "What are the benefits of duct sealing?", "answer": "Duct sealing prevents conditioned air from escaping through leaks and gaps, improving energy efficiency by up to 20-30%. It also reduces dust, improves comfort in hard-to-heat or cool rooms, and helps maintain better <a href='/indoor-air-quality'><strong>indoor air quality</strong></a>." },
+          { "question": "How long does duct cleaning and sealing take?", "answer": "A typical duct cleaning takes 3-5 hours depending on the size of your home and ductwork system. Duct sealing can add an additional 1-2 hours. We'll provide a time estimate based on your specific setup." }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "title": "Related Services",
+        "variant": "services",
+        "items": [
+          { "title": "Air Filtration Systems", "href": "/indoor-air-quality/air-filtration-systems", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp" },
+          { "title": "Duct Repair and Replacement", "href": "/indoor-air-quality/duct-repair-replacement", "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop" },
+          { "title": "Attic Insulation and Ventilation", "href": "/indoor-air-quality/attic-insulation-ventilation", "image": "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg" },
+          { "title": "AC Tune-Up / Maintenance", "href": "/air-conditioning/ac-tune-up-maintenance", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Service Areas for Indoor Air Quality Services in {city}",
+        "description": "We proudly serve homes and businesses across all {city} boroughs, providing expert indoor air quality services wherever you need us.",
+        "areas": ["Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island"],
+        "buttonText": "SERVICE AREAS",
+        "buttonHref": "/service-areas"
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW!",
+        "buttonHref": "/contact",
+        "phoneLabel": "CALL OR TEXT FOR GREAT SERVICE",
+        "features": [ { "icon": "siren", "text": "24/7 Emergency Services" }, { "icon": "award", "text": "Experienced and Certified Technicians" } ]
+      }
+    }
+  ]
+}

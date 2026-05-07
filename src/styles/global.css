@@ -1,0 +1,490 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Inter is loaded via <link> in BaseLayout.astro */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.5rem;
+  
+  /* Modern HVAC theme colors */
+  --background: #FAFAFA;
+  --foreground: #0A2540;
+  --card: #FFFFFF;
+  --card-foreground: #0A2540;
+  --popover: #FFFFFF;
+  --popover-foreground: #0A2540;
+  --primary: #0A2540;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1E88E5;
+  --secondary-foreground: #FFFFFF;
+  --muted: #E3F2FD;
+  --muted-foreground: #546E7A;
+  --accent: #00897B;
+  --accent-foreground: #FFFFFF;
+  --destructive: #D32F2F;
+  --border: #CFD8DC;
+  --input: #ECEFF1;
+  --ring: #1E88E5;
+  --chart-1: #0A2540;
+  --chart-2: #1E88E5;
+  --chart-3: #00D4D4;
+  --chart-4: #FF6F00;
+  --chart-5: #E3F2FD;
+  --sidebar: #FAFAFA;
+  --sidebar-foreground: #0A2540;
+  --sidebar-primary: #1E88E5;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E3F2FD;
+  --sidebar-accent-foreground: #0A2540;
+  --sidebar-border: #CFD8DC;
+  --sidebar-ring: #1E88E5;
+}
+
+.dark {
+  /* Dark theme - professional HVAC night mode */
+  --background: #0A1929;
+  --foreground: #E3F2FD;
+  --card: #132F4C;
+  --card-foreground: #E3F2FD;
+  --popover: #132F4C;
+  --popover-foreground: #E3F2FD;
+  --primary: #E3F2FD;
+  --primary-foreground: #0A2540;
+  --secondary: #42A5F5;
+  --secondary-foreground: #FFFFFF;
+  --muted: #1E3A5F;
+  --muted-foreground: #90CAF9;
+  --accent: #26A69A;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF5350;
+  --border: #1E3A5F;
+  --input: #1E3A5F;
+  --ring: #42A5F5;
+  --chart-1: #E3F2FD;
+  --chart-2: #42A5F5;
+  --chart-3: #26A69A;
+  --chart-4: #FF8A65;
+  --chart-5: #0A1929;
+  --sidebar: #132F4C;
+  --sidebar-foreground: #E3F2FD;
+  --sidebar-primary: #42A5F5;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1E3A5F;
+  --sidebar-accent-foreground: #E3F2FD;
+  --sidebar-border: #1E3A5F;
+  --sidebar-ring: #42A5F5;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    font-display: swap;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  /* Faster taps on mobile */
+  a, button {
+    touch-action: manipulation;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  h1 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  h2 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  h3 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+  h4, h5, h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    @apply text-xl md:text-2xl;
+  }
+  .container {
+    @apply max-w-7xl;
+  }
+  
+  /* Bold Extended font utility */
+  .font-bold-extended {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+  }
+  
+  /* Performance optimizations */
+  img {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 300px;
+  }
+}
+
+/* Brand color utilities with opacity support */
+@layer utilities {
+  /* Background colors */
+  .bg-brand-primary {
+    background-color: var(--brand-primary);
+  }
+  .bg-brand-secondary {
+    background-color: var(--brand-secondary);
+  }
+  .bg-brand-tertiary {
+    background-color: var(--brand-tertiary);
+  }
+  .bg-brand-quaternary {
+    background-color: var(--brand-quaternary);
+  }
+
+  /* Text colors */
+  .text-brand-primary {
+    color: var(--brand-primary);
+  }
+  .text-brand-secondary {
+    color: var(--brand-secondary);
+  }
+  .text-brand-tertiary {
+    color: var(--brand-tertiary);
+  }
+  .text-brand-quaternary {
+    color: var(--brand-quaternary);
+  }
+
+  /* Border colors */
+  .border-brand-primary {
+    border-color: var(--brand-primary);
+  }
+  .border-brand-secondary {
+    border-color: var(--brand-secondary);
+  }
+  .border-brand-tertiary {
+    border-color: var(--brand-tertiary);
+  }
+  .border-brand-quaternary {
+    border-color: var(--brand-quaternary);
+  }
+
+  /* Stroke colors */
+  .stroke-brand-secondary {
+    stroke: var(--brand-secondary);
+  }
+  .stroke-white {
+    stroke: #fff;
+  }
+  .group:hover .group-hover\:stroke-white {
+    stroke: #fff;
+  }
+  .group:hover .group-hover\:stroke-brand-secondary {
+    stroke: var(--brand-secondary);
+  }
+  .group:hover .group-hover\:stroke-brand-tertiary {
+    stroke: var(--brand-tertiary);
+  }
+
+  /* Secondary accent (darkish blue) */
+  .bg-brand-accent-secondary {
+    background-color: var(--brand-accent-secondary);
+  }
+  .text-brand-accent-secondary {
+    color: var(--brand-accent-secondary);
+  }
+  .border-brand-accent-secondary {
+    border-color: var(--brand-accent-secondary);
+  }
+
+  /* Highlight accent (warm yellow) */
+  .bg-brand-highlight {
+    background-color: var(--brand-highlight);
+  }
+  .text-brand-highlight {
+    color: var(--brand-highlight);
+  }
+  .border-brand-highlight {
+    border-color: var(--brand-highlight);
+  }
+  .stroke-brand-highlight {
+    stroke: var(--brand-highlight);
+  }
+  .group:hover .group-hover\:stroke-brand-highlight {
+    stroke: var(--brand-highlight);
+  }
+  .group:hover .group-hover\:bg-brand-highlight {
+    background-color: var(--brand-highlight);
+  }
+  .group:hover .group-hover\:text-brand-highlight {
+    color: var(--brand-highlight);
+  }
+
+  /* Coupon colors */
+  .bg-coupon-yellow {
+    background-color: var(--coupon-yellow);
+  }
+  .bg-coupon-cyan {
+    background-color: var(--coupon-cyan);
+  }
+  .bg-coupon-orange {
+    background-color: var(--coupon-orange);
+  }
+  .text-coupon-yellow {
+    color: var(--coupon-yellow);
+  }
+  .text-coupon-cyan {
+    color: var(--coupon-cyan);
+  }
+  .text-coupon-orange {
+    color: var(--coupon-orange);
+  }
+  .border-coupon-yellow {
+    border-color: var(--coupon-yellow);
+  }
+  .border-coupon-cyan {
+    border-color: var(--coupon-cyan);
+  }
+  .border-coupon-orange {
+    border-color: var(--coupon-orange);
+  }
+
+  /* Opacity variants for backgrounds - common values */
+  .bg-brand-primary\/10 { background-color: color-mix(in srgb, var(--brand-primary) 10%, transparent); }
+  .bg-brand-primary\/20 { background-color: color-mix(in srgb, var(--brand-primary) 20%, transparent); }
+  .bg-brand-primary\/30 { background-color: color-mix(in srgb, var(--brand-primary) 30%, transparent); }
+  .bg-brand-primary\/40 { background-color: color-mix(in srgb, var(--brand-primary) 40%, transparent); }
+  .bg-brand-primary\/50 { background-color: color-mix(in srgb, var(--brand-primary) 50%, transparent); }
+  .bg-brand-primary\/60 { background-color: color-mix(in srgb, var(--brand-primary) 60%, transparent); }
+  .bg-brand-primary\/70 { background-color: color-mix(in srgb, var(--brand-primary) 70%, transparent); }
+  .bg-brand-primary\/80 { background-color: color-mix(in srgb, var(--brand-primary) 80%, transparent); }
+  .bg-brand-primary\/90 { background-color: color-mix(in srgb, var(--brand-primary) 90%, transparent); }
+
+  .bg-brand-secondary\/10 { background-color: color-mix(in srgb, var(--brand-secondary) 10%, transparent); }
+  .bg-brand-secondary\/20 { background-color: color-mix(in srgb, var(--brand-secondary) 20%, transparent); }
+  .bg-brand-secondary\/30 { background-color: color-mix(in srgb, var(--brand-secondary) 30%, transparent); }
+  .bg-brand-secondary\/40 { background-color: color-mix(in srgb, var(--brand-secondary) 40%, transparent); }
+  .bg-brand-secondary\/50 { background-color: color-mix(in srgb, var(--brand-secondary) 50%, transparent); }
+  .bg-brand-secondary\/60 { background-color: color-mix(in srgb, var(--brand-secondary) 60%, transparent); }
+  .bg-brand-secondary\/70 { background-color: color-mix(in srgb, var(--brand-secondary) 70%, transparent); }
+  .bg-brand-secondary\/80 { background-color: color-mix(in srgb, var(--brand-secondary) 80%, transparent); }
+  .bg-brand-secondary\/90 { background-color: color-mix(in srgb, var(--brand-secondary) 90%, transparent); }
+
+  .bg-brand-tertiary\/10 { background-color: color-mix(in srgb, var(--brand-tertiary) 10%, transparent); }
+  .bg-brand-tertiary\/20 { background-color: color-mix(in srgb, var(--brand-tertiary) 20%, transparent); }
+  .bg-brand-tertiary\/30 { background-color: color-mix(in srgb, var(--brand-tertiary) 30%, transparent); }
+  .bg-brand-tertiary\/40 { background-color: color-mix(in srgb, var(--brand-tertiary) 40%, transparent); }
+  .bg-brand-tertiary\/50 { background-color: color-mix(in srgb, var(--brand-tertiary) 50%, transparent); }
+  .bg-brand-tertiary\/60 { background-color: color-mix(in srgb, var(--brand-tertiary) 60%, transparent); }
+  .bg-brand-tertiary\/70 { background-color: color-mix(in srgb, var(--brand-tertiary) 70%, transparent); }
+  .bg-brand-tertiary\/80 { background-color: color-mix(in srgb, var(--brand-tertiary) 80%, transparent); }
+  .bg-brand-tertiary\/90 { background-color: color-mix(in srgb, var(--brand-tertiary) 90%, transparent); }
+
+  .bg-brand-quaternary\/10 { background-color: color-mix(in srgb, var(--brand-quaternary) 10%, transparent); }
+  .bg-brand-quaternary\/20 { background-color: color-mix(in srgb, var(--brand-quaternary) 20%, transparent); }
+  .bg-brand-quaternary\/30 { background-color: color-mix(in srgb, var(--brand-quaternary) 30%, transparent); }
+  .bg-brand-quaternary\/40 { background-color: color-mix(in srgb, var(--brand-quaternary) 40%, transparent); }
+  .bg-brand-quaternary\/50 { background-color: color-mix(in srgb, var(--brand-quaternary) 50%, transparent); }
+  .bg-brand-quaternary\/60 { background-color: color-mix(in srgb, var(--brand-quaternary) 60%, transparent); }
+  .bg-brand-quaternary\/70 { background-color: color-mix(in srgb, var(--brand-quaternary) 70%, transparent); }
+  .bg-brand-quaternary\/80 { background-color: color-mix(in srgb, var(--brand-quaternary) 80%, transparent); }
+  .bg-brand-quaternary\/90 { background-color: color-mix(in srgb, var(--brand-quaternary) 90%, transparent); }
+
+  .bg-brand-accent-secondary\/10 { background-color: color-mix(in srgb, var(--brand-accent-secondary) 10%, transparent); }
+  .bg-brand-accent-secondary\/20 { background-color: color-mix(in srgb, var(--brand-accent-secondary) 20%, transparent); }
+  .bg-brand-accent-secondary\/30 { background-color: color-mix(in srgb, var(--brand-accent-secondary) 30%, transparent); }
+  .bg-brand-accent-secondary\/40 { background-color: color-mix(in srgb, var(--brand-accent-secondary) 40%, transparent); }
+  .bg-brand-accent-secondary\/50 { background-color: color-mix(in srgb, var(--brand-accent-secondary) 50%, transparent); }
+  .bg-brand-accent-secondary\/60 { background-color: color-mix(in srgb, var(--brand-accent-secondary) 60%, transparent); }
+  .bg-brand-accent-secondary\/70 { background-color: color-mix(in srgb, var(--brand-accent-secondary) 70%, transparent); }
+  .bg-brand-accent-secondary\/80 { background-color: color-mix(in srgb, var(--brand-accent-secondary) 80%, transparent); }
+  .bg-brand-accent-secondary\/90 { background-color: color-mix(in srgb, var(--brand-accent-secondary) 90%, transparent); }
+
+  .bg-brand-highlight\/10 { background-color: color-mix(in srgb, var(--brand-highlight) 10%, transparent); }
+  .bg-brand-highlight\/20 { background-color: color-mix(in srgb, var(--brand-highlight) 20%, transparent); }
+  .bg-brand-highlight\/30 { background-color: color-mix(in srgb, var(--brand-highlight) 30%, transparent); }
+  .bg-brand-highlight\/40 { background-color: color-mix(in srgb, var(--brand-highlight) 40%, transparent); }
+  .bg-brand-highlight\/50 { background-color: color-mix(in srgb, var(--brand-highlight) 50%, transparent); }
+  .bg-brand-highlight\/60 { background-color: color-mix(in srgb, var(--brand-highlight) 60%, transparent); }
+  .bg-brand-highlight\/70 { background-color: color-mix(in srgb, var(--brand-highlight) 70%, transparent); }
+  .bg-brand-highlight\/80 { background-color: color-mix(in srgb, var(--brand-highlight) 80%, transparent); }
+  .bg-brand-highlight\/90 { background-color: color-mix(in srgb, var(--brand-highlight) 90%, transparent); }
+}
+
+/* Scroll animations */
+@layer utilities {
+  [data-animate] {
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-animate="fade-up"] {
+    transform: translateY(32px);
+  }
+
+  [data-animate="fade-down"] {
+    transform: translateY(-32px);
+  }
+
+  [data-animate="fade-left"] {
+    transform: translateX(32px);
+  }
+
+  [data-animate="fade-right"] {
+    transform: translateX(-32px);
+  }
+
+  [data-animate="zoom-in"] {
+    transform: scale(0.92);
+  }
+
+  [data-animate="fade-scale"] {
+    transform: scale(0.95) translateY(16px);
+  }
+
+  [data-animate].is-visible {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
+
+  /* Staggered children — smooth cascade */
+  [data-animate-stagger] > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-animate-stagger].is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  [data-animate-stagger].is-visible > *:nth-child(1) { transition-delay: 0ms; }
+  [data-animate-stagger].is-visible > *:nth-child(2) { transition-delay: 100ms; }
+  [data-animate-stagger].is-visible > *:nth-child(3) { transition-delay: 200ms; }
+  [data-animate-stagger].is-visible > *:nth-child(4) { transition-delay: 300ms; }
+  [data-animate-stagger].is-visible > *:nth-child(5) { transition-delay: 400ms; }
+  [data-animate-stagger].is-visible > *:nth-child(6) { transition-delay: 500ms; }
+  [data-animate-stagger].is-visible > *:nth-child(7) { transition-delay: 600ms; }
+  [data-animate-stagger].is-visible > *:nth-child(8) { transition-delay: 700ms; }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    [data-animate],
+    [data-animate-stagger] > * {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Mobile: shorter distances, faster timing */
+  @media (max-width: 768px) {
+    [data-animate] {
+      transition-duration: 0.5s;
+    }
+    [data-animate="fade-up"] { transform: translateY(20px); }
+    [data-animate="fade-down"] { transform: translateY(-20px); }
+    [data-animate="fade-left"] { transform: translateX(20px); }
+    [data-animate="fade-right"] { transform: translateX(-20px); }
+    [data-animate="fade-scale"] { transform: scale(0.97) translateY(12px); }
+
+    [data-animate-stagger] > * {
+      transform: translateY(16px);
+      transition-duration: 0.4s;
+    }
+    [data-animate-stagger].is-visible > *:nth-child(1) { transition-delay: 0ms; }
+    [data-animate-stagger].is-visible > *:nth-child(2) { transition-delay: 80ms; }
+    [data-animate-stagger].is-visible > *:nth-child(3) { transition-delay: 160ms; }
+    [data-animate-stagger].is-visible > *:nth-child(4) { transition-delay: 240ms; }
+    [data-animate-stagger].is-visible > *:nth-child(5) { transition-delay: 320ms; }
+    [data-animate-stagger].is-visible > *:nth-child(6) { transition-delay: 400ms; }
+    [data-animate-stagger].is-visible > *:nth-child(7) { transition-delay: 480ms; }
+    [data-animate-stagger].is-visible > *:nth-child(8) { transition-delay: 560ms; }
+  }
+
+  /* Animation delay helpers */
+  [data-animate-delay="100"] { transition-delay: 100ms; }
+  [data-animate-delay="200"] { transition-delay: 200ms; }
+  [data-animate-delay="300"] { transition-delay: 300ms; }
+  [data-animate-delay="400"] { transition-delay: 400ms; }
+  [data-animate-delay="500"] { transition-delay: 500ms; }
+}
+
+/* CTA button pulse animation */
+@layer utilities {
+  .cta-pulse {
+    animation: ctaPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes ctaPulse {
+    0%, 100% {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+      box-shadow: 0 4px 30px color-mix(in srgb, var(--brand-highlight) 50%, transparent),
+                  0 0 60px color-mix(in srgb, var(--brand-highlight) 20%, transparent);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-pulse {
+      animation: none !important;
+    }
+  }
+}

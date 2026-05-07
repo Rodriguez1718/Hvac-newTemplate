@@ -1,0 +1,193 @@
+---
+import { siteConfig } from "@/config/site"
+
+interface Feature {
+  icon: "siren" | "award" | "phone" | "clock" | "shield" | "wrench";
+  text: string;
+}
+
+interface Props {
+  buttonText?: string;
+  buttonHref?: string;
+  phoneLabel?: string;
+  phone?: string;
+  features?: Feature[];
+  borderColor?: string;
+}
+
+const {
+  buttonText = "SCHEDULE NOW",
+  buttonHref = "/contact",
+  phoneLabel = "Call or Text for Great Service",
+  phone = siteConfig.contact.phoneFormatted,
+  features = [
+    { icon: "siren", text: "24/7 Emergency Service" },
+    { icon: "award", text: "Experienced & Certified Technicians" },
+    { icon: "shield", text: "Licensed & Insured" }
+  ],
+  borderColor
+} = Astro.props;
+
+const iconSvgs: Record<string, string> = {
+  siren: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18v-6a5 5 0 1 1 10 0v6"></path><path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"></path><path d="M21 12h1"></path><path d="M18.5 4.5 18 5"></path><path d="M2 12h1"></path><path d="M12 2v1"></path><path d="m4.929 4.929.707.707"></path><path d="M12 12v6"></path></svg>`,
+  award: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>`,
+  shield: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
+};
+
+const borderStyle = borderColor ? `border-top-color: ${borderColor}; border-bottom-color: ${borderColor};` : "";
+---
+
+<section class="cta-strip" style={borderStyle}>
+  <div class="container mx-auto px-6 md:px-12 lg:px-16">
+    <div class="cta-inner" data-animate="fade-up">
+      <!-- Left: button + phone -->
+      <div class="cta-left">
+        <a href={buttonHref} class="cta-btn">
+          {buttonText}
+        </a>
+        <div class="cta-phone">
+          <span class="cta-phone-label">{phoneLabel}</span>
+          <a href={`tel:${phone}`} class="cta-phone-number">{phone}</a>
+        </div>
+      </div>
+
+      <!-- Right: features -->
+      <div class="cta-features" data-animate-stagger>
+        {features.map((feature) => {
+          const iconSvg = iconSvgs[feature.icon];
+          return (
+            <div class="cta-feature">
+              {iconSvg && (
+                <span class="cta-feature-icon">
+                  <Fragment set:html={iconSvg} />
+                </span>
+              )}
+              <span class="cta-feature-text">{feature.text}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-strip {
+    position: relative;
+    background: var(--brand-primary);
+    padding: 1.5rem 0;
+    border-top: 3px solid var(--brand-highlight);
+    border-bottom: 3px solid var(--brand-highlight);
+  }
+  .cta-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;  
+    background-image: url('/images/coolair.png');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .cta-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 2rem;
+    background: var(--brand-highlight);
+    color: var(--brand-primary);
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .cta-btn:hover {
+    filter: brightness(1.08);
+    transform: translateX(4px);
+  }
+
+  .cta-phone {
+    display: flex;
+    flex-direction: column;
+  }
+  .cta-phone-label {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+  }
+  .cta-phone-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+  .cta-phone-number:hover {
+    color: var(--brand-highlight);
+  }
+
+  .cta-features {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .cta-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cta-feature-icon {
+    color: var(--brand-highlight);
+    display: flex;
+    align-items: center;
+  }
+
+  .cta-feature-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.7);
+  }
+
+  @media (max-width: 768px) {
+    .cta-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+    .cta-left {
+      flex-direction: column;
+    }
+    .cta-features {
+      justify-content: center;
+    }
+  }
+</style>

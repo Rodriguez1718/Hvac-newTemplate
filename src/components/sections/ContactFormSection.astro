@@ -1,0 +1,626 @@
+---
+import { siteConfig, getLocationText } from "@/config/site"
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  phone?: string;
+  email?: string;
+  address?: string;
+  serviceOptions?: string[];
+  planOptions?: string[];
+}
+
+const {
+  title: rawTitle = `Get in Touch with ${siteConfig.business.fullName}`,
+  description: rawDescription = "Fill out the form, and a member of our team will get back to you promptly. Whether you're looking for a quick repair, a detailed quote, or general advice, we've got you covered.",
+  image = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80",
+  phone = siteConfig.contact.phoneFormatted,
+  email = siteConfig.contact.email,
+  address = `${siteConfig.location.city}, ${siteConfig.location.state}`,
+  serviceOptions = ["Air Conditioning", "Heating", "Indoor Air Quality", "Emergency Service", "Commercial HVAC", "Maintenance", "Other"],
+  planOptions = ["Yes", "No", "Not Sure"]
+} = Astro.props;
+
+const title = getLocationText(rawTitle);
+const description = getLocationText(rawDescription);
+---
+
+<!-- Contact Info Header -->
+<section class="cf-header-section">
+  <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+
+    <div class="cf-header" data-animate="fade-up">
+      <div class="cf-eyebrow">
+        <span class="cf-eyebrow-text">Contact</span>
+      </div>
+      <h2 class="cf-title">{title}</h2>
+      <div class="cf-divider"></div>
+      <p class="cf-desc">{description}</p>
+    </div>
+
+    <!-- Contact cards -->
+    <div class="cf-cards" data-animate-stagger>
+
+      <a href={`tel:${phone}`} class="cf-card group">
+        <span class="cf-card-accent"></span>
+        <div class="cf-card-inner">
+          <div class="cf-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="cf-card-label">Phone</span>
+            <span class="cf-card-value">{phone}</span>
+          </div>
+        </div>
+      </a>
+
+      <a href={`mailto:${email}`} class="cf-card group">
+        <span class="cf-card-accent"></span>
+        <div class="cf-card-inner">
+          <div class="cf-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </div>
+          <div>
+            <span class="cf-card-label">Email Address</span>
+            <span class="cf-card-value">{email}</span>
+          </div>
+        </div>
+      </a>
+
+      <div class="cf-card group">
+        <span class="cf-card-accent"></span>
+        <div class="cf-card-inner">
+          <div class="cf-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <span class="cf-card-label">Address</span>
+            <span class="cf-card-value">{address}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Form Section with Image -->
+<section class="cf-form-section" id="contact-form">
+
+  <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28 relative z-10">
+    <div class="cf-form-layout">
+
+      <!-- Image Side -->
+      <div class="cf-image-side" data-animate="fade-right">
+        <div class="cf-image-wrap">
+          <img
+            src={image}
+            alt="Professional HVAC technician ready to help"
+            class="cf-image"
+            loading="lazy"
+          />
+          <div class="cf-image-overlay"></div>
+        </div>
+      </div>
+
+      <!-- Form Side -->
+      <div class="cf-form-side" data-animate="fade-left">
+        <div class="cf-form-card">
+
+          <div class="cf-form-inner">
+            <div class="cf-form-header">
+              <div class="cf-form-header-line"></div>
+              <h3 class="cf-form-heading">Contact Form</h3>
+            </div>
+
+            <form class="cf-form">
+              <div class="cf-field">
+                <label for="name" class="cf-label">Name*</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="cf-input"
+                  placeholder="Your full name"
+                />
+              </div>
+
+              <div class="cf-field-row">
+                <div class="cf-field">
+                  <label for="email" class="cf-label">Email Address*</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="cf-input"
+                    placeholder="you@email.com"
+                  />
+                </div>
+                <div class="cf-field">
+                  <label for="phone" class="cf-label">Phone</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="cf-input"
+                    placeholder="(123) 456-7890"
+                  />
+                </div>
+              </div>
+
+              <div class="cf-field-row">
+                <div class="cf-field">
+                  <label for="plan" class="cf-label">Are You Interested In A Plan?</label>
+                  <div class="cf-select-wrap">
+                    <select id="plan" name="plan" class="cf-input cf-select">
+                      <option value="">Select an option</option>
+                      {planOptions.map((option) => (
+                        <option value={option.toLowerCase()}>{option}</option>
+                      ))}
+                    </select>
+                    <svg class="cf-select-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="cf-field">
+                  <label for="service" class="cf-label">Which Service Do You Need?</label>
+                  <div class="cf-select-wrap">
+                    <select id="service" name="service" class="cf-input cf-select">
+                      <option value="">Select a service</option>
+                      {serviceOptions.map((option) => (
+                        <option value={option.toLowerCase().replace(/\s+/g, '-')}>{option}</option>
+                      ))}
+                    </select>
+                    <svg class="cf-select-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cf-field">
+                <label for="message" class="cf-label">Message*</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="3"
+                  required
+                  class="cf-input cf-textarea"
+                  placeholder="Tell us about your HVAC needs..."
+                ></textarea>
+              </div>
+
+              <div class="cf-field">
+                <label for="verification" class="cf-label">Verification*</label>
+                <input
+                  type="text"
+                  id="verification"
+                  name="verification"
+                  placeholder="Enter the code shown"
+                  required
+                  class="cf-input"
+                />
+              </div>
+
+              <button type="submit" class="cf-submit">
+                Submit
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </form>
+
+            <!-- Trust indicators -->
+            <div class="cf-trust">
+              <span class="cf-trust-item">
+                <span class="cf-trust-dot"></span>
+                Secure Form
+              </span>
+              <span class="cf-trust-item">
+                <span class="cf-trust-dot"></span>
+                Fast Response
+              </span>
+              <span class="cf-trust-item">
+                <span class="cf-trust-dot"></span>
+                No Spam
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ═══════════════════════════════════════════
+     CONTACT INFO HEADER
+     ═══════════════════════════════════════════ */
+  .cf-header-section {
+    background: var(--background);
+  }
+
+  .cf-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cf-eyebrow {
+    margin-bottom: 1.25rem;
+  }
+  .cf-eyebrow-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--brand-highlight);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--brand-primary);
+    border-left: 3px solid var(--brand-highlight);
+  }
+  .cf-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--brand-primary);
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 768px) {
+    .cf-title { font-size: 2.25rem; }
+  }
+  .cf-divider {
+    width: 3rem;
+    height: 3px;
+    background: var(--brand-highlight);
+    margin: 0 auto 1.25rem;
+  }
+  .cf-desc {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--brand-secondary);
+  }
+
+  /* ─── Contact Cards ─── */
+  .cf-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+
+  .cf-card {
+    position: relative;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: all 0.35s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+  .cf-card:hover {
+    border-color: var(--brand-highlight);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  }
+
+  .cf-card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 3px;
+    background: var(--brand-highlight);
+    transition: height 0.35s ease;
+  }
+  .cf-card:hover .cf-card-accent {
+    height: 100%;
+  }
+
+  .cf-card-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .cf-card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-tertiary);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: var(--brand-primary);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+  .cf-card:hover .cf-card-icon {
+    background: var(--brand-highlight);
+    border-color: var(--brand-highlight);
+    color: var(--brand-primary);
+  }
+
+  .cf-card-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--brand-secondary);
+    margin-bottom: 0.15rem;
+  }
+  .cf-card-value {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--brand-primary);
+    line-height: 1.3;
+  }
+
+  @media (max-width: 768px) {
+    .cf-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ═══════════════════════════════════════════
+     FORM SECTION
+     ═══════════════════════════════════════════ */  
+  .cf-form-section {
+    background: var(--brand-primary);
+    position: relative;
+    overflow: hidden;
+    margin: 50px;
+    border-radius: 12px;
+  }
+
+  .cf-form-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 72rem;
+    margin: 0 auto;
+    align-items: stretch;
+  }
+
+  /* ─── Image Side ─── */
+  .cf-image-side {
+    position: relative;
+  }
+
+  .cf-image-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+  .cf-image {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 3 / 4;
+  }
+  .cf-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--brand-primary) 60%, transparent) 0%,
+      transparent 40%
+    );
+  }
+
+  /* ─── Form Side ─── */
+  .cf-form-card {
+    background: white;
+    border: 3px solid var(--brand-primary);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .cf-form-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--brand-highlight);
+  }
+
+  .cf-form-inner {
+    padding: 2rem 1.75rem;
+  }
+  @media (min-width: 768px) {
+    .cf-form-inner {
+      padding: 2.5rem 2rem;
+    }
+  }
+
+  /* Form header */
+  .cf-form-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .cf-form-header-line {
+    width: 3px;
+    height: 24px;
+    background: var(--brand-highlight);
+    flex-shrink: 0;
+  }
+  .cf-form-heading {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--brand-primary);
+  }
+
+  /* ─── Form fields ─── */
+  .cf-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .cf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .cf-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .cf-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--brand-primary);
+  }
+
+  .cf-input {
+    width: 100%;
+    padding: 0.7rem 0.875rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: var(--brand-tertiary);
+    font-size: 0.875rem;
+    color: var(--brand-primary);
+    transition: border-color 0.3s ease;
+    outline: none;
+    font-family: inherit;
+  }
+  .cf-input::placeholder {
+    color: var(--brand-secondary);
+    opacity: 0.5;
+  }
+  .cf-input:focus {
+    border-color: var(--brand-highlight);
+  }
+
+  .cf-textarea {
+    resize: none;
+    min-height: 80px;
+  }
+
+  .cf-select-wrap {
+    position: relative;
+  }
+  .cf-select {
+    appearance: none;
+    cursor: pointer;
+    padding-right: 2.25rem;
+  }
+  .cf-select-chevron {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem;
+    height: 1rem;
+    color: var(--brand-secondary);
+    pointer-events: none;
+  }
+
+  /* Submit button */
+  .cf-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    width: 100%;
+    padding: 0.8rem 2rem;
+    background: var(--brand-highlight);
+    color: var(--brand-primary);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+  }
+  .cf-submit:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+  }
+  .cf-submit svg {
+    transition: transform 0.3s ease;
+  }
+  .cf-submit:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* ─── Trust indicators ─── */
+  .cf-trust {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .cf-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--brand-secondary);
+  }
+  .cf-trust-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--brand-highlight);
+    flex-shrink: 0;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .cf-form-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .cf-image-side {
+      order: 2;
+    }
+    .cf-form-side {
+      order: 1;
+    }
+    .cf-image {
+      aspect-ratio: 16 / 9;
+    }
+    .cf-field-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

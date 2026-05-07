@@ -1,0 +1,85 @@
+{
+  "title": "Service Areas",
+  "description": "Providing expert HVAC solutions across {city} and surrounding areas. Residential and commercial heating and cooling services with 24/7 emergency support.",
+  "sections": [
+    {
+      "component": "HeroSection",
+      "props": {
+        "variant": "subpage",
+        "title": "Service Areas",
+        "subtitle": "Providing expert HVAC solutions to homes and businesses across {city}, ensuring reliable and efficient services every time. Call us for expert assistance!",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "image": "/images/service-area.png"
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Expert HVAC Services in {city} and Surrounding Areas",
+        "description": "Looking for reliable HVAC services in {city}? We provide expert residential and <a href='/commercial'><strong>commercial</strong></a> heating and cooling solutions across the city, from Hollywood Hills to <a href='/santa-monica'><strong>Santa Monica</strong></a>. Whether you need AC repair, furnace installation, duct cleaning, or emergency services, our licensed team serves your area with speed, skill, and care. We offer reliable <a href='/maintenance-plan'><strong>maintenance</strong></a> and <a href='/emergency'><strong>24/7 emergency services</strong></a> to keep your HVAC system in top shape. Serving neighborhoods like Downtown LA, Beverly Hills, and <a href='/glendale'><strong>Glendale</strong></a>, we are committed to quality, efficiency, and customer satisfaction. <a href='/contact'><strong>Call us today</strong></a> to schedule your service!",
+        "areas": [
+          "Santa Monica", "Pasadena", "Glendale", "Culver City", "Downtown {city}", "Hollywood",
+          "Beverly Hills", "Venice", "Westwood", "San Fernando Valley",
+          "San Diego", "El Monte", "West Hollywood", "Beverly Hills", "Encino",
+          "Los Feliz/Silverlake", "Burbank", "San Gabriel Valley", "Arcadia",
+          "Torrance", "Long Beach", "Inglewood", "El Segundo", "Brentwood",
+          "Silver Lake", "Echo Park", "Hancock Park", "Marina del Rey", "Manhattan Beach",
+          "El Segundo", "Brentwood", "Sherman Oaks", "Torrance Park", "Gardena/Harbor City", "Silverlake/Echo"
+        ]
+      }
+    },
+    {
+      "component": "ContentSectionAlt",
+      "props": {
+        "badge": "SERVICE AREAS",
+        "title": "Expert HVAC Solutions for",
+        "titleHighlight": "{city}, CA",
+        "description": "At {business}, we proudly serve a wide range of communities across {city} and the surrounding areas. Our team of licensed and insured HVAC professionals is dedicated to providing top-quality heating and cooling services, covering everything from routine <a href='/maintenance-plan'><strong>maintenance</strong></a> to <a href='/emergency'><strong>emergency repairs</strong></a>.",
+        "featuresTitle": "Key Benefits",
+        "features": [
+          { "title": "Local Expertise", "description": "Deep knowledge of {city} HVAC systems and local building codes." },
+          { "title": "Mobile Service", "description": "Fully equipped service vehicles ready to respond across all service areas." },
+          { "title": "24/7 Emergency Support", "description": "Round-the-clock emergency HVAC services available in all areas we serve." }
+        ],
+        "image": "https://ucarecdn.com/514fa2a4-9e6c-417b-8e38-fdab8ec5364a/-/preview/999x1000/",
+        "imagePosition": "left"
+      }
+    },
+    {
+      "component": "CouponsSection",
+      "props": {
+        "coupons": [
+          { "label": "Senior & Military", "discount": "10% OFF", "description": "Senior & Military Discounts. Cannot be combined with any other offer.", "expires": "Coupon Expires 12/31" },
+          { "label": "Free Camera Inspection", "discount": "FREE", "description": "Free Camera Inspection with any drain cleaning. Call for details.", "expires": "Coupon Expires 12/31" },
+          { "label": "HVAC", "discount": "50% OFF", "description": "Any Typical Drill Line. Cannot be combined with any other offer.", "expires": "Offer Expires 12/31" }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "variant": "services",
+        "title": "Related Services",
+        "items": [
+          { "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp", "icon": "wrench", "title": "Air Conditioning Services", "href": "/air-conditioning" },
+          { "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop", "icon": "building", "title": "Heating Services", "href": "/heating" },
+          { "image": "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg", "icon": "settings", "title": "Indoor Air Quality Services", "href": "/indoor-air-quality" },
+          { "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp", "icon": "wrench", "title": "Emergency HVAC Services", "href": "/emergency" }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW",
+        "buttonHref": "/contact",
+        "phoneLabel": "Call or Text for Great Service",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Service" },
+          { "icon": "award", "text": "Experienced and Certified Technicians" }
+        ]
+      }
+    }
+  ]
+}

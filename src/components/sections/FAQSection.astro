@@ -1,0 +1,445 @@
+---
+import { getLocationText } from "@/config/site"
+
+interface FAQItem {
+  question: string;
+  answer?: string;
+}
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  badge?: string;
+  faqs: FAQItem[];
+}
+
+const { title: rawTitle, subtitle: rawSubtitle, badge = "FAQ", faqs: rawFaqs } = Astro.props;
+
+const title = getLocationText(rawTitle);
+const subtitle = rawSubtitle ? getLocationText(rawSubtitle) : undefined;
+const faqs = rawFaqs.map(faq => ({
+  ...faq,
+  question: getLocationText(faq.question),
+  answer: faq.answer ? getLocationText(faq.answer) : undefined,
+}));
+---
+
+<section class="fq-section">
+  <div class="fq-body">
+    <div class="container mx-auto px-6 md:px-12 lg:px-16">
+
+      <!-- Header -->
+      <div class="fq-header" data-animate="fade-up">
+        <div class="fq-eyebrow">
+          <span class="fq-eyebrow-text">{badge}</span>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          <h2 class="fq-title">{title}</h2>
+          {subtitle && <p class="fq-subtitle">{subtitle}</p>}
+        </div>
+      </div>
+
+      <!-- Two-column layout -->
+      <div class="fq-layout">
+
+        <!-- Left: Side card -->
+        <div class="fq-side" data-animate="fade-up" data-animate-delay="100">
+          <div class="fq-side-card">
+            <span class="fq-side-strip"></span>
+            <div class="fq-side-inner">
+              <div class="fq-side-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+              </div>
+              <h3 class="fq-side-heading">Have Questions?</h3>
+              <p class="fq-side-text">
+                We're here to help. If you don't find your answer below, reach out to our team directly.
+              </p>
+              <a href="/contact" class="fq-side-btn">
+                Contact Us
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Accordion -->
+        <div class="fq-accordion" data-animate-stagger>
+          {faqs.filter(faq => faq.question && faq.answer).map((faq, index) => (
+            <div class="fq-item">
+              <button
+                class="fq-trigger"
+                aria-expanded="false"
+                aria-controls={`fq-panel-${index}`}
+                id={`fq-btn-${index}`}
+              >
+                <span class="fq-number">{String(index + 1).padStart(2, '0')}</span>
+                <span class="fq-question">{faq.question}</span>
+                <span class="fq-chevron">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14M5 12h14"/>
+                  </svg>
+                </span>
+              </button>
+              <div
+                class="fq-panel"
+                id={`fq-panel-${index}`}
+                role="region"
+                aria-labelledby={`fq-btn-${index}`}
+              >
+                <div class="fq-answer" set:html={faq.answer} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initFAQ() {
+    document.querySelectorAll<HTMLElement>('.fq-item').forEach((item) => {
+      const trigger = item.querySelector<HTMLButtonElement>('.fq-trigger');
+      if (!trigger) return;
+      if (trigger.dataset.init === 'true') return;
+      trigger.dataset.init = 'true';
+
+      trigger.addEventListener('click', () => {
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+        // Close all others
+        document.querySelectorAll<HTMLElement>('.fq-item').forEach((other) => {
+          const otherTrigger = other.querySelector<HTMLButtonElement>('.fq-trigger');
+          if (otherTrigger && other !== item) {
+            otherTrigger.setAttribute('aria-expanded', 'false');
+            other.classList.remove('is-open');
+          }
+        });
+
+        // Toggle current
+        if (isOpen) {
+          trigger.setAttribute('aria-expanded', 'false');
+          item.classList.remove('is-open');
+        } else {
+          trigger.setAttribute('aria-expanded', 'true');
+          item.classList.add('is-open');
+        }
+      });
+    });
+  }
+
+  initFAQ();
+  document.addEventListener('astro:page-load', initFAQ);
+</script>
+
+<style>
+  .fq-section {
+    position: relative;
+    background: var(--background);
+  }
+  .fq-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/heater.png');
+    background-size: 65%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.95;
+    pointer-events: none; 
+    z-index: 0;
+    transform: scaleX(-1);
+  }
+
+  @media (max-width: 1024px) {
+    .fq-section::before {
+      background-size: 55%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .fq-section::before {
+      background-size: 70%;
+    }
+  }
+
+  .fq-body {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 4rem 0 6rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── Header ─── */
+  .fq-header {
+    margin-bottom: 3rem;
+  }
+
+  .fq-eyebrow {
+    margin-bottom: 1.5rem;
+  }
+  .fq-eyebrow-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--brand-highlight);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--brand-primary);
+    border-left: 3px solid var(--brand-highlight);
+  }
+
+  .fq-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--brand-primary);
+  }
+  @media (min-width: 768px) {
+    .fq-title { font-size: 2.5rem; }
+  }
+
+  .fq-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--brand-secondary);
+  }
+
+  /* ─── Layout ─── */
+  .fq-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2.5rem;
+    max-width: 76rem;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  /* ─── Side Card ─── */
+  .fq-side-card {
+    position: relative;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.18);
+    overflow: hidden;
+    transition: all 0.35s ease;
+    position: sticky;
+    top: 6rem;
+  }
+  .fq-side-card:hover {
+    border-color: var(--brand-highlight);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  }
+
+  .fq-side-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--brand-highlight);
+  }
+
+  .fq-side-inner {
+    padding: 2rem 1.5rem;
+  }
+
+  .fq-side-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-tertiary);
+    border: 1px solid rgba(0,0,0,0.06);
+    color: var(--brand-primary);
+    margin-bottom: 1.25rem;
+    transition: all 0.3s ease;
+  }
+  .fq-side-card:hover .fq-side-icon {
+    background: var(--brand-highlight);
+    border-color: var(--brand-highlight);
+    color: var(--brand-primary);
+  }
+
+  .fq-side-heading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--brand-primary);
+    margin-bottom: 0.6rem;
+    line-height: 1.25;
+  }
+  .fq-side-text {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--brand-secondary);
+    margin-bottom: 1.5rem;
+  }
+  .fq-side-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--brand-highlight);
+    color: var(--brand-primary);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.3s ease;
+  }
+  .fq-side-btn:hover {
+    filter: brightness(1.08);
+    transform: translateX(4px);
+  }
+  .fq-side-btn svg {
+    transition: transform 0.3s ease;
+  }
+  .fq-side-btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* ─── Accordion ─── */
+  .fq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .fq-item {
+    position: relative;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.18);
+    overflow: hidden;
+    transition: all 0.35s ease;
+  }
+  .fq-item.is-open {
+    border-color: var(--brand-highlight);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  /* Left accent strip */
+  .fq-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--brand-highlight);
+    transition: height 0.35s ease;
+    z-index: 1;
+  }
+  .fq-item.is-open::before {
+    height: 100%;
+  }
+
+  .fq-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s ease;
+  }
+  .fq-trigger:hover {
+    background: var(--brand-tertiary);
+  }
+
+  .fq-number {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--brand-highlight);
+    background: var(--brand-primary);
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .fq-question {
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--brand-primary);
+    line-height: 1.35;
+  }
+
+  .fq-chevron {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: var(--brand-tertiary);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: var(--brand-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .fq-item.is-open .fq-chevron {
+    background: var(--brand-highlight);
+    border-color: var(--brand-highlight);
+    color: var(--brand-primary);
+    transform: rotate(45deg);
+  }
+
+  /* Panel */
+  .fq-panel {
+    display: none;
+  }
+  .fq-item.is-open .fq-panel {
+    display: block;
+  }
+
+  .fq-answer {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--brand-secondary);
+    padding: 0 1.5rem 1.5rem 4.5rem;
+  }
+  .fq-answer :global(p:last-child) {
+    margin-bottom: 0;
+  }
+  .fq-answer :global(p:first-child) {
+    margin-top: 0;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .fq-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .fq-side-card {
+      position: static;
+    }
+    .fq-trigger {
+      padding: 1rem 1.25rem;
+    }
+    .fq-answer {
+      padding-left: 1.25rem;
+    }
+  }
+</style>

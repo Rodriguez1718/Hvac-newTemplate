@@ -1,0 +1,804 @@
+---
+import { Image } from "astro:assets";
+import bg2Img from "/public/images/bg2.jpg";
+import { getLocationText } from "@/config/site"
+
+const defaultHeroImages = [
+  "https://f.hubspotusercontent40.net/hubfs/9492292/AdobeStock_290366802.jpeg",
+  "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&q=80",
+  "https://images.pexels.com/photos/34069/pexels-photo.jpg?auto=compress&w=1920",
+];
+
+const isRemoteImage = (url: string) => url.startsWith('http://') || url.startsWith('https://');
+
+interface Props {
+  variant?: "slider" | "subpage";
+  buttonHref?: string;
+  showArrow?: boolean;
+  images?: string[];
+  badge?: string;
+  title?: string;
+  subtitle?: string;
+  buttonText?: string;
+  image?: string;
+  imageAlt?: string;
+  trustIndicators?: string[];
+}
+
+const {
+  variant = "slider",
+  buttonHref = "#",
+  showArrow = true,
+  images,
+  badge,
+  title: subpageTitle,
+  subtitle: subpageSubtitle,
+  buttonText: subpageButtonText = "SCHEDULE SERVICE",
+  image: subpageImage,
+  imageAlt = "HVAC service",
+  trustIndicators,
+} = Astro.props;
+
+const heroImages = images && images.length > 0 ? images : defaultHeroImages;
+
+const slides = [
+  {
+    title: "Fast, Reliable, & Affordable Service",
+    subtitle: "Need HVAC Repair or New Installation? We've Got You Covered!",
+    buttonText: "Schedule a Call",
+    statNumber: "$99",
+    statLabel: "Service Call",
+    statDescription: "Expert Repairs & Installation included with every visit.",
+    bgImage: heroImages[0 % heroImages.length],
+  },
+  {
+    title: "Flexible Financing Available",
+    subtitle: "No Interest. No Payments. Until 2026!",
+    buttonText: "Learn More",
+    statNumber: "0%",
+    statLabel: "Interest",
+    statDescription: "With approved financing. Ask us about our flexible plans.",
+    bgImage: heroImages[1 % heroImages.length],
+  },
+  {
+    title: "Limited Time Offer — Don't Miss Out!",
+    subtitle: "Furnace Tune-Up Special! Only $95 with Coupon!",
+    buttonText: "Call Now",
+    statNumber: "1yr",
+    statLabel: "Warranty",
+    statDescription: "Warranty on furnace repair. Expert maintenance for peak efficiency.",
+    bgImage: heroImages[2 % heroImages.length],
+  },
+];
+
+const isSlider = variant === "slider";
+---
+
+{isSlider ? (
+<section class="hero-section relative w-full overflow-hidden">
+
+  <!-- Full background images (behind everything) -->
+  {slides.map((slide, i) => (
+    <div class={`hero-bg absolute inset-0 transition-opacity duration-700 ${i === 0 ? 'opacity-100' : 'opacity-0'}`} data-bg={i}>
+      {isRemoteImage(slide.bgImage) ? (
+        <Image
+          src={slide.bgImage}
+          alt="HVAC background"
+          class="absolute inset-0 w-full h-full object-cover"
+          loading={i === 0 ? "eager" : "lazy"}
+          fetchpriority={i === 0 ? "high" : "auto"}
+          decoding={i === 0 ? "sync" : "async"}
+          width={1440}
+          height={810}
+          widths={[480, 768, 1280, 1440]}
+          sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1280px) 1280px, 1440px"
+          format="webp"
+          quality={i === 0 ? 65 : 50}
+        />
+      ) : (
+        <img
+          src={slide.bgImage}
+          alt="HVAC background"
+          class="absolute inset-0 w-full h-full object-cover"
+          loading={i === 0 ? "eager" : "lazy"}
+          fetchpriority={i === 0 ? "high" : "auto"}
+          decoding={i === 0 ? "sync" : "async"}
+          width="1440"
+          height="810"
+        />
+      )}
+    </div>
+  ))}
+
+  <!-- Accent bar -->
+  <div class="absolute top-0 left-0 w-full h-1 bg-brand-highlight z-[5]"></div>
+
+  <!--
+    SLOPE LAYERS
+    ─────────────────────────────────────────────────────────────
+    The root problem with the original code: SVG <pattern> +
+    polygon opacity renders inconsistently across browsers.
+    The pattern image draws at full opacity; the polygon opacity
+    only tints the geometry, NOT the image fill inside it.
+
+    Fix: replace SVG patterns with CSS clip-path divs.
+    Each slope is a full-size absolutely-positioned div whose
+    <img> is clipped to the desired polygon using clip-path.
+    Opacity is applied to the wrapper div — this correctly
+    composites the image at the intended transparency.
+
+    Polygon % values derived from original SVG (viewBox 0 0 1440 800):
+      White solid : 0,0  →  480,0  →  820,800  →  0,800
+                    0%      33.3%     56.9%        0%
+
+      Slope A (100%):  480,0 → 600,0 → 940,800 → 820,800
+                       33.3%   41.7%   65.3%      56.9%
+
+      Slope B (55%):   580,0 → 700,0 → 1040,800 → 920,800
+                       40.3%   48.6%   72.2%       63.9%
+
+      Slope C (25%):   680,0 → 1440,0 → 1440,800 → 1020,800
+                       47.2%   100%      100%        70.8%
+    ─────────────────────────────────────────────────────────────
+  -->
+
+  <!-- Static solid white polygon with blur edge -->
+  <div class="slope-white absolute inset-0 z-[1] pointer-events-none">
+    <svg class="h-full w-full" viewBox="0 0 1440 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="edge-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:white;stop-opacity:1" />
+          <stop offset="70%" style="stop-color:white;stop-opacity:1" />
+          <stop offset="85%" style="stop-color:white;stop-opacity:0.6" />
+          <stop offset="100%" style="stop-color:white;stop-opacity:0" />
+        </linearGradient>
+      </defs>
+      <polygon points="0,0 480,0 820,800 0,800" fill="url(#edge-fade)" />
+    </svg>
+  </div>
+
+  <!-- Per-slide image slope sets -->
+  <div class="absolute inset-0 z-[2] pointer-events-none">
+    {slides.map((slide, i) => (
+      <div class={`slope-set absolute inset-0 ${i === 0 ? 'active' : ''}`} data-slope-set={i}>
+
+        <!-- Slope A: full opacity -->
+        <div class="slope-wrap slope-a">
+          <img
+            src={slide.bgImage}
+            alt=""
+            aria-hidden="true"
+            class="slope-img"
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            width="1440"
+            height="810"
+          />
+        </div>
+
+        <!-- Slope B: 55% opacity -->
+        <div class="slope-wrap slope-b">
+          <img
+            src={slide.bgImage}
+            alt=""
+            aria-hidden="true"
+            class="slope-img"
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            width="1440"
+            height="810"
+          />
+        </div>
+
+        <!-- Slope C: 25% opacity -->
+        <div class="slope-wrap slope-c">
+          <img
+            src={slide.bgImage}
+            alt=""
+            aria-hidden="true"
+            class="slope-img"
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            width="1440"
+            height="810"
+          />
+        </div>
+
+      </div>
+    ))}
+  </div>
+
+  <!-- Content — pinned bottom-left -->
+  <div class="relative z-[3] container mx-auto px-6 md:px-12 lg:px-16 flex items-end min-h-[85vh]">
+    <div class="hero-content max-w-2xl pb-16 md:pb-20 lg:pb-24">
+
+      <div class="slides-container relative">
+        {slides.map((slide, i) => (
+          <div class={`hero-slide ${i === 0 ? 'active' : ''}`} data-slide={i}>
+            <!-- Eyebrow badge with modern styling -->
+            <div class="mb-6">
+              <div class="border-l-4 border-l-[#FF6F00] inline-flex items-center gap-3 px-5 py-3 bg-[#0A2540]/95 backdrop-blur-sm shadow-xl border border-[#1E3A5F]">
+                <span class="flex items-center justify-center">
+                  <span class="text-[#FF6F00] font-black text-lg">{slide.statNumber}</span>
+                </span>
+                <span class="text-xs font-bold tracking-[0.12em] uppercase text-white">
+                  {slide.statLabel}
+                </span>
+              </div>
+            </div>
+
+            <!-- Title with enhanced typography -->
+            <div class="relative mb-6">
+              <h1 class="hero-title text-[2.5rem] md:text-6xl lg:text-7xl font-black leading-[0.95] uppercase tracking-[-0.02em] relative">
+                {getLocationText(slide.title).split(' ').map((word, idx) => (
+                  <span class="hero-title-word inline-block" style={`--word-index: ${idx}`}>
+                    <span class="hero-title-bg-word absolute inset-0 -z-10"></span>
+                    <span class="relative">{word}</span>
+                  </span>
+                )).reduce((acc, curr, idx) => {
+                  if (idx === 0) return [curr];
+                  return [...acc, ' ', curr];
+                }, [])}
+              </h1>
+            </div>
+
+            <!-- Subtitle with better spacing -->
+            <p class="hero-subtitle text-base md:text-lg leading-relaxed max-w-lg mb-8 font-medium">
+              {slide.subtitle}
+            </p>
+
+            <!-- CTA button -->
+            <a href={buttonHref} class="hero-cta">
+              {slide.buttonText}
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <!-- Dots with modern design -->
+      <div class="flex items-center gap-4 mt-12">
+        <div class="flex items-center gap-2">
+          {slides.map((_, i) => (
+            <button
+              class={`hero-dot transition-all duration-300 ${i === 0 ? 'active' : ''}`}
+              data-index={i}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
+        </div>
+        <div class="progress-track flex-1 max-w-24 h-1 bg-[#0A2540]/40 rounded-full overflow-hidden backdrop-blur-sm border border-[#0A2540]/20">
+          <div class="progress-fill h-full rounded-full bg-brand-highlight"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+) : (
+<!-- SUBPAGE VARIANT -->
+<section class="hero-section relative w-full overflow-hidden">
+  <!-- Full background image -->
+  <div class="absolute inset-0">
+    {subpageImage && isRemoteImage(subpageImage) ? (
+      <Image  
+        src={subpageImage}
+        alt={imageAlt}
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        fetchpriority="high"
+        width={1440}
+        height={810}
+        widths={[480, 768, 1280, 1440]}
+        sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1280px) 1280px, 1440px"
+        format="webp"
+        quality={65}
+      />
+    ) : subpageImage ? (
+      <img
+        src={subpageImage}
+        alt={imageAlt}
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        width="1440"
+        height="810"
+      />
+    ) : (
+      <Image
+        src={bg2Img}
+        alt="HVAC background"
+        widths={[480, 768, 1280, 1440]}
+        sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1280px) 1280px, 1440px"
+        format="webp"
+        quality={65}
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        fetchpriority="high"
+      />
+    )}
+  </div>
+
+  <!-- Accent bar -->
+  <div class="absolute top-0 left-0 w-full h-1 bg-brand-highlight z-[5]"></div>
+
+  <!-- Static solid white polygon with blur edge -->
+  <div class="slope-white absolute inset-0 z-[1] pointer-events-none">
+    <svg class="h-full w-full" viewBox="0 0 1440 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="edge-fade-subpage" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:white;stop-opacity:1" />
+          <stop offset="70%" style="stop-color:white;stop-opacity:1" />
+          <stop offset="85%" style="stop-color:white;stop-opacity:0.6" />
+          <stop offset="100%" style="stop-color:white;stop-opacity:0" />
+        </linearGradient>
+      </defs>
+      <polygon points="0,0 480,0 820,800 0,800" fill="url(#edge-fade-subpage)" />
+    </svg>
+  </div>
+
+  <!-- Slope layers with image -->
+  <div class="absolute inset-0 z-[2] pointer-events-none">
+    <div class="slope-set-subpage absolute inset-0">
+      <!-- Slope A: full opacity -->
+      <div class="slope-wrap slope-a">
+        {subpageImage && isRemoteImage(subpageImage) ? (
+          <img
+            src={subpageImage}
+            alt=""
+            aria-hidden="true"
+            class="slope-img"
+            loading="eager"
+            decoding="async"
+            width="1440"
+            height="810"
+          />
+        ) : subpageImage ? (
+          <img
+            src={subpageImage}
+            alt=""
+            aria-hidden="true"
+            class="slope-img"
+            loading="eager"
+            decoding="async"
+            width="1440"
+            height="810"
+          />
+        ) : (
+          <img
+            src={bg2Img.src}
+            alt=""
+            aria-hidden="true"
+            class="slope-img"
+            loading="eager"
+            decoding="async"
+            width="1440"
+            height="810"
+          />
+        )}
+      </div>
+
+      <!-- Slope B: 55% opacity -->
+      <div class="slope-wrap slope-b">
+        {subpageImage && isRemoteImage(subpageImage) ? (
+          <img
+            src={subpageImage}
+            alt=""
+            aria-hidden="true"
+            class="slope-img"
+            loading="eager"
+            decoding="async"
+            width="1440"
+            height="810"
+          />
+        ) : subpageImage ? (
+          <img
+            src={subpageImage}
+            alt=""
+            aria-hidden="true"
+            class="slope-img"
+            loading="eager"
+            decoding="async"
+            width="1440"
+            height="810"
+          />
+        ) : (
+          <img
+            src={bg2Img.src}
+            alt=""
+            aria-hidden="true"
+            class="slope-img"
+            loading="eager"
+            decoding="async"
+            width="1440"
+            height="810"
+          />
+        )}
+      </div>
+
+      <!-- Slope C: 25% opacity -->
+      <div class="slope-wrap slope-c">
+        {subpageImage && isRemoteImage(subpageImage) ? (
+          <img
+            src={subpageImage}
+            alt=""
+            aria-hidden="true"
+            class="slope-img"
+            loading="eager"
+            decoding="async"
+            width="1440"
+            height="810"
+          />
+        ) : subpageImage ? (
+          <img
+            src={subpageImage}
+            alt=""
+            aria-hidden="true"
+            class="slope-img"
+            loading="eager"
+            decoding="async"
+            width="1440"
+            height="810"
+          />
+        ) : (
+          <img
+            src={bg2Img.src}
+            alt=""
+            aria-hidden="true"
+            class="slope-img"
+            loading="eager"
+            decoding="async"
+            width="1440"
+            height="810"
+          />
+        )}
+      </div>
+    </div>
+  </div>
+
+  <!-- Content — pinned bottom-left -->
+  <div class="relative z-[3] container mx-auto px-6 md:px-12 lg:px-16 flex items-end min-h-[85vh]">
+    <div class="hero-content max-w-2xl pb-16 md:pb-20 lg:pb-24">
+      {badge && (
+        <div class="mb-6">
+          <div class="border-l-4 border-l-[#FF6F00] inline-flex items-center gap-3 px-5 py-3 bg-[#0A2540]/95 backdrop-blur-sm shadow-xl border border-[#1E3A5F]">
+            <span class="text-xs font-bold tracking-[0.12em] uppercase text-white">
+              {getLocationText(badge)}
+            </span>
+          </div>
+        </div>
+      )}
+
+      <div class="relative mb-6">
+        <h1 class="hero-title text-[2.5rem] md:text-6xl lg:text-7xl font-black leading-[0.95] uppercase tracking-[-0.02em] relative">
+          {subpageTitle && getLocationText(subpageTitle).split(' ').map((word, idx) => (
+            <span class="hero-title-word inline-block" style={`--word-index: ${idx}`}>
+              <span class="hero-title-bg-word absolute inset-0 -z-10"></span>
+              <span class="relative">{word}</span>
+            </span>
+          )).reduce((acc, curr, idx) => {
+            if (idx === 0) return [curr];
+            return [...acc, ' ', curr];
+          }, [])}
+        </h1>
+      </div>
+
+      {subpageSubtitle && (
+        <p class="hero-subtitle text-base md:text-lg leading-relaxed max-w-lg mb-8 font-medium">
+          {getLocationText(subpageSubtitle)}
+        </p>
+      )}
+
+      {trustIndicators && trustIndicators.length > 0 && (
+        <div class="flex flex-wrap gap-4 mb-8">
+          {trustIndicators.map((indicator) => (
+            <span class="inline-flex items-center gap-2 text-sm font-medium" style="color: #1a1a1a; text-shadow: 0 1px 10px rgba(255, 255, 255, 0.5);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-brand-highlight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5"/>
+              </svg>
+              {getLocationText(indicator)}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {subpageButtonText && (
+        <a href={buttonHref} class="hero-cta">
+          {subpageButtonText}
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      )}
+    </div>
+  </div>
+</section>
+)}
+
+<style>
+  .hero-section {
+    min-height: 85vh;
+    background: #f5f5f5;
+  }
+
+  /* ── Slope image wrapper ───────────────────────────────────────
+     Each .slope-wrap is absolutely positioned over the full hero.
+     CSS clip-path cuts it to the desired diagonal strip.
+     Opacity on the wrapper composites the image correctly —
+     unlike SVG polygon fill opacity which only tints the geometry.
+  ─────────────────────────────────────────────────────────────── */
+  .slope-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .slope-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* Slope A — right of white, full opacity */
+  .slope-a {
+    clip-path: polygon(33.3% 0%, 41.7% 0%, 65.3% 100%, 56.9% 100%);
+    opacity: 1;
+  }
+
+  /* Slope B — 55% opacity blending strip */
+  .slope-b {
+    clip-path: polygon(40.3% 0%, 48.6% 0%, 72.2% 100%, 63.9% 100%);
+    opacity: 0.55;
+  }
+
+  /* Slope C — 25% opacity, fills remainder to right edge */
+  .slope-c {
+    clip-path: polygon(47.2% 0%, 100% 0%, 100% 100%, 70.8% 100%);
+    opacity: 0.25;
+  }
+
+  /* Slope set visibility */
+  .slope-set {
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    pointer-events: none;
+  }
+  .slope-set.active {
+    opacity: 1;
+  }
+
+  /* Slide-in animation per slope strip (staggered) */
+  .slope-set.active .slope-a {
+    animation: slopeEnterA 0.75s cubic-bezier(0.16, 1, 0.3, 1) both 0.05s;
+  }
+  .slope-set.active .slope-b {
+    animation: slopeEnterB 0.75s cubic-bezier(0.16, 1, 0.3, 1) both 0.18s;
+  }
+  .slope-set.active .slope-c {
+    animation: slopeEnterC 0.75s cubic-bezier(0.16, 1, 0.3, 1) both 0.30s;
+  }
+
+  @keyframes slopeEnterA {
+    from { transform: translateX(50px); opacity: 0; }
+    to   { transform: translateX(0);   opacity: 1; }
+  }
+  @keyframes slopeEnterB {
+    from { transform: translateX(50px); opacity: 0; }
+    to   { transform: translateX(0);   opacity: 0.55; }
+  }
+  @keyframes slopeEnterC {
+    from { transform: translateX(50px); opacity: 0; }
+    to   { transform: translateX(0);   opacity: 0.25; }
+  }
+
+  /* ── Text slides ── */
+  .hero-title-word {
+    position: relative;
+    padding: 0.25rem 0.5rem;
+    margin: 0 0.25rem;
+  }
+  
+
+  
+  /* Alternate colors per word */
+  .hero-title-word:nth-child(4n+1) .hero-title-bg-word {
+    background: var(--brand-primary);
+  }
+  .hero-title-word:nth-child(4n+2) .hero-title-bg-word {
+    background: var(--brand-highlight);
+  }
+  .hero-title-word:nth-child(4n+3) .hero-title-bg-word {
+    background: var(--brand-primary);
+  }
+  .hero-title-word:nth-child(4n+4) .hero-title-bg-word {
+    background: var(--brand-highlight);
+  }
+  
+  .hero-title { 
+    color: #fff;
+    line-height: 0.95;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  }
+  .hero-subtitle { 
+    color: #1a1a1a;
+    text-shadow: 0 1px 10px rgba(255, 255, 255, 0.5);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+    paint-order: stroke fill;
+  }
+
+  /* CTA button */
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.7rem 1.75rem;
+    background: var(--brand-highlight);
+    color: #0a0a0a;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .hero-cta:hover {
+    filter: brightness(1.08);
+    transform: translateX(4px);
+  }
+  .hero-cta svg {
+    transition: transform 0.3s ease;
+  }
+  .hero-cta:hover svg {
+    transform: translateX(4px);
+  }
+
+  .slides-container { position: relative; }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
+  }
+  .hero-slide.active {
+    position: relative;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* ── Dots ── */
+  .hero-dot {
+    width: 12px; 
+    height: 12px;
+    border-radius: 50%;
+    background: var(--brand-primary);
+    border: 2px solid var(--brand-primary);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(10, 37, 64, 0.3);
+  }
+  .hero-dot:hover  { 
+    background: var(--brand-highlight);
+    border-color: var(--brand-highlight);
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px rgba(255, 111, 0, 0.4);
+  }
+  .hero-dot.active {
+    background: var(--brand-highlight);
+    border-color: var(--brand-highlight);
+    width: 32px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px color-mix(in srgb, var(--brand-highlight) 60%, transparent);
+  }
+
+  /* ── Progress ── */
+  .progress-fill {
+    background: var(--brand-highlight);
+    width: 0%;
+    transition: width linear;
+  }
+
+  /* ── Entrance ── */
+  .hero-content {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .hero-section { min-height: 70vh; }
+    .slope-a { clip-path: polygon(28% 0%, 38% 0%, 62% 100%, 52% 100%); }
+    .slope-b { clip-path: polygon(36% 0%, 46% 0%, 70% 100%, 60% 100%); }
+    .slope-c { clip-path: polygon(44% 0%, 100% 0%, 100% 100%, 68% 100%); }
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-content { animation: none; }
+    .hero-slide   { transition: opacity 0.3s ease; transform: none !important; }
+    .slope-set.active .slope-a,
+    .slope-set.active .slope-b,
+    .slope-set.active .slope-c { animation: none; }
+  }
+</style>
+
+<script is:inline>
+  var HERO_INTERVAL = 5000;
+  var heroTimer;
+
+  function initHeroSlider() {
+    if (heroTimer) { clearInterval(heroTimer); heroTimer = undefined; }
+
+    var slides    = document.querySelectorAll('.hero-slide');
+    var dots      = document.querySelectorAll('.hero-dot');
+    var bgs       = document.querySelectorAll('.hero-bg');
+    var slopeSets = document.querySelectorAll('[data-slope-set]');
+    var fill      = document.querySelector('.progress-fill');
+
+    if (!slides.length || !dots.length) return;
+
+    var current = 0;
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      slides[current].style.position = 'absolute';
+      slides[current].style.width = '100%';
+      dots[current].classList.remove('active');
+      if (bgs[current]) bgs[current].classList.replace('opacity-100', 'opacity-0');
+      if (slopeSets[current]) slopeSets[current].classList.remove('active');
+
+      current = index;
+
+      slides[current].classList.add('active');
+      slides[current].style.position = '';
+      slides[current].style.width = '';
+      dots[current].classList.add('active');
+      if (bgs[current]) bgs[current].classList.replace('opacity-0', 'opacity-100');
+
+      // Retrigger slope entrance animation via reflow
+      if (slopeSets[current]) {
+        slopeSets[current].classList.remove('active');
+        void slopeSets[current].offsetWidth; // force reflow
+        slopeSets[current].classList.add('active');
+      }
+
+      startProgress();
+    }
+
+    function startProgress() {
+      if (fill) {
+        fill.style.transition = 'none';
+        fill.style.width = '0%';
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            fill.style.transition = 'width ' + HERO_INTERVAL + 'ms linear';
+            fill.style.width = '100%';
+          });
+        });
+      }
+      if (heroTimer) clearInterval(heroTimer);
+      heroTimer = setInterval(function () { goTo((current + 1) % slides.length); }, HERO_INTERVAL);
+    }
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { goTo(i); });
+    });
+
+    startProgress();
+  }
+
+  initHeroSlider();
+  document.addEventListener('astro:page-load', initHeroSlider);
+</script>

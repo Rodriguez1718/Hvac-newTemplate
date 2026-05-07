@@ -1,0 +1,110 @@
+---
+// Floating offer button that triggers the popup modal
+// Only visible on desktop (md and up)
+---
+
+<div id="free-scan-wrapper" class="hidden md:block fixed bottom-8 right-8 z-40">
+  <button
+    id="free-scan-trigger"
+    class="fab-btn group"
+    aria-label="$69 service request special"
+  >
+    <!-- Icon -->
+    <span class="fab-icon">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+          d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+      </svg>
+    </span>
+  
+    <!-- Text -->
+    <span class="fab-text">
+      <span class="fab-label">Service Special</span>
+      <span class="fab-value">$69 Offer</span>
+    </span>
+
+    <!-- Highlight strip -->
+    <span class="fab-strip"></span>
+  </button>
+</div>
+
+<style>
+  #free-scan-wrapper {
+    animation: fab-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.5s both;
+  }
+
+  .fab-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem 0.75rem 0.75rem;
+    background: var(--brand-primary);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-left: 3px solid var(--brand-highlight);
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+  .fab-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    border-color: var(--brand-highlight);
+  }
+  .fab-btn:active {
+    transform: translateY(-2px);
+  }
+
+  .fab-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--brand-highlight);
+  }
+
+  .fab-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: var(--brand-highlight);
+    color: var(--brand-primary);
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  .fab-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .fab-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.6);
+  }
+  .fab-value {
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    color: var(--brand-highlight);
+  }
+
+  @keyframes fab-enter {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

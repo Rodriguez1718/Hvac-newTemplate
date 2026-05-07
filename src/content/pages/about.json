@@ -1,0 +1,83 @@
+{
+  "title": "About Us",
+  "description": "Learn about {business} - expert HVAC services you can trust in {city} and surrounding areas.",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "title": "About Expert HVAC Services You Can Trust",
+        "subtitle": "With a dedication to quality workmanship, customer satisfaction, and transparent pricing.",
+        "buttonText": "SCHEDULE SERVICE",
+        "buttonHref": "/contact",
+        "backgroundImage": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1000&q=80"
+      }
+    },
+    {
+      "component": "PlaceholderContentSection",
+      "props": {
+        "title": "TO BE DETERMINED",
+        "subtitle": "BASED ON THE CLIENT DISCOVERY CONVERSATION"
+      }
+    },
+    {
+      "component": "PromoTilesSection",
+      "props": {
+        "tiles": [
+          { "type": "maintenance", "title": "Maintenance Plan", "priceLabel": ["Starting at", "$14.33", "Priority Service"], "buttonText": "View Maintenance Plans", "buttonHref": "/maintenance-plan", "bgImage": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80" },
+          { "type": "financing", "headline": ["No Interest", "No Payment", "Until 2026!"], "subtext": "Affordable payment plans available", "buttonText": "Apply Now", "buttonHref": "/financing", "bgImage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" },
+          { "type": "emergency", "tag": "24/7 Service", "discount": "20% OFF", "subheadline": ["All HVAC", "Repair Services"], "buttonText": "Call Now", "buttonHref": "/contact", "bgImage": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" }
+        ]
+      }
+    },
+    {
+      "component": "FinancingPlansSection",
+      "props": {
+        "variant": "services",
+        "title": "Related Services",
+        "items": [
+          { "title": "Air Conditioning Services", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp", "href": "/air-conditioning" },
+          { "title": "Heating Services", "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop", "href": "/heating" },
+          { "title": "Indoor Air Quality Services", "image": "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg", "href": "/indoor-air-quality" },
+          { "title": "Emergency HVAC Services", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp", "href": "/emergency" }
+        ]
+      }
+    },
+    {
+      "component": "FAQSection",
+      "props": {
+        "title": "Frequently Asked Questions",
+        "faqs": [
+          { "question": "What HVAC services do you offer?", "answer": "We offer a full range of residential and commercial HVAC services including AC repair and installation, furnace repair and replacement, duct cleaning and sealing, indoor air quality solutions, and <a href='/emergency'><strong>24/7 emergency</strong></a> HVAC services." },
+          { "question": "What areas do you serve?", "answer": "We proudly serve {city} and surrounding areas including <a href='/santa-monica'><strong>Santa Monica</strong></a>, <a href='/pasadena'><strong>Pasadena</strong></a>, <a href='/glendale'><strong>Glendale</strong></a>, Beverly Hills, Hollywood, Downtown LA, and many more neighborhoods across the greater {city} region." },
+          { "question": "How much do your services cost?", "answer": "We offer transparent, upfront pricing with no hidden fees. The cost depends on the specific service needed. <a href='/contact'><strong>Contact us</strong></a> for a free estimate and we'll provide a detailed quote before any work begins. We also offer <a href='/financing'><strong>financing options</strong></a> to make services more affordable." }
+        ]
+      }
+    },
+    {
+      "component": "CTAStrip",
+      "props": {
+        "buttonText": "SCHEDULE NOW",
+        "buttonHref": "/contact",
+        "phoneLabel": "Call or Text for Great Service",
+        "features": [
+          { "icon": "siren", "text": "24/7 Emergency Service" },
+          { "icon": "award", "text": "Experienced & Certified Technicians" }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Proudly Serving {city}",
+        "description": "We provide expert residential and commercial HVAC solutions across the city, from Hollywood Hills to Santa Monica. Whether you need AC repair, furnace installation, duct cleaning, or indoor air quality services, our team is here to help. We also offer routine <a href='/maintenance-plan'><strong>maintenance</strong></a> and <a href='/emergency'><strong>24/7 emergency services</strong></a> to keep your HVAC system in top shape.",
+        "areas": [
+          "Santa Monica", "Pasadena", "Glendale", "Downtown {city}", "Hollywood",
+          "Beverly Hills", "Venice", "Westwood", "Culver City", "San Fernando Valley",
+          "Studio City", "North Hollywood", "Sherman Oaks", "Encino", "Burbank",
+          "Torrance", "Long Beach", "Inglewood", "El Segundo", "Brentwood",
+          "Silver Lake", "Echo Park", "Hancock Park", "Marina del Rey", "Manhattan Beach"
+        ]
+      }
+    }
+  ]
+}
