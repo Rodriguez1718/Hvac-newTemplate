@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { siteConfig } from "@/config/site"
 
 interface FeatureBox {
@@ -43,7 +42,7 @@ const iconMap: Record<string, string> = {
       <!-- Image with border -->
       <div class="relative" data-animate="fade-right">
         <div class="border-4 border-secondary rounded-lg overflow-hidden max-h-[350px]">
-          <Image src={image} alt={imageAlt} class="w-full h-full object-cover" width={665} height={350} format="webp" quality={75} loading="lazy" decoding="async" />
+          <img src={image} alt={imageAlt} class="w-full h-full object-cover" width="665" height="350" loading="lazy" decoding="async" />
         </div>
       </div>
 

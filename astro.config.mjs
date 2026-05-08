@@ -83,12 +83,6 @@ export default defineConfig({
       'healthinnovation-kss.com',
     ],
     remotePatterns: [{ protocol: 'https' }],
-    service: {
-      entrypoint: 'astro/assets/services/sharp',
-      config: {
-        limitInputPixels: false,
-      },
-    },
   },
 
   prefetch: {

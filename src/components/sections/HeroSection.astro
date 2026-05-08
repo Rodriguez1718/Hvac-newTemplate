@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { getLocationText } from "@/config/site"
 
 const bg2Img = "/images/bg2.jpg";
@@ -10,12 +9,9 @@ const defaultHeroImages = [
   "https://images.pexels.com/photos/34069/pexels-photo.jpg?auto=compress&w=1920",
 ];
 
-const isRemoteImage = (url: string) => url.startsWith('http://') || url.startsWith('https://');
-
 interface Props {
   variant?: "slider" | "subpage";
   buttonHref?: string;
-  showArrow?: boolean;
   images?: string[];
   badge?: string;
   title?: string;
@@ -29,7 +25,6 @@ interface Props {
 const {
   variant = "slider",
   buttonHref = "#",
-  showArrow = true,
   images,
   badge,
   title: subpageTitle,
@@ -81,33 +76,15 @@ const isSlider = variant === "slider";
   <!-- Full background images (behind everything) -->
   {slides.map((slide, i) => (
     <div class={`hero-bg absolute inset-0 transition-opacity duration-700 ${i === 0 ? 'opacity-100' : 'opacity-0'}`} data-bg={i}>
-      {isRemoteImage(slide.bgImage) ? (
-        <Image
-          src={slide.bgImage}
-          alt="HVAC background"
-          class="absolute inset-0 w-full h-full object-cover"
-          loading={i === 0 ? "eager" : "lazy"}
-          fetchpriority={i === 0 ? "high" : "auto"}
-          decoding={i === 0 ? "sync" : "async"}
-          width={1440}
-          height={810}
-          widths={[480, 768, 1280, 1440]}
-          sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1280px) 1280px, 1440px"
-          format="webp"
-          quality={i === 0 ? 65 : 50}
-        />
-      ) : (
-        <img
-          src={slide.bgImage}
-          alt="HVAC background"
-          class="absolute inset-0 w-full h-full object-cover"
-          loading={i === 0 ? "eager" : "lazy"}
-          fetchpriority={i === 0 ? "high" : "auto"}
-          decoding={i === 0 ? "sync" : "async"}
-          width="1440"
-          height="810"
-        />
-      )}
+      <img
+        src={slide.bgImage}
+        alt="HVAC background"
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
+        decoding="async"
+        width="1440"
+        height="810"
+      />
     </div>
   ))}
 
@@ -170,7 +147,7 @@ const isSlider = variant === "slider";
             alt=""
             aria-hidden="true"
             class="slope-img"
-            loading={i === 0 ? "eager" : "lazy"}
+            loading="lazy"
             decoding="async"
             width="1440"
             height="810"
@@ -184,7 +161,7 @@ const isSlider = variant === "slider";
             alt=""
             aria-hidden="true"
             class="slope-img"
-            loading={i === 0 ? "eager" : "lazy"}
+            loading="lazy"
             decoding="async"
             width="1440"
             height="810"
@@ -198,7 +175,7 @@ const isSlider = variant === "slider";
             alt=""
             aria-hidden="true"
             class="slope-img"
-            loading={i === 0 ? "eager" : "lazy"}
+            loading="lazy"
             decoding="async"
             width="1440"
             height="810"
@@ -236,10 +213,7 @@ const isSlider = variant === "slider";
                     <span class="hero-title-bg-word absolute inset-0 -z-10"></span>
                     <span class="relative">{word}</span>
                   </span>
-                )).reduce((acc, curr, idx) => {
-                  if (idx === 0) return [curr];
-                  return [...acc, ' ', curr];
-                }, [])}
+                ))}
               </h1>
             </div>
 
@@ -283,39 +257,14 @@ const isSlider = variant === "slider";
 <section class="hero-section relative w-full overflow-hidden">
   <!-- Full background image -->
   <div class="absolute inset-0">
-    {subpageImage && isRemoteImage(subpageImage) ? (
-      <Image  
-        src={subpageImage}
-        alt={imageAlt}
-        class="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-        fetchpriority="high"
-        width={1440}
-        height={810}
-        widths={[480, 768, 1280, 1440]}
-        sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1280px) 1280px, 1440px"
-        format="webp"
-        quality={65}
-      />
-    ) : subpageImage ? (
-      <img
-        src={subpageImage}
-        alt={imageAlt}
-        class="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-        width="1440"
-        height="810"
-      />
-    ) : (
-      <img
-        src={bg2Img}
-        alt="HVAC background"
-        class="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-        width="1440"
-        height="810"
-      />
-    )}
+    <img
+      src={subpageImage || bg2Img}
+      alt={imageAlt}
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+      width="1440"
+      height="810"
+    />
   </div>
 
   <!-- Accent bar -->
@@ -341,116 +290,44 @@ const isSlider = variant === "slider";
     <div class="slope-set-subpage absolute inset-0">
       <!-- Slope A: full opacity -->
       <div class="slope-wrap slope-a">
-        {subpageImage && isRemoteImage(subpageImage) ? (
-          <img
-            src={subpageImage}
-            alt=""
-            aria-hidden="true"
-            class="slope-img"
-            loading="eager"
-            decoding="async"
-            width="1440"
-            height="810"
-          />
-        ) : subpageImage ? (
-          <img
-            src={subpageImage}
-            alt=""
-            aria-hidden="true"
-            class="slope-img"
-            loading="eager"
-            decoding="async"
-            width="1440"
-            height="810"
-          />
-        ) : (
-          <img
-            src={bg2Img}
-            alt=""
-            aria-hidden="true"
-            class="slope-img"
-            loading="eager"
-            decoding="async"
-            width="1440"
-            height="810"
-          />
-        )}
+        <img
+          src={subpageImage || bg2Img}
+          alt=""
+          aria-hidden="true"
+          class="slope-img"
+          loading="eager"
+          decoding="async"
+          width="1440"
+          height="810"
+        />
       </div>
 
       <!-- Slope B: 55% opacity -->
       <div class="slope-wrap slope-b">
-        {subpageImage && isRemoteImage(subpageImage) ? (
-          <img
-            src={subpageImage}
-            alt=""
-            aria-hidden="true"
-            class="slope-img"
-            loading="eager"
-            decoding="async"
-            width="1440"
-            height="810"
-          />
-        ) : subpageImage ? (
-          <img
-            src={subpageImage}
-            alt=""
-            aria-hidden="true"
-            class="slope-img"
-            loading="eager"
-            decoding="async"
-            width="1440"
-            height="810"
-          />
-        ) : (
-          <img
-            src={bg2Img}
-            alt=""
-            aria-hidden="true"
-            class="slope-img"
-            loading="eager"
-            decoding="async"
-            width="1440"
-            height="810"
-          />
-        )}
+        <img
+          src={subpageImage || bg2Img}
+          alt=""
+          aria-hidden="true"
+          class="slope-img"
+          loading="eager"
+          decoding="async"
+          width="1440"
+          height="810"
+        />
       </div>
 
       <!-- Slope C: 25% opacity -->
       <div class="slope-wrap slope-c">
-        {subpageImage && isRemoteImage(subpageImage) ? (
-          <img
-            src={subpageImage}
-            alt=""
-            aria-hidden="true"
-            class="slope-img"
-            loading="eager"
-            decoding="async"
-            width="1440"
-            height="810"
-          />
-        ) : subpageImage ? (
-          <img
-            src={subpageImage}
-            alt=""
-            aria-hidden="true"
-            class="slope-img"
-            loading="eager"
-            decoding="async"
-            width="1440"
-            height="810"
-          />
-        ) : (
-          <img
-            src={bg2Img}
-            alt=""
-            aria-hidden="true"
-            class="slope-img"
-            loading="eager"
-            decoding="async"
-            width="1440"
-            height="810"
-          />
-        )}
+        <img
+          src={subpageImage || bg2Img}
+          alt=""
+          aria-hidden="true"
+          class="slope-img"
+          loading="eager"
+          decoding="async"
+          width="1440"
+          height="810"
+        />
       </div>
     </div>
   </div>
@@ -475,10 +352,7 @@ const isSlider = variant === "slider";
               <span class="hero-title-bg-word absolute inset-0 -z-10"></span>
               <span class="relative">{word}</span>
             </span>
-          )).reduce((acc, curr, idx) => {
-            if (idx === 0) return [curr];
-            return [...acc, ' ', curr];
-          }, [])}
+          ))}
         </h1>
       </div>
 
@@ -695,7 +569,7 @@ const isSlider = variant === "slider";
     border-color: var(--brand-highlight);
     width: 32px;
     border-radius: 12px;
-    box-shadow: 0 0 20px color-mix(in srgb, var(--brand-highlight) 60%, transparent);
+    box-shadow: 0 0 20px rgba(255, 111, 0, 0.6);
   }
 
   /* ── Progress ── */
