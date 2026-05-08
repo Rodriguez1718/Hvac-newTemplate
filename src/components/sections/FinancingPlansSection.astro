@@ -17,8 +17,8 @@ interface Props {
 
 const { badge, title, subtitle, items, variant = "plans" } = Astro.props;
 
-// Hardcoded images for Services variant only
-const serviceImages = [
+// Default fallback images for Services variant
+const defaultServiceImages = [
   "https://trusteyman.com/wp-content/uploads/2020/06/AdobeStock_162711692-1024x683.jpeg",
   "https://mrhomeservicesnj.com/wp-content/uploads/2016/12/Heating-Services.jpg",
   "https://saguaroairsolutions.com/wp-content/uploads/2026/01/about-us-image.jpg-2.png",
@@ -116,13 +116,14 @@ function getIcon(key?: string): string {
         {items.map((item, index) => {
           const isLink = !!item.href;
           const Tag = isLink ? "a" : "div";
-          const cardImage = serviceImages[index % serviceImages.length];
+          // Use image from item if provided, otherwise use default fallback
+          const cardImage = item.image || defaultServiceImages[index % defaultServiceImages.length];
           return (
             <Tag
               href={isLink ? item.href : undefined}
               class="fps-svc-card group"
             >
-              {/* Image strip - always use hardcoded images */}
+              {/* Image strip - use item image or fallback */}
               <div class="fps-svc-img">
                 <img src={cardImage} alt={item.title} class="fps-svc-img-el" width="740" height="494" loading="lazy" decoding="async" />
                 <div class="fps-svc-img-overlay"></div>

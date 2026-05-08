@@ -183,7 +183,7 @@ class ImmutableDataStore {
    */
   static async fromModule() {
     try {
-      const data = await import("./_astro_data-layer-content-CHfj8Ntj.js");
+      const data = await import("./_astro_data-layer-content-D0XYo9tV.js");
       if (data.default instanceof Map) {
         return ImmutableDataStore.fromMap(data.default);
       }
@@ -423,7 +423,7 @@ const CONTENT_LAYER_IMAGE_REGEX = /__ASTRO_IMAGE_="([^"]+)"/g;
 async function updateImageReferencesInBody(html, fileName) {
   const { default: imageAssetMap } = await import("./content-assets-CPbsr5sg.js");
   const imageObjects = /* @__PURE__ */ new Map();
-  const { getImage } = await import("./_astro_assets-ByuB_4IA.js").then((n) => n._);
+  const { getImage } = await import("./_astro_assets-DMkd8qZs.js").then((n) => n._);
   for (const [_full, imagePath] of html.matchAll(CONTENT_LAYER_IMAGE_REGEX)) {
     try {
       const decodedImagePath = JSON.parse(imagePath.replaceAll("&#x22;", '"'));
@@ -881,12 +881,10 @@ const $$ContentSection = createComponent(($$result, $$props, $$slots) => {
   const title = getLocationText(rawTitle);
   const description = getLocationText(rawDescription);
   const features = rawFeatures.map(getLocationText);
-  const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80";
-  const DEFAULT_SECONDARY = "https://cdn.prod.website-files.com/672c783eb245d962f945af09/67ac697f07002b03059c5cf4_hvac-service.jpeg";
-  const mainImage = DEFAULT_IMAGE;
-  const secondaryImage = DEFAULT_SECONDARY;
+  const mainImage = images[0] || "";
+  const secondaryImage = images[1] || "https://cdn.prod.website-files.com/672c783eb245d962f945af09/67ac697f07002b03059c5cf4_hvac-service.jpeg";
   const isRight = imagePosition === "right";
-  return renderTemplate`${maybeRenderHead()}<section class="cs-wrapper" data-astro-cid-dmvz46zk> <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28" data-astro-cid-dmvz46zk> <div${addAttribute(["cs-section", { "cs-section--flipped": isRight }], "class:list")} data-astro-cid-dmvz46zk> <!-- Image side --> <div class="cs-image-side"${addAttribute(isRight ? "fade-left" : "fade-right", "data-animate")} data-astro-cid-dmvz46zk> <div class="cs-image-wrap" data-astro-cid-dmvz46zk> <!-- Left accent strip --> <div class="cs-image-accent" data-astro-cid-dmvz46zk></div> <!-- Main image --> <div class="cs-image-main-wrap" data-astro-cid-dmvz46zk> ${renderTemplate`<img${addAttribute(mainImage, "src")}${addAttribute(imageAlts[0] || title, "alt")} class="cs-image-main" loading="lazy" decoding="async" data-astro-cid-dmvz46zk>`} <!-- Corner badge --> <div class="cs-corner-badge" data-astro-cid-dmvz46zk> <svg xmlns="http://www.w3.org/2000/svg" class="cs-corner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-dmvz46zk> <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" data-astro-cid-dmvz46zk></path> <polyline points="22 4 12 14.01 9 11.01" data-astro-cid-dmvz46zk></polyline> </svg> </div> </div> <!-- Secondary image --> ${renderTemplate`<div class="cs-image-secondary-wrap" data-astro-cid-dmvz46zk> <img${addAttribute(secondaryImage, "src")}${addAttribute(imageAlts[1] || `${title} - detail`, "alt")} class="cs-image-secondary" loading="lazy" decoding="async" data-astro-cid-dmvz46zk> </div>`} </div> </div> <!-- Text side --> <div class="cs-text-side"${addAttribute(isRight ? "fade-right" : "fade-left", "data-animate")} data-animate-delay="200" data-astro-cid-dmvz46zk> <div class="cs-text-inner" data-astro-cid-dmvz46zk> ${badge && renderTemplate`<div class="cs-badge" data-astro-cid-dmvz46zk> <span class="cs-badge-text" data-astro-cid-dmvz46zk>${badge}</span> </div>`} <h2 class="cs-title" data-astro-cid-dmvz46zk>${title}</h2> <p class="cs-desc" data-astro-cid-dmvz46zk>${unescapeHTML(description)}</p> ${features.length > 0 && renderTemplate`<div class="cs-features" data-astro-cid-dmvz46zk> ${features.map((feature, idx) => {
+  return renderTemplate`${maybeRenderHead()}<section class="cs-wrapper" data-astro-cid-dmvz46zk> <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28" data-astro-cid-dmvz46zk> <div${addAttribute(["cs-section", { "cs-section--flipped": isRight }], "class:list")} data-astro-cid-dmvz46zk> <!-- Image side --> <div class="cs-image-side"${addAttribute(isRight ? "fade-left" : "fade-right", "data-animate")} data-astro-cid-dmvz46zk> <div class="cs-image-wrap" data-astro-cid-dmvz46zk> <!-- Left accent strip --> <div class="cs-image-accent" data-astro-cid-dmvz46zk></div> <!-- Main image --> <div class="cs-image-main-wrap" data-astro-cid-dmvz46zk> ${mainImage ? renderTemplate`<img${addAttribute(mainImage, "src")}${addAttribute(imageAlts[0] || title, "alt")} class="cs-image-main" loading="lazy" decoding="async" data-astro-cid-dmvz46zk>` : renderTemplate`<div class="cs-image-main cs-image--placeholder" data-astro-cid-dmvz46zk> <span data-astro-cid-dmvz46zk>Image</span> </div>`} <!-- Corner badge --> <div class="cs-corner-badge" data-astro-cid-dmvz46zk> <svg xmlns="http://www.w3.org/2000/svg" class="cs-corner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-dmvz46zk> <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" data-astro-cid-dmvz46zk></path> <polyline points="22 4 12 14.01 9 11.01" data-astro-cid-dmvz46zk></polyline> </svg> </div> </div> <!-- Secondary image --> ${renderTemplate`<div class="cs-image-secondary-wrap" data-astro-cid-dmvz46zk> <img${addAttribute(secondaryImage, "src")}${addAttribute(imageAlts[1] || `${title} - detail`, "alt")} class="cs-image-secondary" loading="lazy" decoding="async" data-astro-cid-dmvz46zk> </div>`} </div> </div> <!-- Text side --> <div class="cs-text-side"${addAttribute(isRight ? "fade-right" : "fade-left", "data-animate")} data-animate-delay="200" data-astro-cid-dmvz46zk> <div class="cs-text-inner" data-astro-cid-dmvz46zk> ${badge && renderTemplate`<div class="cs-badge" data-astro-cid-dmvz46zk> <span class="cs-badge-text" data-astro-cid-dmvz46zk>${badge}</span> </div>`} <h2 class="cs-title" data-astro-cid-dmvz46zk>${title}</h2> <p class="cs-desc" data-astro-cid-dmvz46zk>${unescapeHTML(description)}</p> ${features.length > 0 && renderTemplate`<div class="cs-features" data-astro-cid-dmvz46zk> ${features.map((feature, idx) => {
     const icons = [
       `<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>`,
       `<path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>`,
@@ -1031,7 +1029,7 @@ const $$FinancingPlansSection = createComponent(($$result, $$props, $$slots) => 
   const Astro2 = $$result.createAstro($$Astro$h, $$props, $$slots);
   Astro2.self = $$FinancingPlansSection;
   const { badge, title, subtitle, items, variant = "plans" } = Astro2.props;
-  const serviceImages = [
+  const defaultServiceImages = [
     "https://trusteyman.com/wp-content/uploads/2020/06/AdobeStock_162711692-1024x683.jpeg",
     "https://mrhomeservicesnj.com/wp-content/uploads/2016/12/Heating-Services.jpg",
     "https://saguaroairsolutions.com/wp-content/uploads/2026/01/about-us-image.jpg-2.png",
@@ -1059,7 +1057,7 @@ const $$FinancingPlansSection = createComponent(($$result, $$props, $$slots) => 
   ], "class:list")} data-animate-stagger data-astro-cid-my45vyv5>${items.map((item, index) => {
     const isLink = !!item.href;
     const Tag = isLink ? "a" : "div";
-    const cardImage = serviceImages[index % serviceImages.length];
+    const cardImage = item.image || defaultServiceImages[index % defaultServiceImages.length];
     return renderTemplate`${renderComponent($$result, "Tag", Tag, { "href": isLink ? item.href : void 0, "class": "fps-svc-card group", "data-astro-cid-my45vyv5": true }, { "default": ($$result2) => renderTemplate`<div class="fps-svc-img" data-astro-cid-my45vyv5><img${addAttribute(cardImage, "src")}${addAttribute(item.title, "alt")} class="fps-svc-img-el" width="740" height="494" loading="lazy" decoding="async" data-astro-cid-my45vyv5><div class="fps-svc-img-overlay" data-astro-cid-my45vyv5></div></div><span class="fps-svc-strip" data-astro-cid-my45vyv5></span><div class="fps-svc-body" data-astro-cid-my45vyv5><h3 class="fps-svc-card-title" data-astro-cid-my45vyv5>${item.title}</h3>${item.text && renderTemplate`<p class="fps-svc-card-text" data-astro-cid-my45vyv5>${item.text}</p>`}${isLink && renderTemplate`<div class="fps-svc-arrow" data-astro-cid-my45vyv5><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-my45vyv5><path d="M5 12h14M12 5l7 7-7 7" data-astro-cid-my45vyv5></path></svg></div>`}</div>` })}`;
   })}</div></div></section>`}<!-- ============ PLANS VARIANT (default) ============ -->${variant === "plans" && renderTemplate`<section class="fps-plan" data-astro-cid-my45vyv5><div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28" data-astro-cid-my45vyv5><div class="fps-plan-header" data-animate="fade-up" data-astro-cid-my45vyv5>${badge && renderTemplate`<div class="fps-plan-eyebrow" data-astro-cid-my45vyv5><span class="fps-plan-eyebrow-text" data-astro-cid-my45vyv5>${badge}</span></div>`}<h2 class="fps-plan-title" data-astro-cid-my45vyv5>${title}</h2><div class="fps-plan-divider" data-astro-cid-my45vyv5></div>${subtitle && renderTemplate`<p class="fps-plan-subtitle" data-astro-cid-my45vyv5>${subtitle}</p>`}</div><div${addAttribute([
     "fps-plan-grid",
@@ -1278,8 +1276,8 @@ const $$PortfolioSection = createComponent(($$result, $$props, $$slots) => {
     "https://www.hunker.com/hunker/mlt2a54758688164b88ba2786c6385bdac7",
     "https://cdn.prod.website-files.com/643dd13153ce80ea0a9ceae9/68deabb139c6575485a52a06_678ab8e8b11d403818be5aa8_heating-repair.jpeg"
   ];
-  const { badge = "Portfolio", title, columns = 4 } = Astro2.props;
-  const images = defaultImages;
+  const { badge = "Portfolio", title, images: propsImages, columns = 4 } = Astro2.props;
+  const images = propsImages && propsImages.length > 0 ? propsImages : defaultImages;
   const topRow = images.slice(0, 4);
   const bottomRow = images.slice(4);
   return renderTemplate`${maybeRenderHead()}<section class="pf-section" data-astro-cid-vfwvykj6> <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28" data-astro-cid-vfwvykj6> <!-- Header --> <div class="pf-header" data-animate="fade-scale" data-astro-cid-vfwvykj6> <div class="pf-eyebrow" data-astro-cid-vfwvykj6> <span class="pf-eyebrow-text" data-astro-cid-vfwvykj6>${badge}</span> </div> <h2 class="pf-title" data-astro-cid-vfwvykj6>${title}</h2> <div class="pf-divider" data-astro-cid-vfwvykj6></div> </div> <div class="pf-gallery" data-astro-cid-vfwvykj6> <!-- Top row --> <div class="pf-row pf-row--top" data-animate-stagger data-astro-cid-vfwvykj6> ${topRow.map((img, i) => renderTemplate`<div class="pf-item group" data-astro-cid-vfwvykj6> <img${addAttribute(img, "src")}${addAttribute(`${title} - project ${i + 1}`, "alt")} class="pf-img" loading="lazy" decoding="async" data-astro-cid-vfwvykj6> <div class="pf-hover" data-astro-cid-vfwvykj6> <div class="pf-hover-content" data-astro-cid-vfwvykj6> <span class="pf-hover-accent" data-astro-cid-vfwvykj6></span> <span class="pf-hover-label" data-astro-cid-vfwvykj6>Project ${i + 1}</span> </div> </div>  <span class="pf-item-strip" data-astro-cid-vfwvykj6></span> </div>`)} </div> <!-- Bottom row --> ${bottomRow.length > 0 && renderTemplate`<div class="pf-row pf-row--bottom"${addAttribute(`--pf-bottom-count: ${bottomRow.length}`, "style")} data-animate-stagger data-astro-cid-vfwvykj6> ${bottomRow.map((img, i) => renderTemplate`<div class="pf-item group" data-astro-cid-vfwvykj6> <img${addAttribute(img, "src")}${addAttribute(`${title} - project ${topRow.length + i + 1}`, "alt")} class="pf-img" loading="lazy" decoding="async" data-astro-cid-vfwvykj6> <div class="pf-hover" data-astro-cid-vfwvykj6> <div class="pf-hover-content" data-astro-cid-vfwvykj6> <span class="pf-hover-accent" data-astro-cid-vfwvykj6></span> <span class="pf-hover-label" data-astro-cid-vfwvykj6>Project ${topRow.length + i + 1}</span> </div> </div> <span class="pf-item-strip" data-astro-cid-vfwvykj6></span> </div>`)} </div>`} </div> </div> </section> `;

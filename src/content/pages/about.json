@@ -35,10 +35,10 @@
         "variant": "services",
         "title": "Related Services",
         "items": [
-          { "title": "Air Conditioning Services", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp", "href": "/air-conditioning" },
-          { "title": "Heating Services", "image": "https://plus.unsplash.com/premium_photo-1661963270682-4b4857b6cda2?q=80&w=1470&auto=format&fit=crop", "href": "/heating" },
-          { "title": "Indoor Air Quality Services", "image": "https://www.classicheatandair.com/wp-content/uploads/2025/03/iStock-2058341644-1.jpg", "href": "/indoor-air-quality" },
-          { "title": "Emergency HVAC Services", "image": "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Reliable-Emergency-Services.webp", "href": "/emergency" }
+          { "title": "Air Conditioning Services", "image": "/images/quality-hvac-service.webp", "href": "/air-conditioning" },
+          { "title": "Heating Services", "image": "/images/fin-2.webp", "href": "/heating" },
+          { "title": "Indoor Air Quality Services", "image": "/images/fin-3.webp", "href": "/indoor-air-quality" },
+          { "title": "Emergency HVAC Services", "image": "/images/fin-4.webp", "href": "/emergency" }
         ]
       }
     },

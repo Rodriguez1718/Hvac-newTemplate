@@ -1,7 +1,7 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-import { j as joinPaths, D as DEFAULT_OUTPUT_FORMAT, i as isRemotePath, V as VALID_SUPPORTED_FORMATS, c as DEFAULT_HASH_PROPS } from "./SectionRenderer-DcNliBsF.js";
+import { j as joinPaths, D as DEFAULT_OUTPUT_FORMAT, i as isRemotePath, V as VALID_SUPPORTED_FORMATS, c as DEFAULT_HASH_PROPS } from "./SectionRenderer-DiM8XBxk.js";
 import { A as AstroError, E as ExpectedImage, L as LocalImageUsedWrongly, M as MissingImageDimension, q as UnsupportedImageFormat, I as IncompatibleDescriptorOptions, s as UnsupportedImageConversion, t as toStyleString, v as NoImageMetadata, w as FailedToFetchRemoteImageDimensions, x as RemoteImageNotAllowed, y as ExpectedImageOptions, z as ExpectedNotESMImage, B as InvalidImageService, c as createAstro, a as createComponent, C as ImageMissingAlt, m as maybeRenderHead, b as addAttribute, D as spreadAttributes, r as renderTemplate, G as ExperimentalFontsNotEnabled, H as FontFamilyNotFound, u as unescapeHTML } from "./astro/server-DD07jsDe.js";
 import * as mime from "mrmime";
 import "clsx";
@@ -1466,7 +1466,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      "./sharp-B0ktUlee.js"
+      "./sharp-CBis19n2.js"
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;

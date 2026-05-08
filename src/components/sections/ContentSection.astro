@@ -29,10 +29,9 @@ const title = getLocationText(rawTitle);
 const description = getLocationText(rawDescription);
 const features = rawFeatures.map(getLocationText);
 
-const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80";
-const DEFAULT_SECONDARY = "https://cdn.prod.website-files.com/672c783eb245d962f945af09/67ac697f07002b03059c5cf4_hvac-service.jpeg";
-const mainImage = DEFAULT_IMAGE;
-const secondaryImage = DEFAULT_SECONDARY;
+// Use images from props, fallback to defaults
+const mainImage = images[0] || "";
+const secondaryImage = images[1] || "https://cdn.prod.website-files.com/672c783eb245d962f945af09/67ac697f07002b03059c5cf4_hvac-service.jpeg";
 const isRight = imagePosition === "right";
 ---
 
