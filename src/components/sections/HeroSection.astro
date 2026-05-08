@@ -228,9 +228,13 @@ const isSlider = variant === "slider";
             </p>
 
             <!-- CTA button -->
-            <a href={buttonHref} class="hero-cta">
+            <a 
+              href={buttonHref} 
+              class="hero-cta"
+              aria-label={`${slide.buttonText} - ${slide.title}`}
+            >
               {slide.buttonText}
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </a>
@@ -376,7 +380,7 @@ const isSlider = variant === "slider";
         <div class="flex flex-wrap gap-4 mb-8">
           {trustIndicators.map((indicator) => (
             <span class="inline-flex items-center gap-2 text-sm font-medium" style="color: #1a1a1a; text-shadow: 0 1px 10px rgba(255, 255, 255, 0.5);">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-brand-highlight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-brand-highlight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M20 6 9 17l-5-5"/>
               </svg>
               {getLocationText(indicator)}
@@ -386,9 +390,13 @@ const isSlider = variant === "slider";
       )}
 
       {subpageButtonText && (
-        <a href={buttonHref} class="hero-cta">
+        <a 
+          href={buttonHref} 
+          class="hero-cta"
+          aria-label={`${subpageButtonText} - ${subpageTitle || ''}`}
+        >
           {subpageButtonText}
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
