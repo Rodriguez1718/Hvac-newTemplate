@@ -17,10 +17,10 @@ const defaultImages = [
   "https://cdn.prod.website-files.com/643dd13153ce80ea0a9ceae9/68deabb139c6575485a52a06_678ab8e8b11d403818be5aa8_heating-repair.jpeg",
 ];
 
-const { badge = "Portfolio", title, columns = 4 } = Astro.props;
+const { badge = "Portfolio", title, images: propsImages, columns = 4 } = Astro.props;
 
-// Always use defaultImages, ignore JSON prop
-const images = defaultImages;
+// Use images from props, fallback to defaults
+const images = propsImages && propsImages.length > 0 ? propsImages : defaultImages;
 
 const topRow = images.slice(0, 4);
 const bottomRow = images.slice(4);

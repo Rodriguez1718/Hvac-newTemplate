@@ -46,7 +46,7 @@
         ],
         "buttonText": "Learn More About Our HVAC Services",
         "buttonHref": "/about",
-        "images": ["https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp"],
+        "images": ["/images/quality-hvac-service.webp"],
         "imagePosition": "left"
       }
     },
@@ -159,14 +159,14 @@
         "badge": "Portfolio",
         "title": "Our Featured Works",
         "images": [
-          "https://johnh967.sg-host.com/wp-content/uploads/slider/cache/3208844a78ae424ec0bfef8623738be2/HVAC-Repair-Banner.webp",
-          "https://johnh967.sg-host.com/wp-content/uploads/2024/11/Quality-HVAC-Service.webp",
-          "https://johnh967.sg-host.com/wp-content/uploads/2024/12/AC-Repair-Services.webp",
-          "https://johnh967.sg-host.com/wp-content/uploads/2024/12/Professional-24_7-Heating-and-Cooling-Repairs.webp",
-          "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466578360_545600454753059_5640968860261965384_nfull.webp",
-          "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466555884_570355772412079_4111747127252492406_nfull.webp",
-          "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466796006_1587175318903711_6684948885555680268_nfull.webp",
-          "https://johnh967.sg-host.com/wp-content/uploads/sb-instagram-feed-images/466556611_1575760946412367_152571973762791733_nfull.webp"
+          "/images/port1.webp",
+          "/images/quality-hvac-service.webp",
+          "/images/port2.webp",
+          "/images/port3.webp",
+          "/images/port4.webp",
+          "/images/port5.webp",
+          "/images/port6.webp",
+          "/images/port7.webp"
         ]
       }
     },
