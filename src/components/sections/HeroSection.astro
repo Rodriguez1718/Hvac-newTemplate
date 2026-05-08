@@ -80,10 +80,11 @@ const isSlider = variant === "slider";
         src={slide.bgImage}
         alt="HVAC background"
         class="absolute inset-0 w-full h-full object-cover"
-        loading="lazy"
+        loading={i === 0 ? "eager" : "lazy"}
+        fetchpriority={i === 0 ? "high" : "low"}
         decoding="async"
-        width="1440"
-        height="810"
+        width="1920"
+        height="1080"
       />
     </div>
   ))}
@@ -147,10 +148,11 @@ const isSlider = variant === "slider";
             alt=""
             aria-hidden="true"
             class="slope-img"
-            loading="lazy"
+            loading={i === 0 ? "eager" : "lazy"}
+            fetchpriority={i === 0 ? "high" : "low"}
             decoding="async"
-            width="1440"
-            height="810"
+            width="1920"
+            height="1080"
           />
         </div>
 
@@ -162,9 +164,10 @@ const isSlider = variant === "slider";
             aria-hidden="true"
             class="slope-img"
             loading="lazy"
+            fetchpriority="low"
             decoding="async"
-            width="1440"
-            height="810"
+            width="1920"
+            height="1080"
           />
         </div>
 
@@ -176,9 +179,10 @@ const isSlider = variant === "slider";
             aria-hidden="true"
             class="slope-img"
             loading="lazy"
+            fetchpriority="low"
             decoding="async"
-            width="1440"
-            height="810"
+            width="1920"
+            height="1080"
           />
         </div>
 
@@ -262,8 +266,10 @@ const isSlider = variant === "slider";
       alt={imageAlt}
       class="absolute inset-0 w-full h-full object-cover"
       loading="eager"
-      width="1440"
-      height="810"
+      fetchpriority="high"
+      decoding="async"
+      width="1920"
+      height="1080"
     />
   </div>
 
@@ -296,9 +302,10 @@ const isSlider = variant === "slider";
           aria-hidden="true"
           class="slope-img"
           loading="eager"
+          fetchpriority="high"
           decoding="async"
-          width="1440"
-          height="810"
+          width="1920"
+          height="1080"
         />
       </div>
 
@@ -309,10 +316,11 @@ const isSlider = variant === "slider";
           alt=""
           aria-hidden="true"
           class="slope-img"
-          loading="eager"
+          loading="lazy"
+          fetchpriority="low"
           decoding="async"
-          width="1440"
-          height="810"
+          width="1920"
+          height="1080"
         />
       </div>
 
@@ -323,10 +331,11 @@ const isSlider = variant === "slider";
           alt=""
           aria-hidden="true"
           class="slope-img"
-          loading="eager"
+          loading="lazy"
+          fetchpriority="low"
           decoding="async"
-          width="1440"
-          height="810"
+          width="1920"
+          height="1080"
         />
       </div>
     </div>
@@ -624,26 +633,38 @@ const isSlider = variant === "slider";
     var current = 0;
 
     function goTo(index) {
-      slides[current].classList.remove('active');
-      slides[current].style.position = 'absolute';
-      slides[current].style.width = '100%';
-      dots[current].classList.remove('active');
-      if (bgs[current]) bgs[current].classList.replace('opacity-100', 'opacity-0');
-      if (slopeSets[current]) slopeSets[current].classList.remove('active');
+      // Batch all DOM reads first (avoid layout thrashing)
+      var prevSlide = slides[current];
+      var prevDot = dots[current];
+      var prevBg = bgs[current];
+      var prevSlopeSet = slopeSets[current];
+      
+      // Then batch all DOM writes
+      prevSlide.classList.remove('active');
+      prevSlide.style.position = 'absolute';
+      prevSlide.style.width = '100%';
+      prevDot.classList.remove('active');
+      if (prevBg) prevBg.classList.replace('opacity-100', 'opacity-0');
+      if (prevSlopeSet) prevSlopeSet.classList.remove('active');
 
       current = index;
 
-      slides[current].classList.add('active');
-      slides[current].style.position = '';
-      slides[current].style.width = '';
-      dots[current].classList.add('active');
-      if (bgs[current]) bgs[current].classList.replace('opacity-0', 'opacity-100');
+      var nextSlide = slides[current];
+      var nextDot = dots[current];
+      var nextBg = bgs[current];
+      var nextSlopeSet = slopeSets[current];
 
-      // Retrigger slope entrance animation via reflow
-      if (slopeSets[current]) {
-        slopeSets[current].classList.remove('active');
-        void slopeSets[current].offsetWidth; // force reflow
-        slopeSets[current].classList.add('active');
+      nextSlide.classList.add('active');
+      nextSlide.style.position = '';
+      nextSlide.style.width = '';
+      nextDot.classList.add('active');
+      if (nextBg) nextBg.classList.replace('opacity-0', 'opacity-100');
+
+      // Retrigger slope entrance animation using requestAnimationFrame (no forced reflow)
+      if (nextSlopeSet) {
+        requestAnimationFrame(function() {
+          nextSlopeSet.classList.add('active');
+        });
       }
 
       startProgress();

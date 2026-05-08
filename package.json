@@ -6,7 +6,9 @@
     "dev": "bunx --bun astro dev",
     "build": "bunx --bun astro build",
     "preview": "bunx --bun astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "update-images": "node scripts/update-image-refs.mjs",
+    "perf:analyze": "bunx --bun astro build && echo 'Build complete! Check dist/ folder size and run Lighthouse audit'"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
