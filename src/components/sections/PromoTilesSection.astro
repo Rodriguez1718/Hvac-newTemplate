@@ -35,8 +35,8 @@ const tiles = rawTiles.map(tile => ({
       {tiles.map((tile, index) => (
         <div class:list={["pt-card", { "pt-card--featured": index === 1 }]}>
 
-          {/* Diagonal corner badge */}
-          <div class="pt-corner">
+          {/* Diagonal corner badge - Adjusted for mask */}
+          <div class="pt-corner" aria-hidden="true">
             <span class="pt-corner-label">
               {tile.tag || (tile.type === "maintenance" && "PLAN") || (tile.type === "financing" && "FINANCING") || (tile.type === "emergency" && "24/7 SERVICE")}
             </span>
@@ -128,7 +128,7 @@ const tiles = rawTiles.map(tile => ({
                 aria-label={`${tile.buttonText} - ${tile.title || tile.headline?.join(' ') || tile.discount || 'promo'}`}
               >
                 {tile.buttonText}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </a>
@@ -136,7 +136,7 @@ const tiles = rawTiles.map(tile => ({
                 href={`tel:${tile.phone.replace(/[^0-9]/g, '')}`}
                 class="pt-phone"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
                 </svg>
                 {tile.phone}
@@ -146,7 +146,7 @@ const tiles = rawTiles.map(tile => ({
 
           {/* Bottom horizontal text - outside card-inner */}
           <div class="pt-bottom-label">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="pt-scissors-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="pt-scissors-icon" aria-hidden="true">
               <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/>
             </svg>
             <span class="pt-bottom-text">GREAT DISCOUNT</span>
@@ -206,20 +206,38 @@ const tiles = rawTiles.map(tile => ({
   .pt-card {
     position: relative;
     background: #ffffff;
-    overflow: hidden;
     transition: all 0.25s ease;
     display: flex;
     flex-direction: column;
+    
+    /* Perfect Concave Cutouts */
+    --cut-size: 20px;
+    mask-image: 
+      radial-gradient(circle at var(--cut-size) var(--cut-size), transparent var(--cut-size), black 0);
+    mask-position: calc(var(--cut-size) * -1) calc(var(--cut-size) * -1);
+    
+    /* Using multiple masks for all 4 corners */
+    -webkit-mask: 
+      radial-gradient(var(--cut-size) at 0 0, #0000 98%, #000 100%) 0 0 / 51% 51% no-repeat,
+      radial-gradient(var(--cut-size) at 100% 0, #0000 98%, #000 100%) 100% 0 / 51% 51% no-repeat,
+      radial-gradient(var(--cut-size) at 0 100%, #0000 98%, #000 100%) 0 100% / 51% 51% no-repeat,
+      radial-gradient(var(--cut-size) at 100% 100%, #0000 98%, #000 100%) 100% 100% / 51% 51% no-repeat;
   }
   .pt-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   }
 
-  /* Featured card - solid border */
-  .pt-card--featured {
+  /* Featured card - uses a pseudo-element for the border to follow the mask */
+  .pt-card--featured::after {
+    content: '';
+    position: absolute;
+    inset: 0;
     border: 3px solid var(--brand-highlight);
-    border-style: solid;
+    pointer-events: none;
+    z-index: 10;
+    -webkit-mask: inherit;
+    mask: inherit;
   }
 
   @media (min-width: 1024px) {
@@ -228,7 +246,7 @@ const tiles = rawTiles.map(tile => ({
       z-index: 2;
     }
     .pt-card--featured:hover {
-      transform: scale(1.08) translateY(-2px);
+      transform: scale(1.08) translateY(-4px);
     }
   }
 
