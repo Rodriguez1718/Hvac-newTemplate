@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { siteConfig, getLocationText } from "@/config/site"
 
 interface Props {
@@ -37,31 +36,15 @@ const isRemoteImage = bgSrc.startsWith('http://') || bgSrc.startsWith('https://'
 
   <!-- Background image -->
   <div class="hp-bg">
-    {isRemoteImage ? (
-      <Image
-        src={bgSrc}
-        alt={imageAlt}
-        class="hp-bg-img"
-        loading="eager"
-        fetchpriority="high"
-        width={1440}
-        height={810}
-        widths={[480, 768, 1280, 1440]}
-        sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1280px) 1280px, 1440px"
-        format="webp"
-        quality={65}
-      />
-    ) : (
-      <img
-        src={bgSrc}
-        alt={imageAlt}
-        class="hp-bg-img"
-        loading="eager"
-        fetchpriority="high"
-        width="1440"
-        height="810"
-      />
-    )}
+    <img
+      src={bgSrc}
+      alt={imageAlt}
+      class="hp-bg-img"
+      loading="eager"
+      fetchpriority="high"
+      width="1440"
+      height="810"
+    />
     <div class="hp-overlay"></div>
   </div>
 
