@@ -103,7 +103,7 @@ const {
 					{
 						paymentPlans.map((plan) => (
 							<li class="fin-list-item">
-								<span class="fin-check-dot" />
+								<span class="fin-check-dot" aria-hidden="true" />
 								<span>{plan}</span>
 							</li>
 						))
@@ -123,7 +123,7 @@ const {
 					{
 						financingOptions.map((option) => (
 							<li class="fin-list-item">
-								<span class="fin-check-dot" />
+								<span class="fin-check-dot" aria-hidden="true" />
 								<span>{option}</span>
 							</li>
 						))
@@ -165,6 +165,7 @@ const {
 					stroke-width="2.5"
 					stroke-linecap="round"
 					stroke-linejoin="round"
+					aria-hidden="true"
 					><path d="M5 12h14M12 5l7 7-7 7"></path></svg
 				>
 			</a>
