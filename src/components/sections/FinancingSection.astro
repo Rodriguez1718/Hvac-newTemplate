@@ -1,378 +1,440 @@
 ---
 interface Step {
-  title: string;
-  description: string;
+	title: string;
+	description: string;
 }
 
 interface Props {
-  badge?: string;
-  title: string;
-  description: string;
-  paymentPlans: string[];
-  financingOptions: string[];
-  steps: Step[];
-  buttonText?: string;
-  buttonHref?: string;
+	badge?: string;
+	title: string;
+	description: string;
+	paymentPlans: string[];
+	financingOptions: string[];
+	steps: Step[];
+	buttonText?: string;
+	buttonHref?: string;
 }
 
 const {
-  badge,
-  title,
-  description,
-  paymentPlans,
-  financingOptions,
-  steps,
-  buttonText = "Apply Now",
-  buttonHref = "/financing",
+	badge,
+	title,
+	description,
+	paymentPlans,
+	financingOptions,
+	steps,
+	buttonText = "Apply Now",
+	buttonHref = "/financing",
 } = Astro.props;
 ---
 
 <section class="fin-section">
-  <!-- Airflow pattern background -->
-  <svg class="fin-airflow-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs>
-      <pattern id="airflow-grid" width="200" height="200" patternUnits="userSpaceOnUse">
-        <path d="M 0 100 Q 50 80, 100 100 T 200 100" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.4"/>
-        <path d="M 0 150 Q 50 130, 100 150 T 200 150" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.3"/>
-        <path d="M 100 0 Q 80 50, 100 100 T 100 200" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.35"/>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#airflow-grid)"/>
-    <path d="M 0 200 Q 300 150, 600 200 T 1200 200" stroke="currentColor" stroke-width="2" fill="none" opacity="0.25"/>
-    <path d="M 0 400 Q 300 350, 600 400 T 1200 400" stroke="currentColor" stroke-width="2" fill="none" opacity="0.2"/>
-    <path d="M 0 600 Q 300 550, 600 600 T 1200 600" stroke="currentColor" stroke-width="2" fill="none" opacity="0.15"/>
-  </svg>
+	<!-- Airflow pattern background -->
+	<svg
+		class="fin-airflow-bg"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 1200 800"
+		preserveAspectRatio="xMidYMid slice"
+		aria-hidden="true">
+		<defs>
+			<pattern
+				id="airflow-grid"
+				width="200"
+				height="200"
+				patternUnits="userSpaceOnUse">
+				<path
+					d="M 0 100 Q 50 80, 100 100 T 200 100"
+					stroke="currentColor"
+					stroke-width="1.5"
+					fill="none"
+					opacity="0.4"></path>
+				<path
+					d="M 0 150 Q 50 130, 100 150 T 200 150"
+					stroke="currentColor"
+					stroke-width="1.5"
+					fill="none"
+					opacity="0.3"></path>
+				<path
+					d="M 100 0 Q 80 50, 100 100 T 100 200"
+					stroke="currentColor"
+					stroke-width="1.5"
+					fill="none"
+					opacity="0.35"></path>
+			</pattern>
+		</defs>
+		<rect width="100%" height="100%" fill="url(#airflow-grid)"></rect>
+		<path
+			d="M 0 200 Q 300 150, 600 200 T 1200 200"
+			stroke="currentColor"
+			stroke-width="2"
+			fill="none"
+			opacity="0.25"></path>
+		<path
+			d="M 0 400 Q 300 350, 600 400 T 1200 400"
+			stroke="currentColor"
+			stroke-width="2"
+			fill="none"
+			opacity="0.2"></path>
+		<path
+			d="M 0 600 Q 300 550, 600 600 T 1200 600"
+			stroke="currentColor"
+			stroke-width="2"
+			fill="none"
+			opacity="0.15"></path>
+	</svg>
 
-  <div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+	<div class="container mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+		<!-- Header -->
+		<div class="fin-header" data-animate="fade-scale">
+			<div class="fin-eyebrow">
+				<span class="fin-eyebrow-text">Financing</span>
+			</div>
+			<h2 class="fin-title">{title}</h2>
+			<p class="fin-desc" set:html={description} />
+		</div>
 
-    <!-- Header -->
-    <div class="fin-header" data-animate="fade-scale">
-      <div class="fin-eyebrow">
-        <span class="fin-eyebrow-text">Financing</span>
-      </div>
-      <h2 class="fin-title">{title}</h2>
-      <p class="fin-desc" set:html={description} />
-    </div>
+		<!-- Two-column lists -->
+		<div class="fin-lists">
+			<div class="fin-list-card" data-animate="fade-right">
+				<div class="fin-list-header">
+					<span class="fin-list-accent"></span>
+					<h3 class="fin-list-heading">Why Choose Our Financing?</h3>
+				</div>
+				<ul class="fin-list">
+					{
+						paymentPlans.map((plan) => (
+							<li class="fin-list-item">
+								<span class="fin-check-dot" />
+								<span>{plan}</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
 
-    <!-- Two-column lists -->
-    <div class="fin-lists">
-      <div class="fin-list-card" data-animate="fade-right">
-        <div class="fin-list-header">
-          <span class="fin-list-accent"></span>
-          <h3 class="fin-list-heading">Why Choose Our Financing?</h3>
-        </div>
-        <ul class="fin-list">
-          {paymentPlans.map((plan) => (
-            <li class="fin-list-item">
-              <span class="fin-check-dot"></span>
-              <span>{plan}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+			<div
+				class="fin-list-card"
+				data-animate="fade-left"
+				data-animate-delay="200">
+				<div class="fin-list-header">
+					<span class="fin-list-accent"></span>
+					<h3 class="fin-list-heading">What Can You Finance?</h3>
+				</div>
+				<ul class="fin-list">
+					{
+						financingOptions.map((option) => (
+							<li class="fin-list-item">
+								<span class="fin-check-dot" />
+								<span>{option}</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</div>
 
-      <div class="fin-list-card" data-animate="fade-left" data-animate-delay="200">
-        <div class="fin-list-header">
-          <span class="fin-list-accent"></span>
-          <h3 class="fin-list-heading">What Can You Finance?</h3>
-        </div>
-        <ul class="fin-list">
-          {financingOptions.map((option) => (
-            <li class="fin-list-item">
-              <span class="fin-check-dot"></span>
-              <span>{option}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+		<!-- Steps -->
+		<div class="fin-steps" data-animate-stagger>
+			{
+				steps.map((step, i) => (
+					<div class="fin-step">
+						<div class="fin-step-top">
+							<div class="fin-step-num">
+								{String(i + 1).padStart(2, "0")}
+							</div>
+							{i < steps.length - 1 && (
+								<div class="fin-step-line" aria-hidden="true" />
+							)}
+						</div>
+						<h4 class="fin-step-title">{step.title}</h4>
+						<p class="fin-step-text" set:html={step.description} />
+					</div>
+				))
+			}
+		</div>
 
-    <!-- Steps -->
-    <div class="fin-steps" data-animate-stagger>
-      {steps.map((step, i) => (
-        <div class="fin-step">
-          <div class="fin-step-top">
-            <div class="fin-step-num">{String(i + 1).padStart(2, '0')}</div>
-            {i < steps.length - 1 && <div class="fin-step-line" aria-hidden="true"></div>}
-          </div>
-          <h4 class="fin-step-title">{step.title}</h4>
-          <p class="fin-step-text" set:html={step.description} />
-        </div>
-      ))}
-    </div>
-
-    <!-- CTA -->
-    <div class="fin-cta" data-animate="fade-up">
-      <a href={buttonHref} class="fin-btn">
-        {buttonText}
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
+		<!-- CTA -->
+		<div class="fin-cta" data-animate="fade-up">
+			<a href={buttonHref} class="fin-btn">
+				{buttonText}
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="w-4 h-4"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					><path d="M5 12h14M12 5l7 7-7 7"></path></svg
+				>
+			</a>
+		</div>
+	</div>
 </section>
 
 <style>
-  .fin-section {
-    background: var(--brand-tertiary);
-    position: relative;
-    overflow: hidden;
-  }
+	.fin-section {
+		background: var(--brand-tertiary);
+		position: relative;
+		overflow: hidden;
+	}
 
-  /* ─── Airflow Background ─── */
-  .fin-airflow-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: var(--brand-primary);
-    opacity: 0.08;
-    pointer-events: none;
-    z-index: 0;
-  }
+	/* ─── Airflow Background ─── */
+	.fin-airflow-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		color: var(--brand-primary);
+		opacity: 0.08;
+		pointer-events: none;
+		z-index: 0;
+	}
 
-  .fin-section > .container {
-    position: relative;
-    z-index: 1;
-  }
+	.fin-section > .container {
+		position: relative;
+		z-index: 1;
+	}
 
-  /* ─── Header ─── */  
-  .fin-header {
-    text-align: center;
-    margin-bottom: 3.5rem;
-    max-width: 48rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
+	/* ─── Header ─── */
+	.fin-header {
+		text-align: center;
+		margin-bottom: 3.5rem;
+		max-width: 48rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
 
-  .fin-eyebrow {
-    margin-bottom: 1.25rem;
-  }
-  .fin-eyebrow-text {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--brand-highlight);
-    display: inline-block;
-    padding: 0.4rem 1rem;
-    background: var(--brand-primary);
-    border-left: 3px solid var(--brand-highlight);
-  }
+	.fin-eyebrow {
+		margin-bottom: 1.25rem;
+	}
+	.fin-eyebrow-text {
+		font-size: 0.7rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		color: var(--brand-highlight);
+		display: inline-block;
+		padding: 0.4rem 1rem;
+		background: var(--brand-primary);
+		border-left: 3px solid var(--brand-highlight);
+	}
 
-  .fin-title {
-    font-size: 2rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-    line-height: 1.1;
-    color: var(--brand-primary);
-    margin-bottom: 1rem;
-  }
-  @media (min-width: 768px) {
-    .fin-title { font-size: 2.25rem; }
-  }
+	.fin-title {
+		font-size: 2rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: -0.01em;
+		line-height: 1.1;
+		color: var(--brand-primary);
+		margin-bottom: 1rem;
+	}
+	@media (min-width: 768px) {
+		.fin-title {
+			font-size: 2.25rem;
+		}
+	}
 
-  .fin-desc {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: var(--brand-secondary);
-  }
+	.fin-desc {
+		font-size: 0.95rem;
+		line-height: 1.75;
+		color: var(--brand-secondary);
+	}
 
-  /* ─── List cards ─── */
-  .fin-lists {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    max-width: 64rem;
-    margin: 0 auto 3.5rem;
-  }
+	/* ─── List cards ─── */
+	.fin-lists {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.5rem;
+		max-width: 64rem;
+		margin: 0 auto 3.5rem;
+	}
 
-  .fin-list-card {
-    background: white;
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 8px;
-    padding: 2.25rem;
-    transition: all 0.35s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-  }
-  .fin-list-card:hover {
-    border-color: var(--brand-highlight);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-    transform: translateY(-4px);
-  }
+	.fin-list-card {
+		background: white;
+		border: 1px solid rgba(0, 0, 0, 0.08);
+		padding: 2.25rem;
+		transition: all 0.35s ease;
+		position: relative;
+		overflow: hidden;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+	}
+	.fin-list-card:hover {
+		border-color: var(--brand-highlight);
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+		transform: translateY(-4px);
+	}
 
-  .fin-list-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.75rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 2px solid rgba(0,0,0,0.06);
-  }
+	.fin-list-header {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		margin-bottom: 1.75rem;
+		padding-bottom: 1.25rem;
+		border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+	}
 
-  .fin-list-accent {
-    width: 3px;
-    height: 24px;
-    background: var(--brand-highlight);
-    flex-shrink: 0;
-  }
+	.fin-list-accent {
+		width: 3px;
+		height: 24px;
+		background: var(--brand-highlight);
+		flex-shrink: 0;
+	}
 
-  .fin-list-heading {
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--brand-primary);
-    line-height: 1.3;
-  }
+	.fin-list-heading {
+		font-size: 0.9rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--brand-primary);
+		line-height: 1.3;
+	}
 
-  .fin-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+	.fin-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
 
-  .fin-list-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.875rem;
-    font-size: 0.95rem;
-    color: var(--brand-secondary);
-    font-weight: 500;
-    line-height: 1.6;
-  }
+	.fin-list-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.875rem;
+		font-size: 0.95rem;
+		color: var(--brand-secondary);
+		font-weight: 500;
+		line-height: 1.6;
+	}
 
-  .fin-check-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--brand-highlight);
-    flex-shrink: 0;
-    border-radius: 50%;
-    margin-top: 0.5rem;
-  }
+	.fin-check-dot {
+		width: 6px;
+		height: 6px;
+		background: var(--brand-highlight);
+		flex-shrink: 0;
+		border-radius: 50%;
+		margin-top: 0.5rem;
+	}
 
-  /* ─── Steps ─── */
-  .fin-steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    max-width: 56rem;
-    margin: 0 auto 3rem;
-  }
+	/* ─── Steps ─── */
+	.fin-steps {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+		max-width: 56rem;
+		margin: 0 auto 3rem;
+	}
 
-  .fin-step {
-    text-align: center;
-    position: relative;
-  }
+	.fin-step {
+		text-align: center;
+		position: relative;
+	}
 
-  .fin-step-top {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.25rem;
-    position: relative;
-  }
+	.fin-step-top {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 1.25rem;
+		position: relative;
+	}
 
-  .fin-step-num {
-    width: 3.5rem;
-    height: 3.5rem;
-    background: var(--brand-primary);
-    color: var(--brand-highlight);
-    font-weight: 800;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-    border: 3px solid var(--brand-highlight);
-    border-radius: 50%;
-    transition: all 0.3s ease;
-  }
-  .fin-step:hover .fin-step-num {
-    background: var(--brand-highlight);
-    color: var(--brand-primary);
-    transform: scale(1.08);
-  }
+	.fin-step-num {
+		width: 3.5rem;
+		height: 3.5rem;
+		background: var(--brand-primary);
+		color: var(--brand-highlight);
+		font-weight: 800;
+		font-size: 1.1rem;
+		letter-spacing: 0.05em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		z-index: 2;
+		border: 3px solid var(--brand-highlight);
+		border-radius: 50%;
+		transition: all 0.3s ease;
+	}
+	.fin-step:hover .fin-step-num {
+		background: var(--brand-highlight);
+		color: var(--brand-primary);
+		transform: scale(1.08);
+	}
 
-  .fin-step-line {
-    position: absolute;
-    top: 50%;
-    left: calc(50% + 2rem);
-    width: calc(100% - 2rem);
-    height: 2px;
-    background: var(--brand-highlight);
-    opacity: 0.25;
-    z-index: 1;
-  }
+	.fin-step-line {
+		position: absolute;
+		top: 50%;
+		left: calc(50% + 2rem);
+		width: calc(100% - 2rem);
+		height: 2px;
+		background: var(--brand-highlight);
+		opacity: 0.25;
+		z-index: 1;
+	}
 
-  .fin-step-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--brand-primary);
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-  }
+	.fin-step-title {
+		font-size: 0.95rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--brand-primary);
+		margin-bottom: 0.5rem;
+		line-height: 1.3;
+	}
 
-  .fin-step-text {
-    font-size: 0.85rem;
-    line-height: 1.5;
-    color: var(--brand-secondary);
-  }
+	.fin-step-text {
+		font-size: 0.85rem;
+		line-height: 1.5;
+		color: var(--brand-secondary);
+	}
 
-  /* ─── CTA ─── */
-  .fin-cta {
-    text-align: center;
-  }
+	/* ─── CTA ─── */
+	.fin-cta {
+		text-align: center;
+	}
 
-  .fin-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
-    padding: 1rem 2.5rem;
-    background: var(--brand-primary);
-    color: #fff;
-    font-weight: 700;
-    font-size: 0.8rem;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  .fin-btn:hover {
-    background: var(--brand-highlight);
-    color: var(--brand-primary);
-    transform: translateX(4px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  }
-  .fin-btn svg {
-    transition: transform 0.3s ease;
-  }
-  .fin-btn:hover svg {
-    transform: translateX(4px);
-  }
+	.fin-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.625rem;
+		padding: 1rem 2.5rem;
+		background: var(--brand-primary);
+		color: #fff;
+		font-weight: 700;
+		font-size: 0.8rem;
+		text-decoration: none;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	}
+	.fin-btn:hover {
+		background: var(--brand-highlight);
+		color: var(--brand-primary);
+		transform: translateX(4px);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+	}
+	.fin-btn svg {
+		transition: transform 0.3s ease;
+	}
+	.fin-btn:hover svg {
+		transform: translateX(4px);
+	}
 
-  /* ─── Responsive ─── */
-  @media (max-width: 768px) {
-    .fin-lists {
-      grid-template-columns: 1fr;
-    }
-    .fin-steps {
-      grid-template-columns: 1fr;
-      max-width: 24rem;
-    }
-    .fin-step-line {
-      display: none;
-    }
-  }
+	/* ─── Responsive ─── */
+	@media (max-width: 768px) {
+		.fin-lists {
+			grid-template-columns: 1fr;
+		}
+		.fin-steps {
+			grid-template-columns: 1fr;
+			max-width: 24rem;
+		}
+		.fin-step-line {
+			display: none;
+		}
+	}
 </style>
