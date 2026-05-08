@@ -1,5 +1,6 @@
 ---
 import { getLocationText } from "@/config/site"
+import { getOptimizedImageUrl, getLoadingStrategy } from "@/utils/imageOptimizer"
 
 const bg2Img = "/images/bg2.jpg";
 
@@ -45,7 +46,7 @@ const slides = [
     statNumber: "$99",
     statLabel: "Service Call",
     statDescription: "Expert Repairs & Installation included with every visit.",
-    bgImage: heroImages[0 % heroImages.length],
+    bgImage: getOptimizedImageUrl(heroImages[0 % heroImages.length], { width: 1920, quality: 75 }),
   },
   {
     title: "Flexible Financing Available",
@@ -54,7 +55,7 @@ const slides = [
     statNumber: "0%",
     statLabel: "Interest",
     statDescription: "With approved financing. Ask us about our flexible plans.",
-    bgImage: heroImages[1 % heroImages.length],
+    bgImage: getOptimizedImageUrl(heroImages[1 % heroImages.length], { width: 1920, quality: 75 }),
   },
   {
     title: "Limited Time Offer — Don't Miss Out!",
@@ -63,7 +64,7 @@ const slides = [
     statNumber: "1yr",
     statLabel: "Warranty",
     statDescription: "Warranty on furnace repair. Expert maintenance for peak efficiency.",
-    bgImage: heroImages[2 % heroImages.length],
+    bgImage: getOptimizedImageUrl(heroImages[2 % heroImages.length], { width: 1920, quality: 75 }),
   },
 ];
 

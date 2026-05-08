@@ -14,9 +14,9 @@
         "statDescription": "Lorem ipsum sit dolor sit amet, consectetur adipiscing elit.",
         "rightImageAlt": "HVAC technician at work",
         "images": [
-          "https://www.superiorcomforthvac.com/wp-content/uploads/2024/05/ac-repair-brownstown-mi.jpg",
-          "https://healthinnovation-kss.com/wp-content/uploads/2025/09/WorkWell-images-1200-x-627-px.webp",
-          "https://ultimateheatingandair.com/wp-content/uploads/2024/06/10-Most-Common-HVAC-Problems.jpg"
+          "/images/hero-slide-1.webp",
+          "/images/hero-slide-2.webp",
+          "/images/hero-slide-3.webp"
         ]
       }
     },
