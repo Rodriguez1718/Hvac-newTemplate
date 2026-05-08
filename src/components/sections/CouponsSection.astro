@@ -42,7 +42,7 @@ const defaultBackgrounds = [
     <!-- Section header -->
     <div class="mb-16 text-center" data-animate="fade-scale">
       <div class="inline-flex items-center gap-3 mb-4 px-6 py-2 bg-brand-primary/5 backdrop-blur-sm border border-brand-highlight/20">
-        <svg class="w-4 h-4 text-brand-highlight" viewBox="0 0 24 24" fill="currentColor">
+        <svg class="w-4 h-4 text-brand-highlight" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
         </svg>
         <span class="text-xs font-bold uppercase tracking-[0.25em] text-brand-highlight">Limited Time Offers</span>
@@ -89,10 +89,14 @@ const defaultBackgrounds = [
               </div>
               
               <!-- Right section: barcode stub (clickable) -->
-              <a href={coupon.buttonHref || "/contact"} class="cpn-ticket-stub">
+              <a 
+                href={coupon.buttonHref || "/contact"} 
+                class="cpn-ticket-stub"
+                aria-label={`Claim ${coupon.discount} ${coupon.label || 'discount'} - ${coupon.description}`}
+              >
                 <!-- Barcode -->
-                <div class="cpn-ticket-barcode">
-                  <div class="cpn-barcode-lines">
+                <div class="cpn-ticket-barcode" aria-hidden="true">
+                  <div class="cpn-barcode-lines" aria-hidden="true">
                     <div class="cpn-barcode-line" style="height: 2px;"></div>
                     <div class="cpn-barcode-line" style="height: 3px;"></div>
                     <div class="cpn-barcode-line" style="height: 2px;"></div>
