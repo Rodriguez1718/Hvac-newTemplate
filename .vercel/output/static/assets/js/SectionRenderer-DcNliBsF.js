@@ -423,7 +423,7 @@ const CONTENT_LAYER_IMAGE_REGEX = /__ASTRO_IMAGE_="([^"]+)"/g;
 async function updateImageReferencesInBody(html, fileName) {
   const { default: imageAssetMap } = await import("./content-assets-CPbsr5sg.js");
   const imageObjects = /* @__PURE__ */ new Map();
-  const { getImage } = await import("./_astro_assets-CL3NGJHk.js").then((n) => n._);
+  const { getImage } = await import("./_astro_assets-ByuB_4IA.js").then((n) => n._);
   for (const [_full, imagePath] of html.matchAll(CONTENT_LAYER_IMAGE_REGEX)) {
     try {
       const decodedImagePath = JSON.parse(imagePath.replaceAll("&#x22;", '"'));
@@ -1106,6 +1106,32 @@ const $$HeroPage = createComponent(($$result, $$props, $$slots) => {
     return [...acc, " ", curr];
   }, [])} </h1> <!-- Trust indicators --> ${trustIndicators.length > 0 && renderTemplate`<div class="hp-trust" data-animate="fade-up" data-animate-delay="200" data-astro-cid-gletljog> ${trustIndicators.map((item) => renderTemplate`<span class="hp-trust-item" data-astro-cid-gletljog> <svg xmlns="http://www.w3.org/2000/svg" class="hp-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-gletljog> <path d="M20 6 9 17l-5-5" data-astro-cid-gletljog></path> </svg> ${item} </span>`)} </div>`} <!-- CTAs --> <div class="hp-actions" data-animate="fade-up" data-animate-delay="300" data-astro-cid-gletljog> <a${addAttribute(buttonHref, "href")} class="hp-btn hp-btn-highlight" data-astro-cid-gletljog> ${buttonText} <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" data-astro-cid-gletljog> <path d="M5 12h14M12 5l7 7-7 7" data-astro-cid-gletljog></path> </svg> </a> <a${addAttribute(`tel:${siteConfig.contact.phone}`, "href")} class="hp-btn hp-btn-outline" data-astro-cid-gletljog> <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-gletljog> <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" data-astro-cid-gletljog></path> </svg> ${siteConfig.contact.phoneFormatted} </a> </div> </div> </div> </div> </div> </section> `;
 }, "C:/Users/rodriguez/TemplateHvac/src/components/sections/HeroPage.astro", void 0);
+function getOptimizedImageUrl(url, options = {}) {
+  const { width = 1920, quality = 80, format = "webp" } = options;
+  if (url.startsWith("/")) {
+    return url;
+  }
+  try {
+    const urlObj = new URL(url);
+    if (urlObj.search) {
+      return url;
+    }
+    if (urlObj.hostname.includes("unsplash.com")) {
+      urlObj.searchParams.set("w", width.toString());
+      urlObj.searchParams.set("q", quality.toString());
+      urlObj.searchParams.set("fm", format);
+      return urlObj.toString();
+    }
+    if (urlObj.hostname.includes("pexels.com")) {
+      urlObj.searchParams.set("w", width.toString());
+      urlObj.searchParams.set("auto", "compress");
+      return urlObj.toString();
+    }
+    return url;
+  } catch {
+    return url;
+  }
+}
 var __freeze = Object.freeze;
 var __defProp2 = Object.defineProperty;
 var __template = (cooked, raw) => __freeze(__defProp2(cooked, "raw", { value: __freeze(cooked.slice()) }));
@@ -1141,7 +1167,7 @@ const $$HeroSection = createComponent(($$result, $$props, $$slots) => {
       statNumber: "$99",
       statLabel: "Service Call",
       statDescription: "Expert Repairs & Installation included with every visit.",
-      bgImage: heroImages[0 % heroImages.length]
+      bgImage: getOptimizedImageUrl(heroImages[0 % heroImages.length], { width: 1920, quality: 75 })
     },
     {
       title: "Flexible Financing Available",
@@ -1150,7 +1176,7 @@ const $$HeroSection = createComponent(($$result, $$props, $$slots) => {
       statNumber: "0%",
       statLabel: "Interest",
       statDescription: "With approved financing. Ask us about our flexible plans.",
-      bgImage: heroImages[1 % heroImages.length]
+      bgImage: getOptimizedImageUrl(heroImages[1 % heroImages.length], { width: 1920, quality: 75 })
     },
     {
       title: "Limited Time Offer — Don't Miss Out!",
@@ -1159,7 +1185,7 @@ const $$HeroSection = createComponent(($$result, $$props, $$slots) => {
       statNumber: "1yr",
       statLabel: "Warranty",
       statDescription: "Warranty on furnace repair. Expert maintenance for peak efficiency.",
-      bgImage: heroImages[2 % heroImages.length]
+      bgImage: getOptimizedImageUrl(heroImages[2 % heroImages.length], { width: 1920, quality: 75 })
     }
   ];
   const isSlider = variant === "slider";

@@ -177,6 +177,13 @@
   img {
     content-visibility: auto;
     contain-intrinsic-size: auto 300px;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Optimize background images */
+  [style*="background-image"] {
+    content-visibility: auto;
   }
 }
 
